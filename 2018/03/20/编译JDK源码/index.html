@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://kid1994.github.io">
-  <title>Tag: Java | 小菊花的博客</title>
+  <title>JDK源码构建 | 小菊花的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="my blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="小菊花的博客">
-<meta property="og:url" content="http://kid1994.github.io/tags/Java/index.html">
+  <meta name="description" content="在阅读JDK源码之前，先自己尝试着构建JDK源码，为后期的hack做好准备。">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDK源码构建">
+<meta property="og:url" content="http://kid1994.github.io/2018/03/20/编译JDK源码/index.html">
 <meta property="og:site_name" content="小菊花的博客">
-<meta property="og:description" content="my blog.">
+<meta property="og:description" content="在阅读JDK源码之前，先自己尝试着构建JDK源码，为后期的hack做好准备。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-14T02:36:35.144Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小菊花的博客">
-<meta name="twitter:description" content="my blog.">
+<meta name="twitter:title" content="JDK源码构建">
+<meta name="twitter:description" content="在阅读JDK源码之前，先自己尝试着构建JDK源码，为后期的hack做好准备。">
   
     <link rel="alternative" href="/atom.xml" title="小菊花的博客" type="application/atom+xml">
   
@@ -189,74 +191,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-编译JDK源码" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/05/Java对象的序列化/" class="archive-article-date">
-  	<time datetime="2018-08-04T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/05/Java对象的序列化/">Java对象的序列化</a>
+    <h1 class="article-title" itemprop="name">
+      JDK源码构建
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/20/编译JDK源码/" class="archive-article-date">
+        
+        <a href="/2018/03/20/编译JDK源码/" class="archive-article-date">
   	<time datetime="2018-03-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/20/编译JDK源码/">JDK源码构建</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在阅读JDK源码之前，先自己尝试着构建JDK源码，为后期的hack做好准备。</p>
+<a id="more"></a>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#前期准备">前期准备</a><ul>
+<li><a href="#下载openjdk源码">下载openjdk源码</a></li>
+<li><a href="#环境要求">环境要求：</a><ul>
+<li><a href="#mac-os-x">mac os x</a></li>
+<li><a href="#ubuntu">ubuntu</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#构建环境">构建环境</a><ul>
+<li><a href="#mac-os-x">mac os x</a></li>
+<li><a href="#ubuntu虚拟机">ubuntu虚拟机</a></li>
+</ul>
+</li>
+<li><a href="#构建步骤">构建步骤</a><ul>
+<li><a href="#mac-os-x">mac os x</a><ul>
+<li><a href="#configure">configure</a></li>
+<li><a href="#build">build</a></li>
+</ul>
+</li>
+<li><a href="#ubuntu">ubuntu</a></li>
+</ul>
+</li>
+<li><a href="#后记">后记</a></li>
+<li><a href="#构建过程中遇到的问题">构建过程中遇到的问题</a><ul>
+<li><a href="#error-1-gcc-compiler-is-required">error 1 gcc compiler is required</a></li>
+<li><a href="#error-2-could-not-find-freetype">error 2 could not find freetype</a></li>
+<li><a href="#error-3-ordered-comparison-between-pointer-and-zero">error 3 ordered comparison between pointer and zero</a></li>
+<li><a href="#error-4-a-fatal-error-has-been-detected-by-the-java-runtime-environment">error 4 a fatal error has been detected by the java runtime environment</a></li>
+<li><a href="#error-5-cannot-find-source-for-project-jaxp">error 5 cannot find source for project jaxp</a></li>
+<li><a href="#error-6-protocol-switch-unsafe-not-allowed">error 6 protocol switch unsafe, not allowed</a></li>
+<li><a href="#error-7-this-os-is-not-supported">error 7 this os is not supported</a></li>
+<li><a href="#error-8-cc1plus-all-warnings-being-treated-as-errors">error 8 cc1plus all warnings being treated as errors</a></li>
+<li><a href="#error-9-gamma-relocation-error">error 9 gamma relocation error</a></li>
+<li><a href="#error-10-unrecognized-command-line-option-mimpure-text">error 10 unrecognized command line option -mimpure-text</a></li>
+<li><a href="#error-11-time-is-more-than-10-years-from-present">error 11 time is more than 10 years from present</a></li>
+<li><a href="#error-12-collect2-error-ld-returned-1-exit">error 12 collect2 error ld returned 1 exit</a></li>
+</ul>
+</li>
+<li><a href="#参考">参考</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><h2 id="下载openjdk源码"><a href="#下载openjdk源码" class="headerlink" title="下载openjdk源码"></a>下载openjdk源码</h2><p>首先是关于要下载哪个版本的jdk源码，在Mac os X 13上，推荐下载<code>openjdk 9u</code>版本。不过最终我是在<code>Ubuntu 14</code>下构建的，选择的是<code>openjdk 7</code>版本。</p>
+<p>然后有如下三种下载源码的方法：</p>
+<ul>
+<li>通过mercurial下载安装</li>
+<li>自己手动下载压缩包</li>
+<li>从github上下载别人上传的源码</li>
+</ul>
+<p>最推荐的还是第一种方法，但由于网速原因，才不得以使用后两种方法。</p>
+<p>编译前的源码目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">|-- ASSEMBLY_EXCEPTION</span><br><span class="line">|-- LICENSE</span><br><span class="line">|-- Makefile</span><br><span class="line">|-- README</span><br><span class="line">|-- README-builds.html</span><br><span class="line">|-- THIRD_PARTY_README</span><br><span class="line">|-- corba</span><br><span class="line">|   |-- ASSEMBLY_EXCEPTION</span><br><span class="line">|   |-- LICENSE</span><br><span class="line">|   |-- README</span><br><span class="line">|   |-- THIRD_PARTY_README</span><br><span class="line">|   |-- make</span><br><span class="line">|   `-- src</span><br><span class="line">|-- get_source.sh</span><br><span class="line">|-- hotspot</span><br><span class="line">|   |-- ASSEMBLY_EXCEPTION</span><br><span class="line">|   |-- LICENSE</span><br><span class="line">|   |-- README</span><br><span class="line">|   |-- THIRD_PARTY_README</span><br><span class="line">|   |-- agent</span><br><span class="line">|   |-- make</span><br><span class="line">|   |-- src</span><br><span class="line">|   `-- test</span><br><span class="line">|-- jaxp</span><br><span class="line">|   |-- ASSEMBLY_EXCEPTION</span><br><span class="line">|   |-- LICENSE</span><br><span class="line">|   |-- README</span><br><span class="line">|   |-- THIRD_PARTY_README</span><br><span class="line">|   |-- TRADEMARK</span><br><span class="line">|   |-- build-defs.xml</span><br><span class="line">|   |-- build-drop-template.xml</span><br><span class="line">|   |-- build.properties</span><br><span class="line">|   |-- build.xml</span><br><span class="line">|   |-- jaxp.properties</span><br><span class="line">|   |-- make</span><br><span class="line">|   |-- nbproject</span><br><span class="line">|   `-- patches</span><br><span class="line">|-- jaxws</span><br><span class="line">|   |-- ASSEMBLY_EXCEPTION</span><br><span class="line">|   |-- LICENSE</span><br><span class="line">|   |-- README</span><br><span class="line">|   |-- THIRD_PARTY_README</span><br><span class="line">|   |-- TRADEMARK</span><br><span class="line">|   |-- build-defs.xml</span><br><span class="line">|   |-- build-drop-template.xml</span><br><span class="line">|   |-- build.properties</span><br><span class="line">|   |-- build.xml</span><br><span class="line">|   |-- jaxws.properties</span><br><span class="line">|   |-- make</span><br><span class="line">|   |-- nbproject</span><br><span class="line">|   `-- patches</span><br><span class="line">|-- jdk</span><br><span class="line">|   |-- ASSEMBLY_EXCEPTION</span><br><span class="line">|   |-- LICENSE</span><br><span class="line">|   |-- README</span><br><span class="line">|   |-- THIRD_PARTY_README</span><br><span class="line">|   |-- make</span><br><span class="line">|   |-- src</span><br><span class="line">|   `-- test</span><br><span class="line">|-- langtools</span><br><span class="line">|   |-- ASSEMBLY_EXCEPTION</span><br><span class="line">|   |-- LICENSE</span><br><span class="line">|   |-- README</span><br><span class="line">|   |-- THIRD_PARTY_README</span><br><span class="line">|   |-- make</span><br><span class="line">|   |-- src</span><br><span class="line">|   `-- test</span><br><span class="line">|-- make</span><br><span class="line">|   |-- Defs-internal.gmk</span><br><span class="line">|   |-- README.pre-components</span><br><span class="line">|   |-- corba-rules.gmk</span><br><span class="line">|   |-- deploy-rules.gmk</span><br><span class="line">|   |-- hotspot-rules.gmk</span><br><span class="line">|   |-- install-rules.gmk</span><br><span class="line">|   |-- jaxp-rules.gmk</span><br><span class="line">|   |-- jaxws-rules.gmk</span><br><span class="line">|   |-- jdk-rules.gmk</span><br><span class="line">|   |-- jprt.gmk</span><br><span class="line">|   |-- jprt.properties</span><br><span class="line">|   |-- langtools-rules.gmk</span><br><span class="line">|   |-- sanity-rules.gmk</span><br><span class="line">|   |-- scripts</span><br><span class="line">|   |-- sponsors-rules.gmk</span><br><span class="line">|   `-- templates</span><br><span class="line">`-- test</span><br><span class="line">    `-- Makefile</span><br></pre></td></tr></table></figure>
+<h2 id="环境要求："><a href="#环境要求：" class="headerlink" title="环境要求："></a>环境要求：</h2><h3 id="mac-os-x"><a href="#mac-os-x" class="headerlink" title="mac os x"></a>mac os x</h3><ul>
+<li>GNU版本 &gt;= 3.81</li>
+<li>Bootstrap JDK，构建JDK8要求Bootstrap JDK的版本为JDK7且次版本号 &gt;= Update 7。因为机子上已经安装了JDK 8，所以要通过configure命令的-with-boot-jdk选项来指定bootstrap jdk的路径。</li>
+<li>对于Mac OS X，还需要安装Xcode 4.5.2，并安装command line tools。我的Xcode版本为9.4.1，默认已安装command line。</li>
+</ul>
+<h3 id="ubuntu"><a href="#ubuntu" class="headerlink" title="ubuntu"></a>ubuntu</h3><p>安装如下依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libasound2-dev libcups2-dev libxrender-dev xorg-dev xutils-dev</span><br><span class="line"></span><br><span class="line">sudo apt-get install build-essential gawk m4 openjdk-6-jdk</span><br><span class="line"></span><br><span class="line">sudo apt-get install x11proto-print-dev binutils libmotif3 libmotif-dev ant</span><br></pre></td></tr></table></figure></p>
+<p>配置环境变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export LANG=C</span><br><span class="line">export ALT_BOOTDIR=/usr/lib/jvm/java-6-openjdk-amd64</span><br><span class="line">export ALLOW_DOWNLOADS=true</span><br></pre></td></tr></table></figure></p>
+<p>检查配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yangjun@ubuntu:~/Downloads/openjdk$ make sanity</span><br><span class="line">Sanity check passed.#配置通过</span><br></pre></td></tr></table></figure></p>
+<h1 id="构建环境"><a href="#构建环境" class="headerlink" title="构建环境"></a>构建环境</h1><h2 id="mac-os-x-1"><a href="#mac-os-x-1" class="headerlink" title="mac os x"></a>mac os x</h2><ul>
+<li>系统:Mac OS X High Sierra:10.13.6</li>
+<li>构建的jdk版本:openjdk 9u</li>
+<li>Bootstrap JDK:1.8.0_181</li>
+<li>Xcode:9.4.1</li>
+<li>CPU:Intel Core i5 2.3GHz 1*4核</li>
+<li>内存:8GB 2133 MHz</li>
+</ul>
+<h2 id="ubuntu虚拟机"><a href="#ubuntu虚拟机" class="headerlink" title="ubuntu虚拟机"></a>ubuntu虚拟机</h2><ul>
+<li>系统：Ubuntu 14</li>
+<li>构建的jdk版本:openjdk 7</li>
+<li>Bootstrap JDK:1.6.0_41</li>
+<li>CPU:Intel Core i5-8259U CPU 2.30GHz 1*1核</li>
+<li>内存:1GB</li>
+</ul>
+<h1 id="构建步骤"><a href="#构建步骤" class="headerlink" title="构建步骤"></a>构建步骤</h1><h2 id="mac-os-x-2"><a href="#mac-os-x-2" class="headerlink" title="mac os x"></a>mac os x</h2><h3 id="configure"><a href="#configure" class="headerlink" title="configure"></a>configure</h3><p>这一步主要是为了检查系统环境是否满足要求。</p>
+<p>可以使用<code>bash ./configure --help=short</code>命令来查看configure所有的选项。一些通用的选项如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">–enable-debug</td>
+<td style="text-align:center">设置debug级别为fastdeubug</td>
+</tr>
+<tr>
+<td style="text-align:center">–with-boot-jdk</td>
+<td style="text-align:center">设置bootstrap jdk的路径</td>
+</tr>
+</tbody>
+</table>
+<p>执行命令：</p>
+<p>jdk9:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash configure --with-debug-level=slowdebug --disable-warnings-as-errors --with-freetype-include=/opt/X11/include/freetype2/ --with-freetype-lib=/opt/X11/lib</span><br></pre></td></tr></table></figure></p>
+<p>jdk8:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash configure --with-debug-level=slowdebug --with-boot-jdk=/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home --with-freetype-include=/opt/X11/include/freetype2/ --with-freetype-lib=/opt/X11/lib</span><br></pre></td></tr></table></figure></p>
+<p>configure成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">A new configuration has been successfully created in</span><br><span class="line">/Users/yangjun/Downloads/jdk9u/build/macosx-x86_64-normal-server-slowdebug</span><br><span class="line">using configure arguments &apos;--with-debug-level=slowdebug --disable-warnings-as-errors --with-freetype-include=/opt/X11/include/freetype2/ --with-freetype-lib=/opt/X11/lib&apos;.</span><br><span class="line"></span><br><span class="line">Configuration summary:</span><br><span class="line">* Debug level:    slowdebug</span><br><span class="line">* HS debug level: debug</span><br><span class="line">* JDK variant:    normal</span><br><span class="line">* JVM variants:   server</span><br><span class="line">* OpenJDK target: OS: macosx, CPU architecture: x86, address length: 64</span><br><span class="line">* Version string: 9.0.4-internal+0-adhoc.yangjun.jdk9u (9.0.4-internal)</span><br><span class="line"></span><br><span class="line">Tools summary:</span><br><span class="line">* Boot JDK:       java version &quot;1.8.0_181&quot; Java(TM) SE Runtime Environment (build 1.8.0_181-b13) Java HotSpot(TM) 64-Bit Server VM (build 25.181-b13, mixed mode)  (at /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home)</span><br><span class="line">* Toolchain:      clang (clang/LLVM from Xcode 9.4.1)</span><br><span class="line">* C Compiler:     Version 9.1.0 (at /usr/bin/clang)</span><br><span class="line">* C++ Compiler:   Version 9.1.0 (at /usr/bin/clang++)</span><br><span class="line"></span><br><span class="line">Build performance summary:</span><br><span class="line">* Cores to use:   8</span><br><span class="line">* Memory limit:   8192 MB</span><br></pre></td></tr></table></figure></p>
+<p>ps:mac os X上查看本机上安装的所有jdk命令<code>/usr/libexec/java_home -V</code></p>
+<h3 id="build"><a href="#build" class="headerlink" title="build"></a>build</h3><p>执行<code>make all</code></p>
+<h2 id="ubuntu-1"><a href="#ubuntu-1" class="headerlink" title="ubuntu"></a>ubuntu</h2><p><code>make</code>，遇到问题参考“构建过程中遇到的问题”解决。</p>
+<p>构建成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-- Build times ----------</span><br><span class="line">Target all_product_build</span><br><span class="line">Start 2018-09-13 17:21:08</span><br><span class="line">End   2018-09-13 17:29:03</span><br><span class="line">00:00:04 corba</span><br><span class="line">00:00:02 hotspot</span><br><span class="line">00:00:03 jaxp</span><br><span class="line">00:00:04 jaxws</span><br><span class="line">00:07:40 jdk</span><br><span class="line">00:00:02 langtools</span><br><span class="line">00:07:55 TOTAL</span><br><span class="line">-------------------------</span><br></pre></td></tr></table></figure></p>
+<p>测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yangjun@ubuntu:~/Downloads/openjdk/build/linux-amd64/j2sdk-image/bin$ pwd</span><br><span class="line">/home/yangjun/Downloads/openjdk/build/linux-amd64/j2sdk-image/bin</span><br><span class="line"></span><br><span class="line">yangjun@ubuntu:~/Downloads/openjdk/build/linux-amd64/j2sdk-image/bin$ ./java -version</span><br><span class="line">openjdk version &quot;1.7.0-internal&quot;</span><br><span class="line">OpenJDK Runtime Environment (build 1.7.0-internal-yangjun_2018_09_13_06_56-b00)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 21.0-b17, mixed mode)</span><br><span class="line">yangjun@ubuntu:~/Downloads/openjdk/build/linux-amd64/j2sdk-image/bin$</span><br></pre></td></tr></table></figure></p>
+<p>修改<code>openjdk/build/linux-amd64/hotspot/outputdir/linux_amd64_compiler2/product/env.sh</code>中的<code>LD_LIBRARY_PATH</code>环境变量，指向构建的结果目录，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">: $&#123;JAVA_HOME:=/home/yangjun/Downloads/openjdk/build/linux-amd64/j2sdk-image&#125;</span><br><span class="line">LD_LIBRARY_PATH=.:$&#123;JAVA_HOME&#125;/jre/lib/amd64/native_threads:$&#123;JAVA_HOME&#125;/jre/lib/amd64:</span><br><span class="line">CLASSPATH=.:$&#123;JAVA_HOME&#125;/jre/lib/rt.jar:$&#123;JAVA_HOME&#125;/jre/lib/i18n.jar</span><br><span class="line">HOTSPOT_BUILD_USER=&quot;yangjun in hotspot&quot;</span><br><span class="line">export JAVA_HOME LD_LIBRARY_PATH CLASSPATH HOTSPOT_BUILD_USER</span><br></pre></td></tr></table></figure></p>
+<p>修改完后，执行<code>source env.sh</code>使环境变量生效。</p>
+<p>最后启动虚拟机：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yangjun@ubuntu:~/Downloads/openjdk/build/linux-amd64/hotspot/outputdir/linux_amd64_compiler2/produ</span><br><span class="line">ct$ ./gamma -version</span><br><span class="line">Using java runtime at: /home/yangjun/Downloads/openjdk/build/linux-amd64/j2sdk-image/jre</span><br><span class="line">openjdk version &quot;1.7.0-internal&quot;</span><br><span class="line">OpenJDK Runtime Environment (build 1.7.0-internal-yangjun_2018_09_13_06_56-b00)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 21.0-b17, mixed mode)</span><br></pre></td></tr></table></figure></p>
+<p>最终会生成多个版本的虚拟机，对应了不同的优化级别：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yangjun@ubuntu:~/Downloads/openjdk/build/linux-amd64/hotspot/outputdir/linux_amd64_compiler2$</span><br><span class="line">.</span><br><span class="line">|-- debug</span><br><span class="line">|-- fastdebug</span><br><span class="line">|-- generated</span><br><span class="line">|-- jvmg</span><br><span class="line">|-- optimized</span><br><span class="line">|-- product</span><br><span class="line">|-- profiled</span><br><span class="line">`-- shared_dirs.lst</span><br></pre></td></tr></table></figure></p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>手动构建JDK不在于难，而在于繁，但又是无法略过的一步。好在有前人为我们趟过了许多的坑，遇到的问题大多数都可以通过baidu/google解决。</p>
+<p>Mac os X环境下被<code>error 4</code>卡住了，不知道是不是因为我的系统太新了。网上倒是有人提出了相同的<code>bug</code>，但是还未有人作答，所以只能暂时作罢。</p>
+<p>最后还是搭建了Ubuntu虚拟机，成功构建了opendjdk 7的源码。</p>
+<h1 id="构建过程中遇到的问题"><a href="#构建过程中遇到的问题" class="headerlink" title="构建过程中遇到的问题"></a>构建过程中遇到的问题</h1><h2 id="error-1-gcc-compiler-is-required"><a href="#error-1-gcc-compiler-is-required" class="headerlink" title="error 1 gcc compiler is required"></a>error 1 gcc compiler is required</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">checking for gcc... /usr/bin/gcc</span><br><span class="line">configure: Resolving CC (as /usr/bin/gcc) failed, using /usr/bin/gcc directly.</span><br><span class="line">checking resolved symbolic links for CC... /usr/bin/gcc</span><br><span class="line">checking if CC is disguised ccache... no, keeping CC</span><br><span class="line">configure: The C compiler (located as /usr/bin/gcc) does not seem to be the required GCC compiler.</span><br><span class="line">configure: The result from running with --version was: &quot;Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1&quot;</span><br><span class="line">configure: error: GCC compiler is required. Try setting --with-tools-dir.</span><br><span class="line">configure exiting with result code 1</span><br></pre></td></tr></table></figure>
+<p>解决方法：这个问题是由于XCode使用的是<code>clang</code>编译器，不支持<code>gcc</code>，而编译JDK默认需要gcc编译器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yangjundeMacBook-Pro:openjdk yangjun$ gcc --version</span><br><span class="line">Configured with: --prefix=/Applications/Xcode.app/Contents/Developer/usr --with-gxx-include-dir=/usr/include/c++/4.2.1</span><br><span class="line">Apple LLVM version 9.1.0 (clang-902.0.39.2)</span><br><span class="line">Target: x86_64-apple-darwin17.7.0</span><br><span class="line">Thread model: posix</span><br><span class="line">InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin</span><br></pre></td></tr></table></figure></p>
+<p>但是本版本的clang已支持大部分gcc，所以可以就使用clang，但是需要把<code>common/autoconf/generated-configure.sh</code>文件的第<code>20061</code>和<code>21640</code>行注释掉；当然最好的方法还是安装gcc编译器:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ brew install gcc49</span><br><span class="line">$ sudo mkdir /usr/bin/backup &amp;&amp; sudo mv /usr/bin/gcc /usr/bin/g++ /usr/bin/backup</span><br><span class="line">$ sudo ln -s /usr/local/bin/gcc-4.9 /usr/bin/gcc</span><br><span class="line">$ sudo ln -s /usr/local/bin/g++-4.9 /usr/bin/g++</span><br><span class="line">$ bash ./configure</span><br></pre></td></tr></table></figure></p>
+<h2 id="error-2-could-not-find-freetype"><a href="#error-2-could-not-find-freetype" class="headerlink" title="error 2 could not find freetype"></a>error 2 could not find freetype</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Could not find freetype!</span><br><span class="line">configure exiting with result code 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Can not find or use freetype at location given by --with-freetype</span><br></pre></td></tr></table></figure>
+<p>解决方法：通过安装<a href="https://www.xquartz.org/" target="_blank" rel="noopener">XQuartz</a>来安装freetype,然后执行configure时加上选项<code>--with-freetype-include=/opt/X11/include/freetype2/ --with-freetype-lib=/opt/X11/lib</code></p>
+<h2 id="error-3-ordered-comparison-between-pointer-and-zero"><a href="#error-3-ordered-comparison-between-pointer-and-zero" class="headerlink" title="error 3 ordered comparison between pointer and zero"></a>error 3 ordered comparison between pointer and zero</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/Users/yangjun/Downloads/openjdk9-master/hotspot/src/share/vm/opto/lcm.cpp:42:35: error: ordered comparison between pointer and zero (&apos;address&apos; (aka &apos;unsigned char *&apos;) and &apos;int&apos;)</span><br><span class="line">  if (Universe::narrow_oop_base() &gt; 0) &#123; // Implies UseCompressedOops.</span><br><span class="line">      ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~</span><br><span class="line">1 error generated.</span><br></pre></td></tr></table></figure>
+<p>解决方法：打开hotspot目录中的</p>
+<ul>
+<li><code>src/share/vm/memory/virtualspace.cpp</code> 将其中<code>if (base() &gt; 0) {</code>改为<code>if (base() != NULL) {</code></li>
+<li><code>src/share/vm/opto/lcm.cpp</code> 将其中<code>if (Universe::narrow_oop_base() &gt; 0) {</code>改为 <code>if (Universe::narrow_oop_base() != NULL) {</code></li>
+<li><code>src/share/vm/opto/loopPredicate.cpp</code> 将其中<code>assert(rng-&gt;Opcode() == Op_LoadRange || _igvn.type(rng)-&gt;is_int() &gt;= 0, &quot;must be&quot;);</code> 改为 <code>assert(rng-&gt;Opcode() == Op_LoadRange || iff-&gt;is_RangeCheck() || _igvn.type(rng)-&gt;is_int()-&gt;_lo &gt;= 0, &quot;must be&quot;);</code></li>
+</ul>
+<h2 id="error-4-a-fatal-error-has-been-detected-by-the-java-runtime-environment"><a href="#error-4-a-fatal-error-has-been-detected-by-the-java-runtime-environment" class="headerlink" title="error 4 a fatal error has been detected by the java runtime environment"></a>error 4 a fatal error has been detected by the java runtime environment</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">A fatal error has been detected by the Java Runtime Environment:</span><br><span class="line"></span><br><span class="line">SIGILL (0x4) at pc=0x000000010ecec4c8, pid=67796, tid=7683</span><br><span class="line"></span><br><span class="line">JRE version: OpenJDK Runtime Environment (9.0) (slowdebug build 9-internal+0-2018-09-12-084641.yangjun.openjdk9-master)</span><br><span class="line">Java VM: OpenJDK 64-Bit Server VM (slowdebug 9-internal+0-2018-09-12-084641.yangjun.openjdk9-master, mixed mode, tiered, compressed oops, serial gc, bsd-amd64)</span><br><span class="line">Problematic frame:</span><br><span class="line">V  [libjvm.dylib+0xcec4c8]  PerfData::~PerfData()+0x8</span><br><span class="line"></span><br><span class="line">No core dump will be written. Core dumps have been disabled. To enable core dumping, try &quot;ulimit -c unlimited&quot; before starting Java again</span><br><span class="line"></span><br><span class="line">An error report file with more information is saved as:</span><br><span class="line"> /Users/yangjun/Downloads/openjdk9-master/make/hs_err_pid67796.log</span><br><span class="line"></span><br><span class="line">If you would like to submit a bug report, please visit:</span><br><span class="line">http://bugreport.java.com/bugreport/crash.jsp</span><br><span class="line"></span><br><span class="line">[error occurred during error reporting (), id 0x4]</span><br></pre></td></tr></table></figure>
+<h2 id="error-5-cannot-find-source-for-project-jaxp"><a href="#error-5-cannot-find-source-for-project-jaxp" class="headerlink" title="error 5 cannot find source for project jaxp"></a>error 5 cannot find source for project jaxp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openjdk/jaxp/build-defs.xml:70: ERROR: Cannot find source for project jaxp</span><br></pre></td></tr></table></figure>
+<p>解决方法：添加环境变量export ALLOW_DOWNLOADS=true</p>
+<h2 id="error-6-protocol-switch-unsafe-not-allowed"><a href="#error-6-protocol-switch-unsafe-not-allowed" class="headerlink" title="error 6 protocol switch unsafe, not allowed"></a>error 6 protocol switch unsafe, not allowed</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jaxws/build/xml_generated/build-drop-jaf_src.xml:96: Redirection detected from https to http. Protocol switch unsafe, not allowed</span><br></pre></td></tr></table></figure>
+<p>解决方法：将以下三个文件下载后置于OpenJDK解压后根目录下的drop目录下，</p>
+<p>并在环境变量中加入配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">export ALT_DROPS_DIR=/usr/local/src/openjdk7/drop # 注意目录Path</span><br><span class="line"></span><br><span class="line">jdk7-jaf-2010_08_19.zip，下载地址：https://netix.dl.sourceforge.net/project/jdk7src/input-archives/jdk7-jaf-2010_08_19.zip</span><br><span class="line"></span><br><span class="line">jdk7-jaxws2_2_4-b03-2011_05_27.zip，下载地址：http://download.java.net/glassfish/components/jax-ws/openjdk/jdk7/jdk7-jaxws2_2_4-b03-2011_05_27.zip</span><br><span class="line"></span><br><span class="line">jaxp145_01.zip，下载地址：http://download.java.net/jaxp/1.4.5/jaxp145_01.zip</span><br></pre></td></tr></table></figure></p>
+<h2 id="error-7-this-os-is-not-supported"><a href="#error-7-this-os-is-not-supported" class="headerlink" title="error 7 this os is not supported"></a>error 7 this os is not supported</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This OS is not supported: Linux ubuntu 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+<p>解决方法：修改 hotspot/make/linux/Makefile，找到 SUPPORTED_OS_VERSION变量定义的地方，在后面追加 3%</p>
+<p>##error 8 cc1plus all warnings being treated as errors<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cc1plus: all warnings being treated as errors</span><br></pre></td></tr></table></figure></p>
+<p>解决方法：搜索文件<code>hotspot/make/linux/makefiles/gcc.make</code>中的<code>-Werror</code>,注释掉即可。</p>
+<h2 id="error-9-gamma-relocation-error"><a href="#error-9-gamma-relocation-error" class="headerlink" title="error 9 gamma relocation error"></a>error 9 gamma relocation error</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gamma: relocation error: /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/libjava.so: symbol JVM_FindClassFromCaller, version SUNWprivate_1.1 not defined in file libjvm.so with link time reference</span><br></pre></td></tr></table></figure>
+<p>解决方法：修改文件<code>hotspot/make/linux/Makefile</code>,注释掉所有<code>test_gamma</code>。</p>
+<h2 id="error-10-unrecognized-command-line-option-mimpure-text"><a href="#error-10-unrecognized-command-line-option-mimpure-text" class="headerlink" title="error 10 unrecognized command line option -mimpure-text"></a>error 10 unrecognized command line option -mimpure-text</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc: error: unrecognized command line option &apos;-mimpure-text&apos;</span><br></pre></td></tr></table></figure>
+<p>解决方法：去掉文件<code>jdk/make/common/shared/Compiler-gcc.gmk</code>中的<code>-mimpure-text</code>。</p>
+<h2 id="error-11-time-is-more-than-10-years-from-present"><a href="#error-11-time-is-more-than-10-years-from-present" class="headerlink" title="error 11 time is more than 10 years from present"></a>error 11 time is more than 10 years from present</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Error: time is more than 10 years from present: 1136059200000</span><br><span class="line">java.lang.RuntimeException: time is more than 10 years from present: 1136059200000</span><br><span class="line">	at build.tools.generatecurrencydata.GenerateCurrencyData.makeSpecialCaseEntry(GenerateCurrencyData.java:285)</span><br><span class="line">	at build.tools.generatecurrencydata.GenerateCurrencyData.buildMainAndSpecialCaseTables(GenerateCurrencyData.java:225)</span><br><span class="line">	at build.tools.generatecurrencydata.GenerateCurrencyData.main(GenerateCurrencyData.java:154)</span><br></pre></td></tr></table></figure>
+<p>解决方法：修改<code>jdk/src/share/classes/java/util/CurrencyData.properties</code>文件，把其中所有时间都改为10年内。</p>
+<h2 id="error-12-collect2-error-ld-returned-1-exit"><a href="#error-12-collect2-error-ld-returned-1-exit" class="headerlink" title="error 12 collect2 error ld returned 1 exit"></a>error 12 collect2 error ld returned 1 exit</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PLATFORM_API_LinuxOS_ALSA_Ports.c:(.text+0xc4a): undefined reference to `snd_mixer_selem_set_playback_switch_all&apos;</span><br><span class="line">collect2: error: ld returned 1 exit status</span><br></pre></td></tr></table></figure>
+<p>解决方法：在<code>openjdk/jdk/make/javax/sound/jsoundalsa/Makefile</code>里面<br>刪除 LDFLAGS += -lasound<br>加入 OTHER_LDLIBS += -lasound</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://since1986.github.io/blog/41a7068f.html" target="_blank" rel="noopener">自己动手，在macOS High Sierra中编译一个可debug的JDK</a></p>
+<p><a href="https://gvsmirnov.ru/blog/tech/2014/02/07/building-openjdk-8-on-osx-maverick.html" target="_blank" rel="noopener">Building OpenJDK 8 on Mac OS X Mavericks</a></p>
+<p><a href="http://openjdk.java.net/groups/build/" target="_blank" rel="noopener">构建源码参考</a></p>
+<p><a href="http://hg.openjdk.java.net/jdk-updates" target="_blank" rel="noopener">openjdk9u源码下载</a></p>
+<p><a href="https://download.java.net/openjdk/jdk8/" target="_blank" rel="noopener">openjdk8源码下载</a></p>
+<p><a href="https://download.java.net/openjdk/jdk7" target="_blank" rel="noopener">openjdk7源码下载</a></p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -268,19 +403,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://kid1994.github.io/2018/03/20/编译JDK源码/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/04/01/Java面试之Java基础/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java面试之Java基础
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/03/15/SpringBoot入门/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot入门</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -303,9 +534,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
