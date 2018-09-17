@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://kid1994.github.io">
-  <title>Java面试之操作系统 | 小菊花的博客</title>
+  <title>Java中的动态代理 | 小菊花的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是Java面试复习点的操作系统部分。 面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。">
-<meta name="keywords" content="Java面试">
+  <meta name="description" content="动态代理是指，在运行时生成一个代理对象，以便在被代理的对象上增加一些额外的逻辑。典型的应用是Spring AOP。动态是相对于静态而言的，是指在运行时而不是编译时生成代理对象。而代理，可以参考设计模式中的代理模式：  对其它对象提供一种代理以便控制对该对象的访问。  本文内容主要包括对Java中动态代理的使用介绍，以及对原理的分析。">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java面试之操作系统">
-<meta property="og:url" content="http://kid1994.github.io/2018/04/10/Java面试之操作系统/index.html">
+<meta property="og:title" content="Java中的动态代理">
+<meta property="og:url" content="http://kid1994.github.io/2018/08/08/Java中的动态代理/index.html">
 <meta property="og:site_name" content="小菊花的博客">
-<meta property="og:description" content="这是Java面试复习点的操作系统部分。 面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。">
+<meta property="og:description" content="动态代理是指，在运行时生成一个代理对象，以便在被代理的对象上增加一些额外的逻辑。典型的应用是Spring AOP。动态是相对于静态而言的，是指在运行时而不是编译时生成代理对象。而代理，可以参考设计模式中的代理模式：  对其它对象提供一种代理以便控制对该对象的访问。  本文内容主要包括对Java中动态代理的使用介绍，以及对原理的分析。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-17T15:08:17.273Z">
+<meta property="og:updated_time" content="2018-09-17T03:54:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java面试之操作系统">
-<meta name="twitter:description" content="这是Java面试复习点的操作系统部分。 面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。">
+<meta name="twitter:title" content="Java中的动态代理">
+<meta name="twitter:description" content="动态代理是指，在运行时生成一个代理对象，以便在被代理的对象上增加一些额外的逻辑。典型的应用是Spring AOP。动态是相对于静态而言的，是指在运行时而不是编译时生成代理对象。而代理，可以参考设计模式中的代理模式：  对其它对象提供一种代理以便控制对该对象的访问。  本文内容主要包括对Java中动态代理的使用介绍，以及对原理的分析。">
   
     <link rel="alternative" href="/atom.xml" title="小菊花的博客" type="application/atom+xml">
   
@@ -191,52 +191,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java面试之操作系统" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java中的动态代理" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Java面试之操作系统
+      Java中的动态代理
     </h1>
   
 
         
-        <a href="/2018/04/10/Java面试之操作系统/" class="archive-article-date">
-  	<time datetime="2018-04-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-10</time>
+        <a href="/2018/08/08/Java中的动态代理/" class="archive-article-date">
+  	<time datetime="2018-08-07T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是Java面试复习点的操作系统部分。</p>
-<p>面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。</p>
+        <p>动态代理是指，在运行时生成一个代理对象，以便在被代理的对象上增加一些额外的逻辑。典型的应用是<code>Spring AOP</code>。<strong>动态</strong>是相对于<strong>静态</strong>而言的，是指在运行时而不是编译时生成代理对象。而<strong>代理</strong>，可以参考设计模式中的代理模式：</p>
+<blockquote>
+<p>对其它对象提供一种代理以便控制对该对象的访问。</p>
+</blockquote>
+<p>本文内容主要包括对Java中动态代理的使用介绍，以及对原理的分析。</p>
 <a id="more"></a>
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 <ul>
-<li><a href="#进程间的通信方式有哪些">进程间的通信方式有哪些？</a></li>
-<li><a href="#死锁发生的4个条件是什么">死锁发生的4个条件是什么？</a></li>
-<li><a href="#虚拟内存的概念是什么">虚拟内存的概念是什么？</a></li>
+<li><a href="#java中的动态代理">java中的动态代理</a></li>
+<li><a href="#原理分析">原理分析</a><ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#源码分析">源码分析</a><ul>
+<li><a href="#生成代理类">生成代理类</a></li>
+<li><a href="#创建代理对象">创建代理对象</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <!-- /TOC -->
-<h1 id="进程间的通信方式有哪些？"><a href="#进程间的通信方式有哪些？" class="headerlink" title="进程间的通信方式有哪些？"></a>进程间的通信方式有哪些？</h1><p>答：</p>
+<h1 id="java中的动态代理"><a href="#java中的动态代理" class="headerlink" title="java中的动态代理"></a>java中的动态代理</h1><p>使用动态代理有如下几个步骤：</p>
 <ol>
-<li>管道( pipe )：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系；</li>
-<li>有名管道 (named pipe)：有名管道也是半双工的通信方式，但是它允许无亲缘关系进程间的通信。</li>
-<li>消息队列( message queue )：消息队列是把有消息的链表存放在内核中并由消息队列标识符标识。消息队列克服了信号传递信息少、管道只能承载无格式字节流以及缓冲区大小受限等缺点。</li>
-<li>信号量( semophore )：信号量是一个计数器，可以用来控制多个进程对共享资源的访问。它常作为一种锁机制，防止某进程正在访问共享资源时，其他进程也访问该资源。因此，主要作为进程间以及同一进程内不同线程之间的同步手段。</li>
-<li>共享内存( shared memory )：共享内存就是映射一段能被其他进程所访问的内存，这段共享内存由一个进程创建，但多个进程都可以访问。共享内存是最快的 IPC 方式，它是针对其他进程间通信方式运行效率低而专门设计的。它往往与其他通信机制，如信号量配合使用，来实现进程间的同步和通信。</li>
+<li>定义业务接口。如示例中的<code>Hello</code></li>
+<li>实现业务接口。如示例中的<code>HelloImpl</code></li>
+<li>实现<code>InvocationHandler</code>接口，在<code>invoke</code>方法中实现额外的逻辑</li>
+<li>实例化一个业务类对象和一个<code>InvocationHandler</code>对象</li>
+<li>使用<code>Proxy</code>类的<code>newProxyInstance</code>静态方法，构造一个代理对象</li>
+<li>调用代理方法</li>
 </ol>
-<h1 id="死锁发生的4个条件是什么？"><a href="#死锁发生的4个条件是什么？" class="headerlink" title="死锁发生的4个条件是什么？"></a>死锁发生的4个条件是什么？</h1><p>答：</p>
-<ol>
-<li>互斥条件：指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。</li>
-<li>请求和保持条件：指进程已经保持至少一个资源，但又提出了新的资源请求，而该资源已被其它进程占有，此时请求进程阻塞，但又对自己已获得的其它资源保持不放</li>
-<li>不剥夺条件：指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放。</li>
-<li>环路等待条件：指在发生死锁时，必然存在一个进程——资源的环形链，即进程集合{P0，P1，P2，···，Pn}中的P0正在等待一个P1占用的资源；P1正在等待P2占用的资源，……，Pn正在等待已被P0占用的资源</li>
-</ol>
-<h1 id="虚拟内存的概念是什么？"><a href="#虚拟内存的概念是什么？" class="headerlink" title="虚拟内存的概念是什么？"></a>虚拟内存的概念是什么？</h1>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public class MyDynamicProxy &#123;</span><br><span class="line">    public static void main(String... args) &#123;</span><br><span class="line">        HelloImpl hello = new HelloImpl();</span><br><span class="line">        MyInvocationHandler invocationHandler = new MyInvocationHandler(hello);</span><br><span class="line"></span><br><span class="line">        // 构造代码实例</span><br><span class="line">        Hello proxyHello = (Hello) Proxy.newProxyInstance(HelloImpl.class.getClassLoader(),</span><br><span class="line">                HelloImpl.class.getInterfaces(), invocationHandler);</span><br><span class="line">        // 调用代理方法</span><br><span class="line">        proxyHello.sayHello();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Hello &#123;</span><br><span class="line">    void sayHello();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class HelloImpl implements Hello &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void sayHello() &#123;</span><br><span class="line">        System.out.println(&quot;Hello world&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MyInvocationHandler implements InvocationHandler &#123;</span><br><span class="line">    private Object target;</span><br><span class="line"></span><br><span class="line">    public MyInvocationHandler(Object target) &#123;</span><br><span class="line">        this.target = target;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</span><br><span class="line">        System.out.println(&quot;invoking hello&quot;);</span><br><span class="line"></span><br><span class="line">        return method.invoke(target, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">invoking hello</span><br><span class="line">Hello world</span><br></pre></td></tr></table></figure></p>
+<h1 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>首先，程序在运行时会动态地生成一个代理类，这个代理类要实现一组接口，称为代理接口(<code>proxy interfaces</code>)。代理对象就是这个代理类的一个实例。</p>
+<p>每个代理对象都有一个关联的<code>invocation handler</code>，这个<code>handler</code>实现了<code>InvocationHandler</code>接口。当触发代理对象的方法时，其实是派发给这个<code>handler</code>的<code>invoke</code>方法去执行的。看一下这个<code>invoke</code>方法的签名：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">@param proxy:代理对象</span><br><span class="line">@param method：代理对象被触发的那个方法的`Method`对象。反射</span><br><span class="line">@param args：方法的参数列表</span><br><span class="line">*/</span><br><span class="line">public Object invoke(Object proxy, Method method, Object[] args)</span><br><span class="line">    throws Throwable;</span><br></pre></td></tr></table></figure></p>
+<p>代理类拥有如下特性：</p>
+<ul>
+<li>代理类的名字一般以<code>$Proxy</code>开头，比如上节示例中的<code>proxyHello</code>的类名字为<code>class edu.xidian.howtodoinjava.reflection.$Proxy0</code></li>
+<li>代理类是<code>final</code>和<code>non-abstract</code>的</li>
+<li>每个代理类都继承了<code>java.lang.reflect.Proxy</code>类</li>
+<li>代理类会实现所有代理接口，并且是按照创建时所指定的顺序</li>
+<li><code>Proxy.isProxyClass</code>方法可以用来判断一个类是否是代理类</li>
+</ul>
+<p>代理对象拥有如下特性：</p>
+<ul>
+<li>如果<code>proxy</code>是代理对象，<code>Foo</code>是代理接口，那么<code>proxy instanceof Foo</code>会返回<code>true</code>；并且<code>(Foo) proxy</code>可以成功转化</li>
+<li>每个代理对象都有一个关联的<code>invocation handler</code></li>
+</ul>
+<p>代理类所属的包和模块，以及可访问性，由它所实现的代理接口所决定。</p>
+<p>现在，我们有几个问题：</p>
+<ul>
+<li>代理类是如何动态生成的？</li>
+<li>代理对象是如何创建的？</li>
+</ul>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>带着问题，我们分析一下源码，就从示例代码中的<code>Proxy.newProxyInstance</code>方法开始。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">创建代理对象</span><br><span class="line"></span><br><span class="line">@param loader:生成代理类所使用的类加载器</span><br><span class="line">@param interfaces:代理接口</span><br><span class="line">@param h</span><br><span class="line">*/</span><br><span class="line">public static Object newProxyInstance(ClassLoader loader,</span><br><span class="line">                                      Class&lt;?&gt;[] interfaces,</span><br><span class="line">                                      InvocationHandler h) &#123;</span><br><span class="line">    Objects.requireNonNull(h);</span><br><span class="line">    // 安全检查相关，暂略</span><br><span class="line">    final Class&lt;?&gt; caller = System.getSecurityManager() == null</span><br><span class="line">                                ? null</span><br><span class="line">                                : Reflection.getCallerClass();</span><br><span class="line"></span><br><span class="line">    // 获取代理类的构造方法对象</span><br><span class="line">    Constructor&lt;?&gt; cons = getProxyConstructor(caller, loader, interfaces);</span><br><span class="line">    // 生成代理对象</span><br><span class="line">    return newProxyInstance(caller, cons, h);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="生成代理类"><a href="#生成代理类" class="headerlink" title="生成代理类"></a>生成代理类</h3><p>首先看<code>getProxyConstructor</code>方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">创建代理类，并获取代理类的构造方法对象</span><br><span class="line"></span><br><span class="line">@param loader: 类加载器</span><br><span class="line">@param interfaces: 代理接口</span><br><span class="line">*/</span><br><span class="line">private static Constructor&lt;?&gt; getProxyConstructor(Class&lt;?&gt; caller,</span><br><span class="line">                                                  ClassLoader loader,</span><br><span class="line">                                                  Class&lt;?&gt;... interfaces)</span><br><span class="line">&#123;</span><br><span class="line">    // 对于只有一个代理接口的情况做了相关优化</span><br><span class="line">    if (interfaces.length == 1) &#123;</span><br><span class="line">        Class&lt;?&gt; intf = interfaces[0];</span><br><span class="line">        // 安全检查，暂略</span><br><span class="line">        if (caller != null) &#123;</span><br><span class="line">            checkProxyAccess(caller, loader, intf);</span><br><span class="line">        &#125;</span><br><span class="line">        // 从缓存中获取代理类的构造方法对象</span><br><span class="line">        return proxyCache.sub(intf).computeIfAbsent(</span><br><span class="line">            loader,</span><br><span class="line">            // 如果缓存中没有，则先生成再放入缓存中</span><br><span class="line">            (ld, clv) -&gt; new ProxyBuilder(ld, clv.key()).build()</span><br><span class="line">        );</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 与上面类似</span><br><span class="line">        // interfaces cloned</span><br><span class="line">        final Class&lt;?&gt;[] intfsArray = interfaces.clone();</span><br><span class="line">        if (caller != null) &#123;</span><br><span class="line">            checkProxyAccess(caller, loader, intfsArray);</span><br><span class="line">        &#125;</span><br><span class="line">        final List&lt;Class&lt;?&gt;&gt; intfs = Arrays.asList(intfsArray);</span><br><span class="line">        return proxyCache.sub(intfs).computeIfAbsent(</span><br><span class="line">            loader,</span><br><span class="line">            (ld, clv) -&gt; new ProxyBuilder(ld, clv.key()).build()</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从代码中可以看出，是用了一个缓存来存放代理类的构造方法对象的。先从缓存里获取，如果缓存中没有的话，则先要生成代理类的构造方法对象，然后再放入缓存中。</p>
+<p>而生成代理类及其构造方法对象的逻辑则是封装在<code>ProxyBuilder</code>类的<code>build</code>方法里的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">生成代理类并返回其构造方法对象</span><br><span class="line">*/</span><br><span class="line">Constructor&lt;?&gt; build() &#123;</span><br><span class="line">    // 生成代理类</span><br><span class="line">    Class&lt;?&gt; proxyClass = defineProxyClass(module, interfaces);</span><br><span class="line">    final Constructor&lt;?&gt; cons;</span><br><span class="line">    try &#123;</span><br><span class="line">        // 获取代理类的构造方法</span><br><span class="line">        cons = proxyClass.getConstructor(constructorParams);</span><br><span class="line">    &#125; catch (NoSuchMethodException e) &#123;</span><br><span class="line">        throw new InternalError(e.toString(), e);</span><br><span class="line">    &#125;</span><br><span class="line">    // 设置构造方法对象的可访问性为public</span><br><span class="line">    AccessController.doPrivileged(new PrivilegedAction&lt;Void&gt;() &#123;</span><br><span class="line">        public Void run() &#123;</span><br><span class="line">            cons.setAccessible(true);</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    return cons;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>真正开始动态生成代理类的逻辑封装在<code>ProxyBuilder</code>类的<code>defineProxyClass</code>方法中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">动态生成代理类</span><br><span class="line"></span><br><span class="line">@param interfaces:代理接口</span><br><span class="line">*/</span><br><span class="line">private static Class&lt;?&gt; defineProxyClass(Module m, List&lt;Class&lt;?&gt;&gt; interfaces) &#123;</span><br><span class="line">    String proxyPkg = null;     // 代理类所属的包</span><br><span class="line">    int accessFlags = Modifier.PUBLIC | Modifier.FINAL;</span><br><span class="line"></span><br><span class="line">    // 分析每个包的可访问性，从而确定代理类属于哪个包</span><br><span class="line">    for (Class&lt;?&gt; intf : interfaces) &#123;</span><br><span class="line">        int flags = intf.getModifiers();</span><br><span class="line">        if (!Modifier.isPublic(flags)) &#123;</span><br><span class="line">            accessFlags = Modifier.FINAL;  // non-public, final</span><br><span class="line">            String pkg = intf.getPackageName();</span><br><span class="line">            if (proxyPkg == null) &#123;</span><br><span class="line">                proxyPkg = pkg;</span><br><span class="line">            &#125; else if (!pkg.equals(proxyPkg)) &#123;</span><br><span class="line">                throw new IllegalArgumentException(</span><br><span class="line">                        &quot;non-public interfaces from different packages&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (proxyPkg == null) &#123;</span><br><span class="line">        // 所有的代理接口都是public的</span><br><span class="line">        proxyPkg = m.isNamed() ? PROXY_PACKAGE_PREFIX + &quot;.&quot; + m.getName()</span><br><span class="line">                               : PROXY_PACKAGE_PREFIX;</span><br><span class="line">    &#125; else if (proxyPkg.isEmpty() &amp;&amp; m.isNamed()) &#123;</span><br><span class="line">        throw new IllegalArgumentException(</span><br><span class="line">                &quot;Unnamed package cannot be added to &quot; + m);</span><br><span class="line">    &#125;</span><br><span class="line">    // 略</span><br><span class="line"></span><br><span class="line">    // 为代理类动态生成一个名字</span><br><span class="line">    long num = nextUniqueNumber.getAndIncrement();</span><br><span class="line">    String proxyName = proxyPkg.isEmpty()</span><br><span class="line">                            ? proxyClassNamePrefix + num</span><br><span class="line">                            : proxyPkg + &quot;.&quot; + proxyClassNamePrefix + num;</span><br><span class="line"></span><br><span class="line">    ClassLoader loader = getLoader(m);</span><br><span class="line">    trace(proxyName, m, loader, interfaces);</span><br><span class="line"></span><br><span class="line">    // 生成代理类</span><br><span class="line">    byte[] proxyClassFile = ProxyGenerator.generateProxyClass(</span><br><span class="line">            proxyName, interfaces.toArray(EMPTY_CLASS_ARRAY), accessFlags);</span><br><span class="line">    try &#123;</span><br><span class="line">        // 加载代理类</span><br><span class="line">        Class&lt;?&gt; pc = UNSAFE.defineClass(proxyName, proxyClassFile,</span><br><span class="line">                                         0, proxyClassFile.length,</span><br><span class="line">                                         loader, null);</span><br><span class="line">        // 放入缓存</span><br><span class="line">        reverseProxyCache.sub(pc).putIfAbsent(loader, Boolean.TRUE);</span><br><span class="line">        return pc;</span><br><span class="line">    &#125; catch (ClassFormatError e) &#123;</span><br><span class="line">        throw new IllegalArgumentException(e.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>从代码中可以看出，真正执行生成代理类操作的其实是<code>ProxyGenerator</code>类的<code>generateProxyClass</code>方法。具体逻辑在下一篇中再进行，但我们可以看出该方法返回但是一个字节数组，我们知道，在java程序的编译阶段，就是将源码文件编译为字节码文件，然后再由类加载器将这个字节码文件加载到内存中，成为一个类对象。因此理论上，java虚拟机只需要一个字节码文件就可以了，而不用管这些字节码的来源、生成方式等。而<code>generateProxyClass</code>方法就是动态地生成了这些字节码。</p>
+<p>有了类的字节码后，就可以通过<code>UNSAFE</code>类的<code>defineClass</code>方法来加载为一个类对象，该方法会调用一个<code>native</code>方法，暂略：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public native Class&lt;?&gt; defineClass0(String name, byte[] b, int off, int len,</span><br><span class="line">                                    ClassLoader loader,</span><br><span class="line">                                    ProtectionDomain protectionDomain);</span><br></pre></td></tr></table></figure></p>
+<h3 id="创建代理对象"><a href="#创建代理对象" class="headerlink" title="创建代理对象"></a>创建代理对象</h3><p>获取到了代理类的构造方法对象，然后就可以通过反射的方式创建代理对象类了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">创建代理对象</span><br><span class="line">*/</span><br><span class="line">private static Object newProxyInstance(Class&lt;?&gt; caller, // null if no SecurityManager</span><br><span class="line">                                       Constructor&lt;?&gt; cons,</span><br><span class="line">                                       InvocationHandler h) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        if (caller != null) &#123;</span><br><span class="line">            checkNewProxyPermission(caller, cons.getDeclaringClass());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 通过反射的方式创建代理对象，并且将`invocation handler`作为参数传入</span><br><span class="line">        return cons.newInstance(new Object[]&#123;h&#125;);</span><br><span class="line">    &#125; catch (IllegalAccessException | InstantiationException e) &#123;</span><br><span class="line">        throw new InternalError(e.toString(), e);</span><br><span class="line">    &#125; catch (InvocationTargetException e) &#123;</span><br><span class="line">        Throwable t = e.getCause();</span><br><span class="line">        if (t instanceof RuntimeException) &#123;</span><br><span class="line">            throw (RuntimeException) t;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            throw new InternalError(t.toString(), t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>完。</p>
+
       
 
       
@@ -270,7 +306,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java面试</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -326,7 +362,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://kid1994.github.io/2018/04/10/Java面试之操作系统/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://kid1994.github.io/2018/08/08/Java中的动态代理/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -340,18 +376,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/04/11/Java面试之网络/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java面试之网络
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/04/09/Java面试之数据库/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Java面试之数据库</div>
+    <a href="/2018/08/07/Java中的反射/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java中的反射</div>
       <i class="icon-circle-right"></i>
     </a>
   
