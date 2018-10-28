@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="小菊花的博客">
 <meta property="og:description" content="Python是一门强类型的动态编程语言，支持包括面向对象、函数式、过程式等多种编程范式,且本身拥有一个巨大而广泛的标准库。Python的设计哲学强调代码的可读性和简洁的语法，相对于C++或Java而言，可以让开发者使用更少的语法表达想法。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-20T12:58:51.946Z">
+<meta property="og:updated_time" content="2018-10-24T04:21:01.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python入门">
 <meta name="twitter:description" content="Python是一门强类型的动态编程语言，支持包括面向对象、函数式、过程式等多种编程范式,且本身拥有一个巨大而广泛的标准库。Python的设计哲学强调代码的可读性和简洁的语法，相对于C++或Java而言，可以让开发者使用更少的语法表达想法。">
@@ -309,6 +309,7 @@
 </ul>
 <p>示例如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; for n in range(2, 10):</span><br><span class="line">...     for x in range(2, n):</span><br><span class="line">...             if n % x == 0:</span><br><span class="line">...                     print n, &quot;=&quot;, x,&quot;*&quot;, n / x</span><br><span class="line">...                     break</span><br><span class="line">...     else:</span><br><span class="line">...             print n, &quot;is a prime number&quot;</span><br><span class="line">...</span><br><span class="line">2 is a prime number</span><br><span class="line">3 is a prime number</span><br><span class="line">4 = 2 * 2</span><br><span class="line">5 is a prime number</span><br><span class="line">6 = 2 * 3</span><br><span class="line">7 is a prime number</span><br><span class="line">8 = 2 * 4</span><br><span class="line">9 = 3 * 3</span><br></pre></td></tr></table></figure></p>
 <h2 id="pass语句"><a href="#pass语句" class="headerlink" title="pass语句"></a>pass语句</h2><p>pass语句不执行任何操作，相当于一个空语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; while True:</span><br><span class="line">...     pass</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h2 id="switch结构"><a href="#switch结构" class="headerlink" title="switch结构"></a>switch结构</h2><p>Python中是没有<a href="https://docs.python.org/2/faq/design.html#why-isn-t-there-a-switch-or-case-statement-in-python" target="_blank" rel="noopener"><code>switch</code>和<code>case</code>语句</a>的，如果有类似的需求，可以用<code>if-else</code>或字典映射的方式来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def function_1(...):</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">functions = &#123;&apos;a&apos;: function_1,</span><br><span class="line">             &apos;b&apos;: function_2,</span><br><span class="line">             &apos;c&apos;: self.method_1, ...&#125;</span><br><span class="line"></span><br><span class="line">func = functions[value]</span><br><span class="line">func()</span><br></pre></td></tr></table></figure></p>
 <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>Python中定义并调用一个函数的语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def fib(n):</span><br><span class="line">...     a, b = 0, 1</span><br><span class="line">...     while a &lt; n:</span><br><span class="line">...             print a,</span><br><span class="line">...             a, b = b, a + b</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; fib</span><br><span class="line">&lt;function fib at 0x108d5d668&gt;</span><br><span class="line">&gt;&gt;&gt; fib(10)</span><br><span class="line">0 1 1 2 3 5 8</span><br></pre></td></tr></table></figure></p>
 <p>函数还可以作为一个变量赋给另一个变量，然后这个变量就可以作为一个函数调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; f = fib</span><br><span class="line">&gt;&gt;&gt; f(10)</span><br><span class="line">0 1 1 2 3 5 8</span><br></pre></td></tr></table></figure></p>
 <h2 id="形参的默认值"><a href="#形参的默认值" class="headerlink" title="形参的默认值"></a>形参的默认值</h2><p>Python中定义函数时，还可以给形参提供默认值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; def test(s = &quot;hello&quot;):</span><br><span class="line">...     print s</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; test()</span><br><span class="line">hello</span><br><span class="line">&gt;&gt;&gt; test(&quot;world&quot;)</span><br><span class="line">world</span><br></pre></td></tr></table></figure></p>
@@ -699,6 +700,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Go</a>
               </li>
              
@@ -708,6 +713,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Netty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Redis</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -739,11 +748,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">读书</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
