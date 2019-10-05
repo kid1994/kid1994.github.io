@@ -16,10 +16,12 @@
 <meta property="og:site_name" content="小菊花的博客">
 <meta property="og:description" content="这一篇主要分析了Quartz中存储Job和Trigger部分的源码。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-25T10:04:34.000Z">
+<meta property="og:image" content="https://kid1994.github.io/2018/06/21/Quartz入门/1.jpg">
+<meta property="og:updated_time" content="2019-10-05T02:36:50.429Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Quartz源码分析之任务存储">
 <meta name="twitter:description" content="这一篇主要分析了Quartz中存储Job和Trigger部分的源码。">
+<meta name="twitter:image" content="https://kid1994.github.io/2018/06/21/Quartz入门/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="小菊花的博客" type="application/atom+xml">
   
@@ -212,6 +214,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这一篇主要分析了Quartz中存储Job和Trigger部分的源码。</p>
+<p><img src="https://kid1994.github.io/2018/06/21/Quartz入门/1.jpg" alt=""></p>
 <a id="more"></a>
 <p>Quartz的基本使用如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 实例化一个调度器工厂，每个应用只有唯一一个工厂实例</span><br><span class="line">SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();</span><br><span class="line">// 实例化一个调度器</span><br><span class="line">Scheduler sched = schedFact.getScheduler();</span><br><span class="line">// 启动，只有启动了调度器Quartz才会去执行任务</span><br><span class="line">sched.start();</span><br><span class="line"></span><br><span class="line">// 实例化一个任务</span><br><span class="line">JobDetail job = newJob(HelloJob.class)</span><br><span class="line">    .withIdentity(&quot;myJob&quot;, &quot;group1&quot;)</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 实例化一个任务触发器,立刻触发，每40s执行一次</span><br><span class="line">Trigger trigger = newTrigger()</span><br><span class="line">    .withIdentity(&quot;myTrigger&quot;, &quot;group1&quot;)</span><br><span class="line">    .startNow()</span><br><span class="line">    .withSchedule(simpleSchedule()</span><br><span class="line">        .withIntervalInSeconds(40)</span><br><span class="line">        .repeatForever())</span><br><span class="line">    .build();</span><br><span class="line"></span><br><span class="line">// 调度任务</span><br><span class="line">sched.scheduleJob(job, trigger);</span><br></pre></td></tr></table></figure></p>
 <p>那我们就从Scheduler的scheduleJob方法开始源码之旅吧。</p>
