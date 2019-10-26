@@ -396,7 +396,7 @@
 <p>出现StackOverflowError异常有时有错误堆栈可以阅读，相对比较容易找到问题的所在。而且，如果使用虚拟机默认参数，在大多数情况下达到1000~2000是完全没有问题的，对于正常的方法调用(包括递归)，这个深度是完全没有问题的。但是如果建立过多线程导致的内存溢出，在不能减少线程数或者更换64位虚拟机的情况下，就只能通过减少最大堆和减少栈容量来换取更多的线程。</p>
 <h1 id="是否知道JVM的标准、非标准和非stable参数？"><a href="#是否知道JVM的标准、非标准和非stable参数？" class="headerlink" title="是否知道JVM的标准、非标准和非stable参数？"></a>是否知道JVM的标准、非标准和非stable参数？</h1><p>答：-Xmx ：最大堆大小<br>    -Xms ： 初始堆大小<br>    -Xmn ： 年轻代大小<br>    -XXSurvivorRatio : 年轻代中Eden区和Survivor区的比例<br>    -XX:MaxPermSize ：最大方法区内存大小<br>    -XX:PermSize ：方法区分配的初始内存大小</p>
 
-                
+
 
                 <hr>
                 <!-- Pager -->
@@ -422,14 +422,9 @@
                 <br>
                 <!--分享-->
                 
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
                 <!--分享-->
-                <br>                       
-                
+                <br>
+
                 <!-- require APlayer -->
                 
 
@@ -444,7 +439,18 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
-                
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#你了解Java内存模型么？"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">你了解Java内存模型么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JVM内存区域分为哪几块？分别如何使用？"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">JVM内存区域分为哪几块？分别如何使用？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#直接内存是什么？"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">直接内存是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JVM内存区域会出现哪几种异常？分别可以在哪块区域出现？出现的条件是什么？"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">JVM内存区域会出现哪几种异常？分别可以在哪块区域出现？出现的条件是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#堆和栈有什么区别？可以从哪些方面进行比较？"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">堆和栈有什么区别？可以从哪些方面进行比较？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JVM堆内存的结构是怎样的？各个结构存放的是哪种对象？对象如何在各个结构之间迁移？"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">JVM堆内存的结构是怎样的？各个结构存放的是哪种对象？对象如何在各个结构之间迁移？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#垃圾收集算法有哪些？各个算法是如何操作的？各自有什么特点？效率问题？空间问题？"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">垃圾收集算法有哪些？各个算法是如何操作的？各自有什么特点？效率问题？空间问题？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#当前商业虚拟机一般使用的是哪种垃圾收集算法？"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">当前商业虚拟机一般使用的是哪种垃圾收集算法？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#堆内存的各个结构分别使用哪种垃圾收集算法？"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">堆内存的各个结构分别使用哪种垃圾收集算法？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JVM中为什么会有GC停顿？"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">JVM中为什么会有GC停顿？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#内存溢出和内存泄露的概念分别是什么？有什么区别？能否分别举几个例子？"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">内存溢出和内存泄露的概念分别是什么？有什么区别？能否分别举几个例子？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#如何判断对象是否还活着？简单描述各个算法？"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">如何判断对象是否还活着？简单描述各个算法？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#如何分析和定位内存泄露？"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">如何分析和定位内存泄露？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#可达性算法分析中，哪些对象可以作为GC-roots？这些对象有什么特点？"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">可达性算法分析中，哪些对象可以作为GC roots？这些对象有什么特点？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#full-GC的触发条件有哪三个？"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">full GC的触发条件有哪三个？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#垃圾收集器的职责是什么？"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">垃圾收集器的职责是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么时候运行垃圾回收？什么是安全点？什么是安全区域？"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">什么时候运行垃圾回收？什么是安全点？什么是安全区域？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JVM是如何加载class文件的？"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">JVM是如何加载class文件的？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JVM加载class文件有哪几个过程？每个过程分别主要干了什么？"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">JVM加载class文件有哪几个过程？每个过程分别主要干了什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#类加载过程采用了什么机制？描述一下这种机制？"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">类加载过程采用了什么机制？描述一下这种机制？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中的引用有哪几种类型？所引用的对象分别在什么情况在会被回收？"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">Java中的引用有哪几种类型？所引用的对象分别在什么情况在会被回收？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#新生代和老年代分别有哪些垃圾收集器？各自有什么特点？画出那张图？"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">新生代和老年代分别有哪些垃圾收集器？各自有什么特点？画出那张图？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#每种垃圾收集器的运行过程和特点是什么？"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">每种垃圾收集器的运行过程和特点是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#知道哪些JVM的命令行工具？是否都用过？怎么用？"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">知道哪些JVM的命令行工具？是否都用过？怎么用？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#是否了解class文件的格式？是否能够阅读class文件？"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">是否了解class文件的格式？是否能够阅读class文件？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#JVM监控和调优的一般步骤是什么？"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">JVM监控和调优的一般步骤是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#经常遇到的内存异常有哪些？如何定位和解决这些异常？"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">经常遇到的内存异常有哪些？如何定位和解决这些异常？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#是否知道JVM的标准、非标准和非stable参数？"><span class="toc-nav-number">28.</span> <span class="toc-nav-text">是否知道JVM的标准、非标准和非stable参数？</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2

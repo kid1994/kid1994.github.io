@@ -283,7 +283,7 @@
 <p>其实最后转了一圈，也就是调用<code>Job</code>的<code>execute</code>方法了，而我们就是在这个方法里面实现我们的业务逻辑的。</p>
 <p>完。</p>
 
-                
+
 
                 <hr>
                 <!-- Pager -->
@@ -309,14 +309,9 @@
                 <br>
                 <!--分享-->
                 
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
                 <!--分享-->
-                <br>                       
-                
+                <br>
+
                 <!-- require APlayer -->
                 
 
@@ -331,7 +326,18 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
-                
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#调度线程quartzschedulerthread"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">调度线程quartzschedulerthread</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#获取到达触发时间的triggers"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">获取到达触发时间的triggers</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#触发triggers"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">触发triggers</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#执行所有triggers对应的jobs"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">执行所有triggers对应的jobs</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#构造job的执行环境"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">构造job的执行环境</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#在子线程中执行job任务"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">在子线程中执行job任务</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2

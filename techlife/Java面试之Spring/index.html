@@ -326,7 +326,7 @@
 <p>2.声明式事务管理：这意味着你可以将业务代码和事务管理分离，你只需用注解和XML配置来管理事务。通过使用SpringAOP框架来完成。声明式事务的方式是使用Spring的tx命名空间进行命名xml文件配置和@Transaction注解。</p>
 <p>大多数Spring框架的用户选择声明式事务管理，因为它对应用代码的影响最小，因此更符合一个无侵入的轻量级容器的思想。声明式事务管理要优于编程式事务管理，虽然比编程式事务管理（这种方式允许你通过代码控制事务）少了一点灵活性。</p>
 <h1 id="用过Spring注解么？怎么用？列举几个常用的注解？"><a href="#用过Spring注解么？怎么用？列举几个常用的注解？" class="headerlink" title="用过Spring注解么？怎么用？列举几个常用的注解？"></a>用过Spring注解么？怎么用？列举几个常用的注解？</h1>
-                
+
 
                 <hr>
                 <!-- Pager -->
@@ -352,14 +352,9 @@
                 <br>
                 <!--分享-->
                 
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
                 <!--分享-->
-                <br>                       
-                
+                <br>
+
                 <!-- require APlayer -->
                 
 
@@ -374,7 +369,18 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
-                
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#能否画出Spring的模块图？"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">能否画出Spring的模块图？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spring框架的核心思想是什么？并做简单的解释？"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Spring框架的核心思想是什么？并做简单的解释？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spring中组件的装配方式有哪两种？"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Spring中组件的装配方式有哪两种？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spring支持哪几种bean的作用域？默认的作用域是哪种？"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Spring支持哪几种bean的作用域？默认的作用域是哪种？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#解释bean的生命周期？"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">解释bean的生命周期？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spring中IOC和AOP各使用的什么设计模式？"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Spring中IOC和AOP各使用的什么设计模式？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#能否列举几个AOP的应用场景？"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">能否列举几个AOP的应用场景？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实现AOP的方式有哪几种？"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">实现AOP的方式有哪几种？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#IOC的概念是什么？"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">IOC的概念是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#IOC的实现原理是什么？"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">IOC的实现原理是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#依赖注入的方式有哪几种？"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">依赖注入的方式有哪几种？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#AOP的概念是什么？"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">AOP的概念是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#AOP中的术语切面、建议、切点、连接点和织入是什么意思？"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">AOP中的术语切面、建议、切点、连接点和织入是什么意思？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#AOP的实现原理？"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">AOP的实现原理？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spring-MVC的处理流程能画出来么？"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">Spring MVC的处理流程能画出来么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Controller类是线程安全的么？为什么？如何使其线程安全？"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">Controller类是线程安全的么？为什么？如何使其线程安全？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#在Spring中如何使用JDBC？用过么？"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">在Spring中如何使用JDBC？用过么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spring在数据库访问过程是如何处理异常的？"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">Spring在数据库访问过程是如何处理异常的？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Spring支持的事务管理类型有哪些？用过么？"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">Spring支持的事务管理类型有哪些？用过么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#用过Spring注解么？怎么用？列举几个常用的注解？"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">用过Spring注解么？怎么用？列举几个常用的注解？</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2

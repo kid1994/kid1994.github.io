@@ -383,7 +383,7 @@
 <p><a href="https://download.java.net/openjdk/jdk8/" target="_blank" rel="noopener">openjdk8源码下载</a></p>
 <p><a href="https://download.java.net/openjdk/jdk7" target="_blank" rel="noopener">openjdk7源码下载</a></p>
 
-                
+
 
                 <hr>
                 <!-- Pager -->
@@ -409,14 +409,9 @@
                 <br>
                 <!--分享-->
                 
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
                 <!--分享-->
-                <br>                       
-                
+                <br>
+
                 <!-- require APlayer -->
                 
 
@@ -431,7 +426,18 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
-                
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#前期准备"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">前期准备</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#下载openjdk源码"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">下载openjdk源码</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#环境要求："><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">环境要求：</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#mac-os-x"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">mac os x</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ubuntu"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">ubuntu</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#构建环境"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">构建环境</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mac-os-x-1"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">mac os x</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ubuntu虚拟机"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">ubuntu虚拟机</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#构建步骤"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">构建步骤</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mac-os-x-2"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">mac os x</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#configure"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">configure</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#build"><span class="toc-nav-number">3.1.2.</span> <span class="toc-nav-text">build</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ubuntu-1"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">ubuntu</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#后记"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">后记</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#构建过程中遇到的问题"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">构建过程中遇到的问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-1-gcc-compiler-is-required"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">error 1 gcc compiler is required</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-2-could-not-find-freetype"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">error 2 could not find freetype</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-3-ordered-comparison-between-pointer-and-zero"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">error 3 ordered comparison between pointer and zero</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-4-a-fatal-error-has-been-detected-by-the-java-runtime-environment"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">error 4 a fatal error has been detected by the java runtime environment</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-5-cannot-find-source-for-project-jaxp"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text">error 5 cannot find source for project jaxp</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-6-protocol-switch-unsafe-not-allowed"><span class="toc-nav-number">5.6.</span> <span class="toc-nav-text">error 6 protocol switch unsafe, not allowed</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-7-this-os-is-not-supported"><span class="toc-nav-number">5.7.</span> <span class="toc-nav-text">error 7 this os is not supported</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-9-gamma-relocation-error"><span class="toc-nav-number">5.8.</span> <span class="toc-nav-text">error 9 gamma relocation error</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-10-unrecognized-command-line-option-mimpure-text"><span class="toc-nav-number">5.9.</span> <span class="toc-nav-text">error 10 unrecognized command line option -mimpure-text</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-11-time-is-more-than-10-years-from-present"><span class="toc-nav-number">5.10.</span> <span class="toc-nav-text">error 11 time is more than 10 years from present</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#error-12-collect2-error-ld-returned-1-exit"><span class="toc-nav-number">5.11.</span> <span class="toc-nav-text">error 12 collect2 error ld returned 1 exit</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#参考"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">参考</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2

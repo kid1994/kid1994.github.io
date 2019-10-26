@@ -358,7 +358,7 @@
 <h1 id="反射中getDeclaredMethods-和getMethods方法有什么区别？"><a href="#反射中getDeclaredMethods-和getMethods方法有什么区别？" class="headerlink" title="反射中getDeclaredMethods()和getMethods方法有什么区别？"></a>反射中getDeclaredMethods()和getMethods方法有什么区别？</h1><h1 id="是否可以在一个null对象上调用静态方法？会报NullpointerException么？"><a href="#是否可以在一个null对象上调用静态方法？会报NullpointerException么？" class="headerlink" title="是否可以在一个null对象上调用静态方法？会报NullpointerException么？"></a>是否可以在一个null对象上调用静态方法？会报NullpointerException么？</h1><p>答：可以，不会报空指针异常。比如：<br>    Test test = null;<br>    test.hello();是可以调用静态方法hello的。因为hello方法是静态的，没有指针，不会引用堆上的对象，所以不会报空指针异常。</p>
 <h1 id="内部类有哪几类？有哪些注意点？"><a href="#内部类有哪几类？有哪些注意点？" class="headerlink" title="内部类有哪几类？有哪些注意点？"></a>内部类有哪几类？有哪些注意点？</h1><p>答：内部类分为成员内部类、静态内部类、方法内部类和匿名内部类四类。成员内部类的方法可以访问外部类的数据；必须使用外部类对象来创建内部类对象；成员内部类不能有静态的属性和方法，但是可以定义常量；<br>静态内部类不能直接访问外部类的非静态数据；<br>方法内部类作用域仅限于方法内，不能有public、protected、private或static修饰符；JDK8之后，方法内部类访问方法内的局部变量，该变量不需要为final的了。</p>
 
-                
+
 
                 <hr>
                 <!-- Pager -->
@@ -384,14 +384,9 @@
                 <br>
                 <!--分享-->
                 
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
                 <!--分享-->
-                <br>                       
-                
+                <br>
+
                 <!-- require APlayer -->
                 
 
@@ -406,7 +401,18 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
-                
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#浮点数可以使用位运算么？"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">浮点数可以使用位运算么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Integer类常量池缓存的范围是多少？"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Integer类常量池缓存的范围是多少？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#整型byte-short-int-long的表示范围是多少？"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">整型byte,short,int,long的表示范围是多少？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#浮点数float和double在计算机中是怎么表示的？范围是多少？"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">浮点数float和double在计算机中是怎么表示的？范围是多少？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#负数是怎么表示的？"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">负数是怎么表示的？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#不同类型的数据运算时是如何进行类型转换的？"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">不同类型的数据运算时是如何进行类型转换的？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中的关键字和保留字有哪些？"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Java中的关键字和保留字有哪些？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Object的getClass方法返回的是什么？"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">Object的getClass方法返回的是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#静态变量可以在哪些地方定义？为什么？"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">静态变量可以在哪些地方定义？为什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#String类为什么要设计成不可变类？"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">String类为什么要设计成不可变类？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#String，StringBuffer和StringBuilder类的比较？"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">String，StringBuffer和StringBuilder类的比较？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#静态初始化代码块、构造代码块和构造方法的执行顺序是什么？在涉及继承的时候顺序又是怎样的？"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">静态初始化代码块、构造代码块和构造方法的执行顺序是什么？在涉及继承的时候顺序又是怎样的？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#实现接口中的方法时所要遵循的原则是什么？"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">实现接口中的方法时所要遵循的原则是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#jre判断程序是否结束的标准是什么？"><span class="toc-nav-number">14.</span> <span class="toc-nav-text">jre判断程序是否结束的标准是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java多态有哪两类？如何确定多态调用的方法？"><span class="toc-nav-number">15.</span> <span class="toc-nav-text">Java多态有哪两类？如何确定多态调用的方法？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#表达式的优先级和结合性是什么？三元表达式的结合性是什么？"><span class="toc-nav-number">16.</span> <span class="toc-nav-text">表达式的优先级和结合性是什么？三元表达式的结合性是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#128的二进制表示是多少？"><span class="toc-nav-number">17.</span> <span class="toc-nav-text">-128的二进制表示是多少？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#赋值运算符左侧的值有什么要求？"><span class="toc-nav-number">18.</span> <span class="toc-nav-text">赋值运算符左侧的值有什么要求？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#关于泛型的继承性和泛型之间的赋值有什么原则？点和范围"><span class="toc-nav-number">19.</span> <span class="toc-nav-text">关于泛型的继承性和泛型之间的赋值有什么原则？点和范围</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#字面量字符串相加和字符串变量相加有什么区别？"><span class="toc-nav-number">20.</span> <span class="toc-nav-text">字面量字符串相加和字符串变量相加有什么区别？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中静态属性和静态方法可以被继承么？"><span class="toc-nav-number">21.</span> <span class="toc-nav-text">Java中静态属性和静态方法可以被继承么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中静态属性和静态方法可以被重写么？"><span class="toc-nav-number">22.</span> <span class="toc-nav-text">Java中静态属性和静态方法可以被重写么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中的静态分配机制是指什么？"><span class="toc-nav-number">23.</span> <span class="toc-nav-text">Java中的静态分配机制是指什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中的异常有哪些分类？各自有哪些异常？"><span class="toc-nav-number">24.</span> <span class="toc-nav-text">Java中的异常有哪些分类？各自有哪些异常？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中catch异常的原则是什么？"><span class="toc-nav-number">25.</span> <span class="toc-nav-text">Java中catch异常的原则是什么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Java中数组的复制有哪几种方法？效率怎么排？"><span class="toc-nav-number">26.</span> <span class="toc-nav-text">Java中数组的复制有哪几种方法？效率怎么排？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#反射中getDeclaredMethods-和getMethods方法有什么区别？"><span class="toc-nav-number">27.</span> <span class="toc-nav-text">反射中getDeclaredMethods()和getMethods方法有什么区别？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#是否可以在一个null对象上调用静态方法？会报NullpointerException么？"><span class="toc-nav-number">28.</span> <span class="toc-nav-text">是否可以在一个null对象上调用静态方法？会报NullpointerException么？</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#内部类有哪几类？有哪些注意点？"><span class="toc-nav-number">29.</span> <span class="toc-nav-text">内部类有哪几类？有哪些注意点？</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2

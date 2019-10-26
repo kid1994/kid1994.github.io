@@ -293,7 +293,7 @@
 <h3 id="创建代理对象"><a href="#创建代理对象" class="headerlink" title="创建代理对象"></a>创建代理对象</h3><p>获取到了代理类的构造方法对象，然后就可以通过反射的方式创建代理对象类了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">创建代理对象</span><br><span class="line">*/</span><br><span class="line">private static Object newProxyInstance(Class&lt;?&gt; caller, // null if no SecurityManager</span><br><span class="line">                                       Constructor&lt;?&gt; cons,</span><br><span class="line">                                       InvocationHandler h) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        if (caller != null) &#123;</span><br><span class="line">            checkNewProxyPermission(caller, cons.getDeclaringClass());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 通过反射的方式创建代理对象，并且将`invocation handler`作为参数传入</span><br><span class="line">        return cons.newInstance(new Object[]&#123;h&#125;);</span><br><span class="line">    &#125; catch (IllegalAccessException | InstantiationException e) &#123;</span><br><span class="line">        throw new InternalError(e.toString(), e);</span><br><span class="line">    &#125; catch (InvocationTargetException e) &#123;</span><br><span class="line">        Throwable t = e.getCause();</span><br><span class="line">        if (t instanceof RuntimeException) &#123;</span><br><span class="line">            throw (RuntimeException) t;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            throw new InternalError(t.toString(), t);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>完。</p>
 
-                
+
 
                 <hr>
                 <!-- Pager -->
@@ -319,14 +319,9 @@
                 <br>
                 <!--分享-->
                 
-                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
-                    <!--  css & js -->
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-                
                 <!--分享-->
-                <br>                       
-                
+                <br>
+
                 <!-- require APlayer -->
                 
 
@@ -341,7 +336,18 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
-                
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#java中的动态代理"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">java中的动态代理</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#原理分析"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">原理分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#概述"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#源码分析"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">源码分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#生成代理类"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">生成代理类</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#创建代理对象"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">创建代理对象</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
