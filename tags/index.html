@@ -115,62 +115,6 @@
   
 </header>
 
-<script>
-    document.addEventListener('touchmove', function (e) {
-        e.preventDefault()
-    })
-	var hder = document.getElementById('headerid');
-    var c = document.getElementsByTagName('canvas')[0],
-        x = c.getContext('2d'),
-        pr = window.devicePixelRatio || 1,
-        w = window.innerWidth,
-		
-        h = window.innerHeight/2,
-        f = 90,
-        q,
-        m = Math,
-        r = 0,
-        u = m.PI*2,
-        v = m.cos,
-        z = m.random
-    c.width = w*pr
-    c.height = h*pr
-    x.scale(pr, pr)
-    x.globalAlpha = 0.6
-    function i(){
-	    var hder = document.getElementById('headerid');
-		if(hder)
-	    {
-   		h = hder.clientHeight;
-		c.height = h*pr;
-		}
-        x.clearRect(0,0,w,h)
-        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
-        while(q[1].x<w+f) d(q[0], q[1])
-    }
-    function d(i,j){   
-        x.beginPath()
-        x.moveTo(i.x, i.y)
-        x.lineTo(j.x, j.y)
-        var k = j.x + (z()*2-0.25)*f,
-            n = y(j.y)
-        x.lineTo(k, n)
-        x.closePath()
-        r-=u/-50
-        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
-        x.fill()
-        q[0] = q[1]
-        q[1] = {x:k,y:n}
-    }
-    function y(p){
-        var t = p + (z()*2-1.1)*f
-        return (t>h||t<0) ? y(p) : t
-    }
-    document.onclick = i
-    document.ontouchstart = i
-    i()
-</script>
-
 	
     <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -438,9 +382,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/sleepingtalk/睡了个午觉/">
+                     <a href="/sleepingtalk/尘埃落定/">
                         <h2 class="post-title">
-                            睡了个午觉
+                            尘埃落定
                         </h2>
                         
                     </a>
@@ -453,9 +397,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/sleepingtalk/尘埃落定/">
+                     <a href="/sleepingtalk/睡了个午觉/">
                         <h2 class="post-title">
-                            尘埃落定
+                            睡了个午觉
                         </h2>
                         
                     </a>
@@ -1147,9 +1091,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/curiority/书单/">
+                     <a href="/curiority/hello-july/">
                         <h2 class="post-title">
-                            书单
+                            Github page + Hexo建站
                         </h2>
                         
                     </a>
@@ -1162,9 +1106,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/curiority/hello-july/">
+                     <a href="/curiority/书单/">
                         <h2 class="post-title">
-                            Github page + Hexo建站
+                            书单
                         </h2>
                         
                     </a>
@@ -1330,6 +1274,9 @@
 <!-- Custom Theme JavaScript -->
 <script src="/js/hux-blog.min.js"></script>
 
+
+	<script src="/js/particles.js"></script>
+	<script src="/js/particles_config.js"></script>
 
 
 
