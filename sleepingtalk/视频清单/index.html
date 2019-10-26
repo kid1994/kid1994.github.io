@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          视频清单 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/sleepingtalk/视频清单/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#sleepingtalk" title="sleepingtalk">sleepingtalk</a>
+                            
+                        </div>
+                        <h1>视频清单</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2016-01-06
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>记录一些已看和待看的视频。</p>
+<p><img src="https://kid1994.github.io/2016/01/06/视频清单/video.jpg" alt=""></p>
+<a id="more"></a>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#电影">电影</a><ul>
+<li><a href="#科幻">科幻</a></li>
+<li><a href="#喜剧">喜剧</a></li>
+<li><a href="#文艺">文艺</a></li>
+<li><a href="#恐怖">恐怖</a></li>
+<li><a href="#其它">其它</a></li>
+</ul>
+</li>
+<li><a href="#电视剧">电视剧</a><ul>
+<li><a href="#科幻">科幻</a></li>
+<li><a href="#喜剧">喜剧</a></li>
+<li><a href="#恐怖">恐怖</a></li>
+<li><a href="#其它">其它</a></li>
+</ul>
+</li>
+<li><a href="#纪录片">纪录片</a></li>
+<li><a href="#公开课">公开课</a></li>
+<li><a href="#ted">TED</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="电影"><a href="#电影" class="headerlink" title="电影"></a>电影</h1><h2 id="科幻"><a href="#科幻" class="headerlink" title="科幻"></a>科幻</h2><ul>
+<li><a href="https://movie.douban.com/subject/26100958/" target="_blank" rel="noopener">复仇者联盟4：终局之战(2019)</a></li>
+<li><a href="https://movie.douban.com/subject/26213252/" target="_blank" rel="noopener">惊奇队长(2019)</a></li>
+<li><a href="https://movie.douban.com/subject/24773958/" target="_blank" rel="noopener">复仇者联盟3：无限战争(2018)</a></li>
+<li><a href="https://movie.douban.com/subject/24753477/" target="_blank" rel="noopener">蜘蛛侠：英雄归来(2017)</a></li>
+<li><a href="https://movie.douban.com/subject/10512661/" target="_blank" rel="noopener">银翼杀手2049(2017)</a></li>
+<li><a href="https://movie.douban.com/subject/25786060/" target="_blank" rel="noopener">X战警：天启(2016)</a></li>
+<li><a href="https://movie.douban.com/subject/20471852/" target="_blank" rel="noopener">生化危机6：终章(2016)</a></li>
+<li><a href="https://movie.douban.com/subject/10741834/" target="_blank" rel="noopener">复仇者联盟2：奥创纪元(2015)</a></li>
+<li><a href="https://movie.douban.com/subject/10485647/" target="_blank" rel="noopener">X战警：逆转未来(2014)</a></li>
+<li><a href="https://movie.douban.com/subject/6390823/" target="_blank" rel="noopener">美国队长2(2014)</a></li>
+<li><a href="https://movie.douban.com/subject/7054604/" target="_blank" rel="noopener">变形金刚4(2014)</a></li>
+<li><a href="https://movie.douban.com/subject/3718424/" target="_blank" rel="noopener">金刚狼2(2013)</a></li>
+<li><a href="https://movie.douban.com/subject/3231742/" target="_blank" rel="noopener">钢铁侠3(2013)</a></li>
+<li><a href="https://movie.douban.com/subject/3642835/" target="_blank" rel="noopener">黑衣人3(2012)</a></li>
+<li><a href="https://movie.douban.com/subject/6532822/" target="_blank" rel="noopener">生化危机5：惩罚(2012)</a></li>
+<li><a href="https://movie.douban.com/subject/1866479/" target="_blank" rel="noopener">复仇者联盟1(2012)</a></li>
+<li><a href="https://movie.douban.com/subject/3642835/" target="_blank" rel="noopener">黑衣人3(2012)</a></li>
+<li><a href="https://movie.douban.com/subject/3168089/" target="_blank" rel="noopener">X战警：第一战(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/3075287/" target="_blank" rel="noopener">源代码(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/2138838/" target="_blank" rel="noopener">美国队长1(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/3610047/" target="_blank" rel="noopener">变形金刚3(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/3541415/" target="_blank" rel="noopener">盗梦空间(2010)</a></li>
+<li><a href="https://movie.douban.com/subject/3066739/" target="_blank" rel="noopener">钢铁侠2(2010)</a></li>
+<li><a href="https://movie.douban.com/subject/3041294/" target="_blank" rel="noopener">生化危机4：战神再生(2010)</a></li>
+<li><a href="https://movie.douban.com/subject/3006772/" target="_blank" rel="noopener">第九区(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/1792928/" target="_blank" rel="noopener">金刚狼1(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/2146991/" target="_blank" rel="noopener">变形金刚2(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/1432146/" target="_blank" rel="noopener">钢铁侠1(2008)</a></li>
+<li><a href="https://movie.douban.com/subject/1482911/" target="_blank" rel="noopener">生化危机3：灭绝(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1418189/" target="_blank" rel="noopener">蜘蛛侠3(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1794171/" target="_blank" rel="noopener">变形金刚1(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1401524/" target="_blank" rel="noopener">X战警：背水一战(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1418191/" target="_blank" rel="noopener">超人归来(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1292267/" target="_blank" rel="noopener">银河系漫游指南(2005)</a></li>
+<li><a href="https://movie.douban.com/subject/1308752/" target="_blank" rel="noopener">生化危机2：启示录(2004)</a></li>
+<li><a href="https://movie.douban.com/subject/1308570/" target="_blank" rel="noopener">蜘蛛侠2(2004)</a></li>
+<li><a href="https://movie.douban.com/subject/1304141/" target="_blank" rel="noopener">黑客帝国2：重装上阵(2003)</a></li>
+<li><a href="https://movie.douban.com/subject/1302467/" target="_blank" rel="noopener">黑客帝国3：矩阵革命(2003)</a></li>
+<li><a href="https://movie.douban.com/subject/1305724/" target="_blank" rel="noopener">X战警2(2003)</a></li>
+<li><a href="https://movie.douban.com/subject/1306809/" target="_blank" rel="noopener">生化危机1(2002)</a></li>
+<li><a href="https://movie.douban.com/subject/1306612/" target="_blank" rel="noopener">蜘蛛侠1(2002)</a></li>
+<li><a href="https://movie.douban.com/subject/1295280/" target="_blank" rel="noopener">黑衣人2(2002)</a></li>
+<li><a href="https://movie.douban.com/subject/1297689/" target="_blank" rel="noopener">少数派报告(2002)</a></li>
+<li><a href="https://movie.douban.com/subject/1295250/" target="_blank" rel="noopener">X战警1(2000)</a></li>
+<li><a href="https://movie.douban.com/subject/1291843/" target="_blank" rel="noopener">黑客帝国1(1999)</a></li>
+<li><a href="https://movie.douban.com/subject/1300282/" target="_blank" rel="noopener">异次元骇客(1999)</a></li>
+<li><a href="https://movie.douban.com/subject/1299213/" target="_blank" rel="noopener">感官游戏(1999)</a></li>
+<li><a href="https://movie.douban.com/subject/1292332/" target="_blank" rel="noopener">移魂都市(1998)</a></li>
+<li><a href="https://movie.douban.com/subject/1301445/" target="_blank" rel="noopener">黑衣人1(1997)</a></li>
+<li><a href="https://movie.douban.com/subject/1295384/" target="_blank" rel="noopener">星河战队1(1997)</a></li>
+<li><a href="https://movie.douban.com/subject/1298744/" target="_blank" rel="noopener">十二只猴子(1995)</a></li>
+<li><a href="https://movie.douban.com/subject/1296666/" target="_blank" rel="noopener">回到未来3(1990)</a></li>
+<li><a href="https://movie.douban.com/subject/1299092/" target="_blank" rel="noopener">回到未来2(1989)</a></li>
+<li><a href="https://movie.douban.com/subject/1300555/" target="_blank" rel="noopener">回到未来1(1985)</a></li>
+<li><a href="https://movie.douban.com/subject/1291839/" target="_blank" rel="noopener">银翼杀手1(1982)</a></li>
+<li><a href="https://movie.douban.com/subject/1300916/" target="_blank" rel="noopener">超人1(1978)</a></li>
+</ul>
+<h2 id="喜剧"><a href="#喜剧" class="headerlink" title="喜剧"></a>喜剧</h2><ul>
+<li><a href="https://movie.douban.com/subject/27073234/" target="_blank" rel="noopener">憨豆特工3(2018)</a></li>
+<li><a href="https://movie.douban.com/subject/4767216/" target="_blank" rel="noopener">憨豆特工2(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/3793023/" target="_blank" rel="noopener">三傻大闹宝莱坞(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/3007773/" target="_blank" rel="noopener">海盗电台(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/2124703/" target="_blank" rel="noopener">疯狂的赛车(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/1961963/" target="_blank" rel="noopener">长江七号(2008)</a></li>
+<li><a href="https://movie.douban.com/subject/2003389/" target="_blank" rel="noopener">葬礼上的死亡(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1862151/" target="_blank" rel="noopener">疯狂的石头(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1291543/" target="_blank" rel="noopener">功夫(2004)</a></li>
+<li><a href="https://movie.douban.com/subject/1303815/" target="_blank" rel="noopener">你丫闭嘴(2003)</a></li>
+<li><a href="https://movie.douban.com/subject/1307389/" target="_blank" rel="noopener">憨豆特工(2003)</a></li>
+<li><a href="https://movie.douban.com/subject/1297747/" target="_blank" rel="noopener">少林足球(2001)</a></li>
+<li><a href="https://movie.douban.com/subject/1293899/" target="_blank" rel="noopener">一个头两个大(2000)</a></li>
+<li><a href="https://movie.douban.com/subject/1302425/" target="_blank" rel="noopener">喜剧之王(1999)</a></li>
+<li><a href="https://movie.douban.com/subject/1305197/" target="_blank" rel="noopener">97家有喜事(1997)</a></li>
+<li><a href="https://movie.douban.com/subject/1329936/" target="_blank" rel="noopener">大内密探零零发(1996)</a></li>
+<li><a href="https://movie.douban.com/subject/1293351/" target="_blank" rel="noopener">食神(1996)</a></li>
+<li><a href="https://movie.douban.com/subject/1300498/" target="_blank" rel="noopener">百变星君(1995)</a></li>
+<li><a href="https://movie.douban.com/subject/1292213/" target="_blank" rel="noopener">大话西游之大圣娶亲(1995)</a></li>
+<li><a href="https://movie.douban.com/subject/1299398/" target="_blank" rel="noopener">大话西游之月光宝盒(1995)</a></li>
+<li><a href="https://movie.douban.com/subject/1297518/" target="_blank" rel="noopener">九品芝麻官(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/1400665/" target="_blank" rel="noopener">济公(1993)</a></li>
+<li><a href="https://movie.douban.com/subject/1306249/" target="_blank" rel="noopener">唐伯虎点秋香(1993)</a></li>
+<li><a href="https://movie.douban.com/subject/1302678/" target="_blank" rel="noopener">逃学威龙3(1993)</a></li>
+<li><a href="https://movie.douban.com/subject/1300064/" target="_blank" rel="noopener">家有喜事(1992)</a></li>
+<li><a href="https://movie.douban.com/subject/1306951/" target="_blank" rel="noopener">鹿鼎记2：神龙教(1992)</a></li>
+<li><a href="https://movie.douban.com/subject/1297223/" target="_blank" rel="noopener">鹿鼎记(1992)</a></li>
+<li><a href="https://movie.douban.com/subject/1296201/" target="_blank" rel="noopener">逃学威龙2(1992)</a></li>
+<li><a href="https://movie.douban.com/subject/1297863/" target="_blank" rel="noopener">武状元苏乞儿(1992)</a></li>
+<li><a href="https://movie.douban.com/subject/1306057/" target="_blank" rel="noopener">龙的传人(1991)</a></li>
+<li><a href="https://movie.douban.com/subject/1302090/" target="_blank" rel="noopener">逃学威龙(1991)</a></li>
+<li><a href="https://movie.douban.com/subject/1294490/" target="_blank" rel="noopener">上帝也疯狂2(1989)</a></li>
+<li><a href="https://movie.douban.com/subject/1297478/" target="_blank" rel="noopener">上帝也疯狂(1980)</a></li>
+</ul>
+<h2 id="文艺"><a href="#文艺" class="headerlink" title="文艺"></a>文艺</h2><ul>
+<li><a href="https://movie.douban.com/subject/27060077/" target="_blank" rel="noopener">绿皮书(2018)</a></li>
+<li><a href="https://movie.douban.com/subject/6873143/" target="_blank" rel="noopener">一条狗的使命(2017)</a></li>
+<li><a href="https://movie.douban.com/subject/25890005/" target="_blank" rel="noopener">山河故人(2015)</a></li>
+<li><a href="https://movie.douban.com/subject/2209575/" target="_blank" rel="noopener">少年时代(2014)</a></li>
+<li><a href="https://movie.douban.com/subject/20438962/" target="_blank" rel="noopener">鸟人(2014)</a></li>
+<li><a href="https://movie.douban.com/subject/3364223/" target="_blank" rel="noopener">了不起的盖茨比(2013)</a></li>
+<li><a href="https://movie.douban.com/subject/10577869/" target="_blank" rel="noopener">时空恋旅人(2013)</a></li>
+<li><a href="https://movie.douban.com/subject/2209575/" target="_blank" rel="noopener">万箭穿心(2012)</a></li>
+<li><a href="https://movie.douban.com/subject/6786002/" target="_blank" rel="noopener">触不可及(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/4920528/?from=subject-page" target="_blank" rel="noopener">那些年我们一起追的女孩(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/3319755/" target="_blank" rel="noopener">怦然心动(2010)</a></li>
+<li><a href="https://movie.douban.com/subject/3072086/" target="_blank" rel="noopener">和莎莫的500天(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/3011091/?from=subject-page" target="_blank" rel="noopener">忠犬八公的故事(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/2209573/?from=subject-page" target="_blank" rel="noopener">贫民窟的百万富翁(2008)</a></li>
+<li><a href="https://movie.douban.com/subject/1937502/" target="_blank" rel="noopener">追风筝的人(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1920805/" target="_blank" rel="noopener">称为简•奥斯汀(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1867345/" target="_blank" rel="noopener">遗愿清单(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1787291/" target="_blank" rel="noopener">被嫌弃的松子的一生(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1780330/" target="_blank" rel="noopener">致命魔术(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1849031/?from=subject-page" target="_blank" rel="noopener">当幸福来敲门(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1418200/" target="_blank" rel="noopener">傲慢与偏见(2005)</a></li>
+<li><a href="https://movie.douban.com/subject/1418834/" target="_blank" rel="noopener">断背山(2005)</a></li>
+<li><a href="https://movie.douban.com/subject/1292215/" target="_blank" rel="noopener">天使爱美丽(2001)</a></li>
+<li><a href="https://movie.douban.com/subject/1292402/" target="_blank" rel="noopener">西西里的美丽传说(2000)</a></li>
+<li><a href="https://movie.douban.com/subject/1292062/" target="_blank" rel="noopener">美国丽人(1999)</a></li>
+<li><a href="https://movie.douban.com/subject/1300374/" target="_blank" rel="noopener">绿里奇迹(1999)</a></li>
+<li><a href="https://movie.douban.com/subject/1294963/" target="_blank" rel="noopener">一个都不能少(1999)</a></li>
+<li><a href="https://movie.douban.com/subject/1292064/" target="_blank" rel="noopener">楚门的世界(1998)</a></li>
+<li><a href="https://movie.douban.com/subject/1292063/" target="_blank" rel="noopener">美丽人生(1997)</a></li>
+<li><a href="https://movie.douban.com/subject/1292722/?from=subject-page" target="_blank" rel="noopener">泰坦尼克号(1997)</a></li>
+<li><a href="https://movie.douban.com/subject/1305164/" target="_blank" rel="noopener">甜蜜蜜(1996)</a></li>
+<li><a href="https://movie.douban.com/subject/1292052/" target="_blank" rel="noopener">肖申克的救赎(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/1292720/?from=subject-page" target="_blank" rel="noopener">阿甘正传(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/1298624/" target="_blank" rel="noopener">低俗小说(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/1295644/?from=subject-page" target="_blank" rel="noopener">这个杀手不太冷(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/1292365/" target="_blank" rel="noopener">活着(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/1291875/" target="_blank" rel="noopener">阳光灿烂的日子(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/1291546/" target="_blank" rel="noopener">霸王别姬(1993)</a></li>
+<li><a href="https://movie.douban.com/subject/1298624/" target="_blank" rel="noopener">闻香识女人(1992)</a></li>
+<li><a href="https://movie.douban.com/subject/1291548/?from=subject-page" target="_blank" rel="noopener">死亡诗社(1989)</a></li>
+<li><a href="https://movie.douban.com/subject/1291828/?from=subject-page" target="_blank" rel="noopener">天堂电影院(1988)</a></li>
+<li><a href="https://movie.douban.com/subject/1292262/" target="_blank" rel="noopener">美国往事(1984)</a></li>
+<li><a href="https://movie.douban.com/subject/1300267/" target="_blank" rel="noopener">乱世佳人(1939)</a></li>
+</ul>
+<h2 id="恐怖"><a href="#恐怖" class="headerlink" title="恐怖"></a>恐怖</h2><ul>
+<li><a href="https://movie.douban.com/subject/3878157/" target="_blank" rel="noopener">电锯惊魂7(2010)</a></li>
+<li><a href="https://movie.douban.com/subject/3075983/" target="_blank" rel="noopener">电锯惊魂6(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/2350904/" target="_blank" rel="noopener">电锯惊魂5(2008)</a></li>
+<li><a href="https://movie.douban.com/subject/1922273/" target="_blank" rel="noopener">电锯惊魂4(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/1474189/" target="_blank" rel="noopener">电锯惊魂3(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1309045/" target="_blank" rel="noopener">电锯惊魂2(2005)</a></li>
+<li><a href="https://movie.douban.com/subject/1417598/" target="_blank" rel="noopener">电锯惊魂(2004)</a></li>
+</ul>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul>
+<li><a href="https://movie.douban.com/subject/26580232/" target="_blank" rel="noopener">看不见的客人(2016)</a></li>
+<li><a href="https://movie.douban.com/subject/1440855/" target="_blank" rel="noopener">第一滴血4(2008)</a></li>
+<li><a href="https://movie.douban.com/subject/1829230/" target="_blank" rel="noopener">舞出我人生(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/1300399/" target="_blank" rel="noopener">第一滴血3(1988)</a></li>
+<li><a href="https://movie.douban.com/subject/1300361/" target="_blank" rel="noopener">第一滴血2(1985)</a></li>
+<li><a href="https://movie.douban.com/subject/1294323/" target="_blank" rel="noopener">第一滴血(1982)</a></li>
+</ul>
+<h1 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h1><h2 id="科幻-1"><a href="#科幻-1" class="headerlink" title="科幻"></a>科幻</h2><ul>
+<li><a href="https://movie.douban.com/subject/19938222/" target="_blank" rel="noopener">神盾局特工1-6(2013,2014,2015,2016,2017,2019)</a></li>
+<li><a href="https://movie.douban.com/subject/3016187/" target="_blank" rel="noopener">权力的游戏1-8(2011,2012,2013,2014,2015,2016,2017,2019)</a></li>
+<li><a href="https://movie.douban.com/subject/24883222/" target="_blank" rel="noopener">闪电侠(2014)</a></li>
+<li><a href="https://movie.douban.com/subject/10527257/" target="_blank" rel="noopener">绿箭侠(2012)</a></li>
+</ul>
+<h2 id="喜剧-1"><a href="#喜剧-1" class="headerlink" title="喜剧"></a>喜剧</h2><ul>
+<li><a href="https://movie.douban.com/subject/26910060/" target="_blank" rel="noopener">小谢尔顿(2017)</a></li>
+<li><a href="https://movie.douban.com/subject/20644938/" target="_blank" rel="noopener">硅谷(2014)</a></li>
+<li><a href="https://movie.douban.com/subject/3754382/" target="_blank" rel="noopener">摩登家庭(2009)</a></li>
+<li><a href="https://movie.douban.com/subject/2156528/" target="_blank" rel="noopener">生活大爆炸(2007)</a></li>
+<li><a href="https://movie.douban.com/subject/3882715/" target="_blank" rel="noopener">武林外传(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/2133474/" target="_blank" rel="noopener">交通地下站(2006)</a></li>
+<li><a href="https://movie.douban.com/subject/2349361/" target="_blank" rel="noopener">炊事班的故事(2002)</a></li>
+<li><a href="https://movie.douban.com/subject/1393859/" target="_blank" rel="noopener">老友记(1994)</a></li>
+<li><a href="https://movie.douban.com/subject/3901388/" target="_blank" rel="noopener">我爱我家(1993)</a></li>
+</ul>
+<h2 id="恐怖-1"><a href="#恐怖-1" class="headerlink" title="恐怖"></a>恐怖</h2><ul>
+<li><a href="https://movie.douban.com/subject/6729183/" target="_blank" rel="noopener">美国恐怖故事(2011)</a></li>
+<li><a href="https://movie.douban.com/subject/6864077/" target="_blank" rel="noopener">行尸走肉(2011)</a></li>
+</ul>
+<h2 id="其它-1"><a href="#其它-1" class="headerlink" title="其它"></a>其它</h2><ul>
+<li><a href="https://movie.douban.com/subject/26813221/" target="_blank" rel="noopener">了不起的麦瑟尔夫人(2017)</a></li>
+<li><a href="https://movie.douban.com/subject/6037429/" target="_blank" rel="noopener">纸牌屋(2013)</a></li>
+<li><a href="https://movie.douban.com/subject/3986493/" target="_blank" rel="noopener">神探夏洛克(2010)</a></li>
+<li><a href="https://movie.douban.com/subject/2373195/" target="_blank" rel="noopener">绝命毒师(2008)</a></li>
+<li><a href="https://movie.douban.com/subject/1419297/" target="_blank" rel="noopener">越狱(2005)</a></li>
+</ul>
+<h1 id="纪录片"><a href="#纪录片" class="headerlink" title="纪录片"></a>纪录片</h1><ul>
+<li><a href="https://movie.douban.com/subject/33437160/" target="_blank" rel="noopener">人生一串2(2019)</a></li>
+<li><a href="https://movie.douban.com/subject/27040844/" target="_blank" rel="noopener">人生一串1(2018)</a></li>
+<li><a href="https://movie.douban.com/subject/26733371/" target="_blank" rel="noopener">地球脉动2(2016)</a></li>
+<li><a href="https://movie.douban.com/subject/1871906/" target="_blank" rel="noopener">地球脉动1(2006)</a></li>
+</ul>
+<h1 id="公开课"><a href="#公开课" class="headerlink" title="公开课"></a>公开课</h1><h1 id="TED"><a href="#TED" class="headerlink" title="TED"></a>TED</h1>
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/curiority/hello-july/" data-toggle="tooltip" data-placement="top" title="Github page + Hexo建站">&larr; 上一篇</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/sleepingtalk/2018年度总结和规划/" data-toggle="tooltip" data-placement="top" title="2018年度总结和规划">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#sleepingtalk" title="sleepingtalk">sleepingtalk</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/sleepingtalk/视频清单/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

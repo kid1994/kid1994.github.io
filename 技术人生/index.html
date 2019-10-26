@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          技术人生 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/技术人生/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+				
+                    <div class="site-heading"  style="padding:40px">
+                        <h1>技术人生</h1>
+                        <!--<hr class="small">-->
+                        <span class="subheading">轻生一剑知</span>
+                    </div>
+                
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+	        
+                <!-- Main Content -->
+
+
+
+
+<div class="post-preview">
+
+    <a href="/techlife/Java中的动态代理/">
+        <h2 class="post-title">
+            Java中的动态代理
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            动态代理是指，在运行时生成一个代理对象，以便在被代理的对象上增加一些额外的逻辑。典型的应用是Spring AOP。动态是相对于静态而言的，是指在运行时而不是编译时生成代理对象。而代理，可以参考设计模式中的代理模式：
+
+对其它对象提供一种代理以便控制对该对象的访问。
+
+本文内容主要包括对Java中动态代理的使用介绍，以及对原理的分析。
+
+
+
+
+java中的动态代理
+原理分析
+概述
+源码分析
+生......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-08-08
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java中的反射/">
+        <h2 class="post-title">
+            Java中的反射
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Java中的反射机制为程序提供了一种运行时自省（introspect)的能力。利用反射，我们可以在运行时获取类的信息，直接操作类和对象，甚至动态地修改类的定义。
+
+
+
+反射操作概览
+获取类对象
+获取类的信息
+获取类的成员信息
+域
+方法
+构造方法
+
+
+
+
+参考
+
+
+反射的应用场景有：
+
+IDE中的浏览类信息，代码审查等功能
+调试程序，会需要获取类的私有成员信息等
+单元测试框架，比如触发以tes......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-08-07
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java对象的序列化/">
+        <h2 class="post-title">
+            Java对象的序列化
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Java对象的序列化是指将对象转为二进制流，这样就可以存储对象到文件里，或者在网络之间传输对象了，即对象的持久化和对象的传输。
+
+
+
+jdk提供的序列化
+对象序列化后所包含的内容
+序列化api
+序列化id
+
+
+
+
+jdk提供的序列化jdk自身为了我们提供了默认的序列化机制，只需要实现一个接口即可：12public interface Serializable &#123;&#125;
+该接口......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-08-05
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java对Groovy的集成/">
+        <h2 class="post-title">
+            Java对Groovy的集成
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            既然Groovy是基于JVM平台的，那么它就可以很容易地集成到Java应用中，从而为应用提供诸多有用的能力和特性。那我们先来看下Java如何集成Groovy。
+
+
+
+java对groovy的集成
+groovyshell
+grooyclassloader
+groovyscriptengine
+
+
+
+
+java对groovy的集成在Java中执行Groovy脚本有如下几种方式：
+groovysh......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-08-01
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Groovy入门/">
+        <h2 class="post-title">
+            Groovy入门
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Groovy是一门基于JVM的程序开发语言。它是一种部分弱类型的动态语言，由Apache软件基金会(ASF)开发和维护。
+
+
+
+
+语法
+注释
+关键字
+标识符
+字符串
+GString和String的转化
+GString和String的hashcode
+字符的表示
+
+
+List集合
+List集合的读写
+List集合的嵌套
+
+
+数组
+字典集合
+
+
+参考
+
+
+语法Groovy的出现时为了通过提供简明......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-07-28
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Quartz源码分析之任务的调度和执行/">
+        <h2 class="post-title">
+            Quartz源码分析之任务的调度和执行
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            上篇分析完了Quartz中任务的存储，这一篇分析一下Quartz中的任务是如何调度和执行的。
+
+
+
+调度线程quartzschedulerthread
+获取到达触发时间的triggers
+触发triggers
+执行所有triggers对应的jobs
+构造job的执行环境
+在子线程中执行job任务
+
+
+
+
+
+
+上一篇提到QuartzScheduler类，这是Quartz实际意义上的调度器，先来......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-07-20
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/单元测试入门/">
+        <h2 class="post-title">
+            单元测试
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            单元测试是指对系统中的功能单元进行测试。维基百科上的解释是：单元测试（又称为模块测试, Unit Testing）是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。
+
+
+
+
+单测的必要性
+单测的难点
+单测的......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-07-15
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Quartz源码分析之任务存储/">
+        <h2 class="post-title">
+            Quartz源码分析之任务存储
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这一篇主要分析了Quartz中存储Job和Trigger部分的源码。
+
+Quartz的基本使用如下：1234567891011121314151617181920212223// 实例化一个调度器工厂，每个应用只有唯一一个工厂实例SchedulerFactory schedFact = new org.quartz.impl.StdSchedulerFactory();// 实例化一个调度器......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-07-13
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Quartz入门/">
+        <h2 class="post-title">
+            Quartz入门
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Quartz是一个基于Java的开源的企业级任务调度框架，能够支持从数十到上万个Job的任务调度，并且Job被定义为一个个单独的组件，降低了框架的侵入性，提高了代码复用度，方便迁移。
+
+
+作为一个企业级的任务调度框架，Quartz拥有一系列企业级特性：
+
+支持Job的持久化
+支持事务机制
+支持分布式集群
+支持各种Job/Trigger行为相关的监听器
+支持插件机制，可以为Quartz添加其它......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-06-21
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Hbase入门/">
+        <h2 class="post-title">
+            Hbase入门
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            HBase是一个分布式的、持久的、强一致性的NoSQL数据库。NoSQL不是指“not sql”，而是指“not only sql”，是为了解决一些传统关系型数据库所存在的问题。按官网的说法就是：
+
+当需要随机/实时地读写大数据时，就可以使用Hbase。一个拥有千万级数量级的列 * 百万数量级的行的大表就是大数据了。
+
+
+
+
+
+简介
+安装hbase
+基本使用
+通过脚本命令
+hbase she......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-14
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之大数据/">
+        <h2 class="post-title">
+            Java面试之大数据
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的大数据部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+Hadoop
+Hadoop生态系统包括哪些项目？
+Hadoop的安装过程包括哪些？
+Hadoop的常用命令是否知道？
+Hadoop中的HDFS的架构是怎样的？
+能否描述一下HDFS读写数据的过程？
+如果一个datanode宕机，要如何恢复？
+MapReduc......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-12
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之网络/">
+        <h2 class="post-title">
+            Java面试之网络
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的网络部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+OSI七层模型和TCP/IP四层模型各有哪些？是否能列举每层都有哪些协议？
+常见的网络硬件设备有哪些？有什么区别？分别工作在哪一层？
+TCP和UDP之间有什么区别？
+是否能描述TCP三次握手的过程？
+是否能描述TCP四次挥手的过程？
+ARP协议是什么？
+ICM......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-11
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之操作系统/">
+        <h2 class="post-title">
+            Java面试之操作系统
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的操作系统部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+进程间的通信方式有哪些？
+死锁发生的4个条件是什么？
+虚拟内存的概念是什么？
+
+
+进程间的通信方式有哪些？答：
+
+管道( pipe )：管道是一种半双工的通信方式，数据只能单向流动，而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系；
+......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-10
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之数据库/">
+        <h2 class="post-title">
+            Java面试之数据库
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的数据库部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+能否描述一些数据库的几个范式？
+能否描述一些数据库的各个键？概念是什么？有什么区别？
+事务的四个特点是什么？
+事务的状态有哪些？画出状态转换图？
+数据库有哪些事务隔离级别？
+MySQL各种存储引擎分别支持哪些数据库锁类型和模式？
+join,left join......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-09
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之数据结构和算法/">
+        <h2 class="post-title">
+            Java面试之数据结构和算法
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的数据结构和算法部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+如何根据数据范围决定采用的算法的时间复杂度？
+尾递归的概念是什么？有什么好处？
+排序算法有哪些？每种算法的最好、最坏、平均时间复杂度？空间复杂度？是否稳定？是否就地？算法复杂度是否和初始排列有关？画出那张图？
+能否写出每种排序算法？
+JDK中Arra......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-08
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之设计模式/">
+        <h2 class="post-title">
+            Java面试之设计模式
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的设计模式部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+图片来自：《大话设计模式》,清华出版社，程杰
+
+
+设计模式的六大原则是哪些
+创建型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？
+简单工厂
+工厂方法
+抽象工厂
+建造者
+原型
+单例
+
+
+结构型模式有哪些？每种模式的概念是什么？每种模式的举例？......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-07
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之Spring/">
+        <h2 class="post-title">
+            Java面试之Spring
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的Spring部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+能否画出Spring的模块图？
+Spring框架的核心思想是什么？并做简单的解释？
+Spring中组件的装配方式有哪两种？
+Spring支持哪几种bean的作用域？默认的作用域是哪种？
+解释bean的生命周期？
+Spring中IOC和AOP各使用的什么......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-06
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之Java虚拟机/">
+        <h2 class="post-title">
+            Java面试之Java虚拟机
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的Java虚拟机部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+你了解Java内存模型么？
+JVM内存区域分为哪几块？分别如何使用？
+直接内存是什么？
+JVM内存区域会出现哪几种异常？分别可以在哪块区域出现？出现的条件是什么？
+堆和栈有什么区别？可以从哪些方面进行比较？
+JVM堆内存的结构是怎样的？各个结构存放的......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-05
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之Java并发/">
+        <h2 class="post-title">
+            Java面试之Java并发
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的Java并发部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+线程有哪些状态？各种状态之间如何转换的？
+Java中实现多线程有哪几种方法？
+线程调度有哪几种方式？Java中采用的是哪一种？
+如何启动一个线程?
+解释并发编程的3个概念？
+先行发生原则（happens-before）是什么意思？
+解释Compare ......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-04
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之Java集合/">
+        <h2 class="post-title">
+            Java面试之Java集合
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的Java集合部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+Java集合类框架的基本接口有哪些？
+为什么集合类没有实现Cloneable和Serializable接口？
+Deque和Queue有什么区别？
+Java中有哪些集合类是线程安全的？
+Iterator和ListIterator的区别是什么？
+Java中......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-03
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之JavaIO/">
+        <h2 class="post-title">
+            Java面试之JavaIO
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的Java I/O部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+Java中IO流的基本架构是怎样的？流的类的名字有什么特点？
+Linux环境下的5种IO模型是什么？各自有什么区别？
+select和epoll之间有什么区别？
+NIO的三大组件是什么？如何使用？
+AIO如何使用？怎么实现的？
+NIO和AIO有什么区......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-02
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Java面试之Java基础/">
+        <h2 class="post-title">
+            Java面试之Java基础
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            这是Java面试复习点的Java基础部分。
+面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。
+
+
+
+浮点数可以使用位运算么？
+Integer类常量池缓存的范围是多少？
+整型byte,short,int,long的表示范围是多少？
+浮点数float和double在计算机中是怎么表示的？范围是多少？
+负数是怎么表示的？
+不同类型的数据运算时是如何进行类型......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-04-01
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Python入门/">
+        <h2 class="post-title">
+            Python入门
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Python是一门强类型的动态编程语言，支持包括面向对象、函数式、过程式等多种编程范式,且本身拥有一个巨大而广泛的标准库。Python的设计哲学强调代码的可读性和简洁的语法，相对于C++或Java而言，可以让开发者使用更少的语法表达想法。
+
+
+
+Python的定位
+Python解释器
+控制结构
+if
+while
+for
+break语句和循环语句中的else子语句
+pass语句
+
+
+函数
+形参......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-03-21
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/编译JDK源码/">
+        <h2 class="post-title">
+            JDK源码构建
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            在阅读JDK源码之前，先自己尝试着构建JDK源码，为后期的hack做好准备。
+
+
+
+
+前期准备
+下载openjdk源码
+环境要求：
+mac os x
+ubuntu
+
+
+
+
+构建环境
+mac os x
+ubuntu虚拟机
+
+
+构建步骤
+mac os x
+configure
+build
+
+
+ubuntu
+
+
+后记
+构建过程中遇到的问题
+error 1 gcc compiler is requir......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-03-20
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/SpringBoot入门/">
+        <h2 class="post-title">
+            SpringBoot入门
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Spring Boot是基于Spring的Java应用框架，它的出现让我们可以更加快速方便地创建、运行、测试和部署一个Spring应用。Spring Boot帮我们做了很多事，免去了我们很多不必要的工作，从而能够专注于实现我们的业务。
+
+
+
+
+初体验
+添加springboot的依赖
+编写代码
+执行代码
+打包成可执行的jar包
+
+
+
+
+初体验添加springboot的依赖12345&lt;pa......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2018-03-15
+        </p>
+    
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/techlife/Markdown入门/">
+        <h2 class="post-title">
+            Markdown入门
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Markdown是一门标记语言，使用简明的语法即可实现格式的渲染。
+
+
+
+基本语法
+标题
+设置内容格式
+有序列表
+无序列表
+插入链接
+插入图片
+插入文字引用
+插入内嵌代码
+插入代码块
+插入表格
+插入水平线
+插入脚注
+
+
+
+
+基本语法标题123(#)(空格)一级标题(##)(空格)二级标题(###)(空格)三级标题
+设置内容格式123_italics_**强调**~~废除的文字~~
+效果：
+
+......
+        </div>
+    </a>
+    
+        <p class="post-meta">
+            Posted by 剑知 on
+            2017-07-17
+        </p>
+    
+
+</div>
+<hr>
+
+
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    
+</ul>
+            
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+                    <hr>
+                    
+
+                    
+
+
+                    
+
+                    
+
+                
+            </div>
+
+          <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Featured Tags -->
+
+<section>
+    <!-- no hr -->
+    <h5><a href="/tags/">标签云</a></h5>
+    <div class="tags">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+            <a href="/tags/#单元测试" title="单元测试" rel="1">单元测试</a>
+            
+        
+            
+        
+            
+            <a href="/tags/#sleepingtalk" title="sleepingtalk" rel="6">sleepingtalk</a>
+            
+        
+            
+            <a href="/tags/#Groovy" title="Groovy" rel="2">Groovy</a>
+            
+        
+            
+            <a href="/tags/#Java" title="Java" rel="21">Java</a>
+            
+        
+            
+            <a href="/tags/#面试" title="面试" rel="12">面试</a>
+            
+        
+            
+            <a href="/tags/#Quartz" title="Quartz" rel="3">Quartz</a>
+            
+        
+            
+            <a href="/tags/#markdown" title="markdown" rel="1">markdown</a>
+            
+        
+            
+            <a href="/tags/#SpringBoot" title="SpringBoot" rel="1">SpringBoot</a>
+            
+        
+            
+            <a href="/tags/#好奇心" title="好奇心" rel="2">好奇心</a>
+            
+        
+            
+            <a href="/tags/#书单" title="书单" rel="1">书单</a>
+            
+        
+            
+            <a href="/tags/#数据库" title="数据库" rel="1">数据库</a>
+            
+        
+            
+            <a href="/tags/#Hbase" title="Hbase" rel="1">Hbase</a>
+            
+        
+            
+            <a href="/tags/#Python" title="Python" rel="1">Python</a>
+            
+        
+    </div>
+</section>
+
+        <hr>
+    
+        
+  <h5>最近发表</h3>
+  <div class="widget">
+    <ul>
+      
+        <li>
+          <a href="/curiority/书单/">书单</a>
+        </li>
+      
+        <li>
+          <a href="/techlife/Java中的动态代理/">Java中的动态代理</a>
+        </li>
+      
+        <li>
+          <a href="/techlife/Java中的反射/">Java中的反射</a>
+        </li>
+      
+        <li>
+          <a href="/techlife/Java对象的序列化/">Java对象的序列化</a>
+        </li>
+      
+        <li>
+          <a href="/techlife/Java对Groovy的集成/">Java对Groovy的集成</a>
+        </li>
+      
+    </ul>
+  </div>
+
+        <hr>
+    
+        
+    <h5>归档</h5>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">六月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">四月 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">三月 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">一月 2016</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+
+        <hr>
+    
+        <!-- Friends Blog -->
+
+<h5>友链</h5>
+<ul class="list-inline">
+
+    
+        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+    
+</ul>
+
+
+        <hr>
+    
+</div>
+
+
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/技术人生/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Java面试之数据库 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/techlife/Java面试之数据库/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                              <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                            
+                        </div>
+                        <h1>Java面试之数据库</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2018-04-09
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>这是Java面试复习点的数据库部分。</p>
+<p>面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。</p>
+<a id="more"></a>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#能否描述一些数据库的几个范式">能否描述一些数据库的几个范式？</a></li>
+<li><a href="#能否描述一些数据库的各个键概念是什么有什么区别">能否描述一些数据库的各个键？概念是什么？有什么区别？</a></li>
+<li><a href="#事务的四个特点是什么">事务的四个特点是什么？</a></li>
+<li><a href="#事务的状态有哪些画出状态转换图">事务的状态有哪些？画出状态转换图？</a></li>
+<li><a href="#数据库有哪些事务隔离级别">数据库有哪些事务隔离级别？</a></li>
+<li><a href="#mysql各种存储引擎分别支持哪些数据库锁类型和模式">MySQL各种存储引擎分别支持哪些数据库锁类型和模式？</a></li>
+<li><a href="#joinleft-join和right-join操作会用么有什么区别">join,left join和right join操作会用么？有什么区别？</a></li>
+<li><a href="#union和union-all之间的区别">union和union all之间的区别？</a></li>
+<li><a href="#基本的sql语句会写么">基本的sql语句会写么？</a></li>
+<li><a href="#视图的定义是什么有什么作用">视图的定义是什么？有什么作用？</a></li>
+<li><a href="#游标的定义是什么">游标的定义是什么？</a></li>
+<li><a href="#mysql数据库引擎负责哪些工作">MySQL数据库引擎负责哪些工作？</a></li>
+<li><a href="#mysql数据库的存储引擎有哪些各自有什么区别">MySQL数据库的存储引擎有哪些？各自有什么区别？</a></li>
+<li><a href="#innodb的数据结构是什么">InnoDB的数据结构是什么？</a></li>
+<li><a href="#mysql数据库索引的数据结构是什么为什么不用二叉查找树红黑树b树和b树有什么区别">MySQL数据库索引的数据结构是什么？为什么不用二叉查找树（红黑树）？B树和B+树有什么区别？</a></li>
+<li><a href="#mysql存储引擎都是如何实现索引的各自的实现方式有什么区别">MySQL存储引擎都是如何实现索引的？各自的实现方式有什么区别？</a></li>
+<li><a href="#应该在哪些列上创建索引">应该在哪些列上创建索引？</a></li>
+<li><a href="#不应该在哪些列上创建索引">不应该在哪些列上创建索引？</a></li>
+<li><a href="#索引的分类有哪些">索引的分类有哪些？</a></li>
+<li><a href="#mysql中怎么创建索引用过索引么">MySQL中怎么创建索引？用过索引么？</a></li>
+<li><a href="#索引的使用有什么策略">索引的使用有什么策略？</a></li>
+<li><a href="#索引在什么情况下会失效如何查看索引的使用情况">索引在什么情况下会失效？如何查看索引的使用情况？</a></li>
+<li><a href="#explain命令的用途是什么用过么输出结果中各列的含义是什么">Explain命令的用途是什么？用过么？输出结果中各列的含义是什么？</a></li>
+<li><a href="#数据库连接池的工作原理是什么用过连接池么用的哪种连接池">数据库连接池的工作原理是什么？用过连接池么？用的哪种连接池？</a></li>
+<li><a href="#大数据量下的优化方法有哪些">大数据量下的优化方法有哪些？</a></li>
+<li><a href="#能否描述使用jdbc-操作数据库的步骤">能否描述使用JDBC    操作数据库的步骤？</a></li>
+<li><a href="#statement和preparedstatement有什么区别">statement和preparedStatement有什么区别？</a></li>
+<li><a href="#sql语句的语法顺序和执行顺序各是什么">Sql语句的语法顺序和执行顺序各是什么？</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="能否描述一些数据库的几个范式？"><a href="#能否描述一些数据库的几个范式？" class="headerlink" title="能否描述一些数据库的几个范式？"></a>能否描述一些数据库的几个范式？</h1><p>答：引入数据库范式的目的是为了控制和减少数据库中的冗余数据和保证数据库中数据的一致性。范式级别越高，对表设计时的要求就越高，设计出来的表中数据的冗余性就越小，但是在查询的时候就会导致更多的表连接(对数据库效率有影响)。</p>
+<p>1.第一范式(1NF)：指数据库中的每一列都是不可分割的基本数据项，同一列中不能有多个值，即实体中的某个属性不能有多个值或重复的值。即第一范式要求属性值不可再分裂成更小部分；<br>比如，（职工号，姓名，电话）中，电话可能有办公电话和移动电话，就会有值重复。</p>
+<p>2.第二范式(2NF)：在第一范式的基础上建立起来的，即满足第二范式必须满足第一范式。第二范式要求数据库表中的每个实例或行必须可以被唯一地区分，即关系模式中的每一个非主属性完全函数依赖于R的某个候选键；<br>候选键是唯一标识表中每一行的键。候选键可以是单列键，也可以是复合键。<br>如（学号，课程号，成绩，学分），假设关键字是组合关键字（学号，课程号），学分仅依赖于课程号，对关键字（学号，课程号）只是部分依赖，不是完全依赖，这种会导致数据冗余，因此分成两个（学号，课程号，成绩），（课程号，学分）。<br>Book(ISBN,title,pubDate,publisher,contact)；</p>
+<p>3.第三范式(3NF)：如果关系模式R是第二范式，且每个非主属性都不传递依赖于R的候选键，则称R是第三范式；<br>Book(ISBN,title,pubDate,publisher,contact)；<br>国际标准书号（International Standard Book Number）<br>比如在上面的Book表中，每一行由ISBN唯一确定，但是contact(联系人)依赖于publisher(出版社)，publisher(出版社)依赖于ISBN，出现了contact对主键的传递依赖，所以这个是不符合第三范式的，为了满足第三范式，需要把Book表拆分成两张表；<br>Book(ISBN,title,pubDate,publisher)；<br>Contact(publisher,contact);</p>
+<p>4.BCNF：它构建在第三范式的基础上，如果关系模式R是第一范式，且每个属性都不传递依赖于R的候选键，则称R为BCNF的模式。<br>与第三范式相比，BCNF不但要求非主属性不能传递依赖于R的候选键，也不能存在候选键依赖于候选键的情况。也就是说，一个表内的两个可能的候选键之间不能相互依赖。<br>比如学号(学号，身份证号，姓名，年龄)，在这表中学号和身份证号都可以唯一确定某一行，并且，学号决定了身份证号，身份证号决定了学号，存在候选键依赖于候选键的情况，所以这个表不符合BCNF，需要改成(学号，身份证号)和(学号，姓名，年龄)。可以消除删除异常、插入异常和更新异常。</p>
+<p>5.第四范式(4NF)：设R是一个关系模式，D是R上的多值依赖集合。如果D中存在非平凡多值依赖XY时，X必是R的超键，那么称R是第四范式的模式。<br>即第四范式要求不能出现有多个多值事实。<br>比如用户表(用户ID，固定电话，手机)，在这个表中一个用户可能有多个固定电话，也可能有多个手机，所以这个表就不符合第四范式，因为存在两个列都有多值事实。把这个表改成表1(用户ID，固定电话)和表2(用户ID，手机)就可以了。<br>一列有m个值，另一列有n个值，则在一个表中有m*n行，拆分为两个表则为m+n行。减少冗余。</p>
+<p>6.第五范式(5NF)<br>第四范式处理的是相互独立的多值情况，而第五范式则处理相互依赖的多值情况。<br>有一个销售信息表SALES（销售人员，供应商，产品）。SALEPERSON代表销售人员，在某些情况下，这个表中会产生一些冗余。可以将表分解成表1（销售人员，供应商）；表2（销售人员，产品）；表3（供应商，产品）。</p>
+<h1 id="能否描述一些数据库的各个键？概念是什么？有什么区别？"><a href="#能否描述一些数据库的各个键？概念是什么？有什么区别？" class="headerlink" title="能否描述一些数据库的各个键？概念是什么？有什么区别？"></a>能否描述一些数据库的各个键？概念是什么？有什么区别？</h1><p>答：</p>
+<ul>
+<li>超键(super key):在关系中能唯一标识元组的属性集称为关系模式的超键</li>
+<li>候选键(candidate key):不含有多余属性的超键称为候选键</li>
+<li>主键(primary key):用户选作元组标识的一个候选键做为程序主键</li>
+<li>搜索键:用于在文件中查找记录的属性或属性值，在索引中用到的词。</li>
+</ul>
+<p>比如一个小范围的所有人，没有重名的，考虑以下属性：<br>身份证、姓名、性别、年龄。<br>身份证唯一所以是一个超键<br>姓名唯一所以是一个超键<br>姓名，性别）唯一所以是一个超键<br>姓名，性别，年龄）唯一所以是一个超键<br>–这里可以看出，超键的组合是唯一的，但可能不是最小唯一的<br>身份证唯一而且没有多余属性所以是一个候选键<br>姓名唯一而且没有多余属性所以是一个候选键<br>–这里可以看出，候选键是没有多余属性的超键。</p>
+<h1 id="事务的四个特点是什么？"><a href="#事务的四个特点是什么？" class="headerlink" title="事务的四个特点是什么？"></a>事务的四个特点是什么？</h1><p>答：原子性(Atomicity)、一致性(Consistency)、隔离性(Isolation)、持久性(Durability).即ACID四种属性。</p>
+<p>原子性：要求事务必须被原子性执行即要么不执行，要么全执行。避免执行一部分操作带来的错误。这个工作由事务管理部件处理。(组成事务处理的语句形成了一个逻辑单元，不能只执行其中的一部分。)</p>
+<p>一致性：一个事务执行前后，数据库必须保证一致性的状态。数据库的一致性状态应该满足模式锁指定的约束，那么在完整执行该事物后数据库仍然处于一致性状态。(在事务处理执行前后，数据库是一致的)</p>
+<p>隔离性：当两个或多个事务并发执行时，为了保证数据之间的安全性，将一个事物内部的操作隔离起来，不被其他正在执行的事物看到。确保隔离性是并发控制部件的责任。(一个事务处理对另一个事务处理的影响)</p>
+<p>持久性：也称永久性，事务完成以后，DBMS保证它对数据库中的数据的修改是永久性的，当系统或介质发生变化时，该修改也永久保持。确保持久性是数据库系统中恢复管理部件的责任。(事务处理的效果能够被永久保存下来 。)</p>
+<p>一般来说，事务的ACID四个特性都是由数据库管理系统进行保证的，在整个应用程序执行过程中，应用无需去考虑数据库的ACID属性。</p>
+<p>一般情况下通过执行COMMIT或ROLLBACK语句来终止事务的，当执行COMMIT语句时，事务对数据库做的修改也就成了永久性的了，执行ROLLBACK语句时，事务启动以来对数据库做的修改就撤消了，并且数据库回到事物执行之前的状态。</p>
+<h1 id="事务的状态有哪些？画出状态转换图？"><a href="#事务的状态有哪些？画出状态转换图？" class="headerlink" title="事务的状态有哪些？画出状态转换图？"></a>事务的状态有哪些？画出状态转换图？</h1><p>答：事务必须属于以下五个状态之一。</p>
+<ol>
+<li>活动状态：初始状态；事务执行时处于这个状态；</li>
+<li>部分提交状态：最后一条语句执行之后；</li>
+<li>失败状态：发现正常的执行不能继续之后；</li>
+<li>中止状态：事务回滚并且已经恢复到事务开始执行之前的状态；</li>
+<li>提交状态：成功完成后。</li>
+</ol>
+<p>事务进入中止状态之后可以选择重启事务或杀死事务。重启事务是仅当引起事务中止的是硬件错误或不是由事务的内部逻辑产生的软件错误时，重启事务看成是一个新的事务；杀死事务是由于事务的内部逻辑错误，只有重写应用程序才能改正，或者由于输入错误，或所需数据在数据库中没有找到。</p>
+<p>注意:<br>BEGIN或START TRANSACTION；显示地开启一个事务；<br>COMMIT；也可以使用COMMIT WORK，不过二者是等价的。COMMIT会提交事务，并使已对数据库进行的所有修改称为永久性的；<br>ROLLBACK；有可以使用ROLLBACK WORK，不过二者是等价的。回滚会结束用户的事务，并撤销正在进行的所有未提交的修改；<br>SAVEPOINT identifier；SAVEPOINT允许在事务中创建一个保存点，一个事务中可以有多个SAVEPOINT；<br>RELEASE SAVEPOINT identifier；删除一个事务的保存点，当没有指定的保存点时，执行该语句会抛出一个异常；<br>ROLLBACK TO identifier；把事务回滚到标记点；<br>SET TRANSACTION；用来设置事务的隔离级别。InnoDB存储引擎提供事务的隔离级别有READ UNCOMMITTED、READ COMMITTED、REPEATABLE READ和SERIALIZABLE。</p>
+<h1 id="数据库有哪些事务隔离级别？"><a href="#数据库有哪些事务隔离级别？" class="headerlink" title="数据库有哪些事务隔离级别？"></a>数据库有哪些事务隔离级别？</h1><p>答：有Read uncommitted,read committed,repeatable read,serializable四种隔离级别。</p>
+<p><code>Read uncommitted</code>表示一个事务可以读到另一个未提交事务的数据。会脏读。</p>
+<p><code>read committed</code>表示一个事务要等另一个事务提交后才能读取数据。会不可重复读（指一个事务范围内两个相同的查询却返回了不同的数据）。</p>
+<p><code>repeatable read</code>表示在开始读取数据（事务开启）后，不允许再修改数据。会有幻读问题（不可重复读对应的是update操作，幻读对应的是insert操作）。</p>
+<p><code>serializable</code>是最高级别的事务隔离级别，表示事务串行化顺序执行，可以避免脏读、不可重复读和幻读问题。但是效率低下，比较耗性能。</p>
+<p>大多数数据库默认是read committed级别。MySQL默认是repeatable read级别。</p>
+<p><a href="https://blog.csdn.net/qq_33290787/article/details/51924963" target="_blank" rel="noopener">参考</a></p>
+<h1 id="MySQL各种存储引擎分别支持哪些数据库锁类型和模式？"><a href="#MySQL各种存储引擎分别支持哪些数据库锁类型和模式？" class="headerlink" title="MySQL各种存储引擎分别支持哪些数据库锁类型和模式？"></a>MySQL各种存储引擎分别支持哪些数据库锁类型和模式？</h1><p>答：MySQL锁：<br><img src="/techlife/Java面试之数据库/1.jpg" alt=""></p>
+<ol>
+<li>行级锁定：<br>优点：锁定颗粒度很小，所以发生锁定资源争用的概率很小，挺高了并发性。<br>缺点：获取锁释放锁需要做更多的事情，容易发生死锁。</li>
+<li>表级锁定：<br>优点：锁定资源大，获取释放锁速度快，不容易发生死锁。<br>缺点：锁定资源争用的概率大</li>
+</ol>
+<p>MyIsam的表锁兼容性：<br><img src="/techlife/Java面试之数据库/2.jpg" alt=""></p>
+<p>Innodb行锁兼容性：</p>
+<ol>
+<li>共享锁（S）：允许一个事务去读一行，阻止其他事务获得相同数据集的排他锁。</li>
+<li>排他锁（X)：允许获得排他锁的事务更新数据，阻止其他事务取得相同数据集的共享读锁和排他写锁。另外，为了允许行锁和表锁共存，实现多粒度锁机制，InnoDB还有两种内部使用的意向锁（Intention Locks），这两种意向锁都是表锁。</li>
+<li>意向共享锁（IS）：事务打算给数据行加行共享锁，事务在给一个数据行加共享锁前必须先取得该表的IS锁。</li>
+<li>意向排他锁（IX）：事务打算给数据行加行排他锁，事务在给一个数据行加排他锁前必须先取得该表的IX锁<br><img src="/techlife/Java面试之数据库/3.jpg" alt=""></li>
+</ol>
+<h1 id="join-left-join和right-join操作会用么？有什么区别？"><a href="#join-left-join和right-join操作会用么？有什么区别？" class="headerlink" title="join,left join和right join操作会用么？有什么区别？"></a>join,left join和right join操作会用么？有什么区别？</h1><p>答：</p>
+<ul>
+<li>Join(内连接、自然连接)根据连接条件查出两张表中满足连接条件的数据，查出两个表中相同的数据；</li>
+<li>left join，以左表为主；</li>
+<li>right join，以右表为准；</li>
+<li>left join和right join为外连接。</li>
+</ul>
+<p><a href="https://blog.csdn.net/qq1332479771/article/details/62104624" target="_blank" rel="noopener">参考</a></p>
+<h1 id="union和union-all之间的区别？"><a href="#union和union-all之间的区别？" class="headerlink" title="union和union all之间的区别？"></a>union和union all之间的区别？</h1><p>答：union在对表求并集后会去掉重复的记录，所以会对产生的结果集进行排序运算，删除重复的记录后再返回结果。</p>
+<p>Union all 则只是将简单地将两个结果集合并之后就返回结果。因此，如果union的两个结果集中有重复的记录，那么返回的结果集就会包含重复的数据。</p>
+<h1 id="基本的sql语句会写么？"><a href="#基本的sql语句会写么？" class="headerlink" title="基本的sql语句会写么？"></a>基本的sql语句会写么？</h1><h1 id="视图的定义是什么？有什么作用？"><a href="#视图的定义是什么？有什么作用？" class="headerlink" title="视图的定义是什么？有什么作用？"></a>视图的定义是什么？有什么作用？</h1><p>答：视图是由从数据库的基本表中选出来的数据组成的逻辑窗口，与基本表不同，它是一个虚表。在数据库中，存放的只是视图的定义，而不存放视图中包含的数据项，这些数据项仍然存放在它原来的物理表中。<br>视图的作用主要有四点：</p>
+<ol>
+<li>可以简化数据查询语句；</li>
+<li>可以使用户从多角度看待同一数据；</li>
+<li>通过引入视图可以提高数据的安全性；(定义视图以将表与表之间的复杂的操作连接和搜索条件对用户不可见，用户只需要简单地对一个视图进行查询即可，故增加了数据的安全性，但是不能提高查询的效率)</li>
+<li>视图提供了一定程度的逻辑独立性。</li>
+</ol>
+<h1 id="游标的定义是什么？"><a href="#游标的定义是什么？" class="headerlink" title="游标的定义是什么？"></a>游标的定义是什么？</h1><p>答：游标提供了一种对从表中检索出的数据进行操作的灵活手段，它实际上是一种能从包含多条数据记录的结果集中每次提取一条记录的机制。<br>游标由结果集和结果集中指向特定记录的游标位置组成的。<br>在select返回的行集合中，游标不允许程序对整个行集合执行相同的操作，但对每一行数据的操作不作要求。游标有以下两个优点：</p>
+<ol>
+<li>在使用游标的表中，对行提供删除和更新的操作；</li>
+<li>游标将面向集合的数据库管理系统和面向行的程序设计连接了起来。</li>
+</ol>
+<h1 id="MySQL数据库引擎负责哪些工作？"><a href="#MySQL数据库引擎负责哪些工作？" class="headerlink" title="MySQL数据库引擎负责哪些工作？"></a>MySQL数据库引擎负责哪些工作？</h1><p>答：数据库引擎是用于存储、处理和保护数据的核心服务。利用数据库引擎可控制访问权限并快速处理事务，从而满足企业内大多数需要处理大量数据的应用程序的要求。 使用数据库引擎创建用于联机事务处理或联机分析处理数据的关系数据库。这包括创建用于存储数据的表和用于查看、管理和保护数据安全的数据库对象（如索引、视图和存储过程）。</p>
+<ul>
+<li>设计并创建数据库以保存系统所需的关系或XML文档</li>
+<li>实现系统以访问和更改数据库中存储的数据。包括实现网站或使用数据的应用程序，还包括生成使用SQL Server工具和实用工具以使用数据的过程。</li>
+<li>为单位或客户部署实现的系统</li>
+<li>提供日常管理支持以优化数据库的性能</li>
+</ul>
+<h1 id="MySQL数据库的存储引擎有哪些？各自有什么区别？"><a href="#MySQL数据库的存储引擎有哪些？各自有什么区别？" class="headerlink" title="MySQL数据库的存储引擎有哪些？各自有什么区别？"></a>MySQL数据库的存储引擎有哪些？各自有什么区别？</h1><p>答：<br>1.InnoDB 在MySQL 5.7，InnoDB是默认的MySQL存储引擎<br>主要优势包括：</p>
+<ul>
+<li>DML操作遵循ACID模型，具有commit , rollback 和 crash-recovery，保护数据的安全性；</li>
+<li>具有Oracle风格的行级别的锁，增加并发时的性能；</li>
+<li>表个才用主键索引的B+Tree的聚集索引，减少查找I/O，若不存在主键，则寻找一个可以唯一识别的属性作为主键，或者隐性生成一个主键</li>
+<li>支持外键约束，对外键的更新进行检查<br>注释<br>1、DML<br>DDL：数据库模式定义语言，关键字：create<br>DML：数据操纵语言，关键字：Insert、delete、update<br>DCL：数据库控制语言 ，关键字：grant、remove<br>DQL：数据库查询语言，关键字：select<br>2、ACID<br>ACID，指数据库事务正确执行的四个基本要素的缩写。包含：<br>原子性（Atomicity）<br>一致性（Consistency）<br>隔离性（Isolation）<br>持久性（Durability）</li>
+</ul>
+<p>2.MyISAM</p>
+<ul>
+<li>表的存储分为三个文件：.frm表格式；.MYD/MYData 数据文件;.MYI 索引文件；</li>
+<li>行数限制 (232)2 (1.844E+19) ；</li>
+<li>可能会导致文件损坏；</li>
+</ul>
+<p>3.MEMORY（HEAP）</p>
+<ul>
+<li>服务器停止或者重新启动，数据丢失；</li>
+<li>一个高可用性、更新频繁的表；</li>
+</ul>
+<p>4.CSV</p>
+<ul>
+<li>逗号分割值格式的文本型数据库；</li>
+<li>不支持索引；</li>
+<li>所有的列不能为空；</li>
+</ul>
+<p>5.ARCHIVE</p>
+<ul>
+<li>支持 INSERT, REPLACE, 和SELECT, 但不支持DELETE ， UPDATE；</li>
+<li>支持自增的列，但是不支持插入一个自增列一个比当前最大值小的值；</li>
+</ul>
+<p>6.BLACKHOLE</p>
+<ul>
+<li>支持所有类型的索引，可以自定义索引类型；</li>
+<li>只有表结构，不存储任何数据；但是有日志记录</li>
+</ul>
+<p>7.MERGE</p>
+<ul>
+<li>可以合并多个MyISAM 表</li>
+<li>访问安全问题：当用户被撤销了MyISAM 表的访问权限时，仍然可以通过MERGE 表访问MyISAM 表</li>
+</ul>
+<p>8.FEDERATED</p>
+<ul>
+<li>链接远程数据表</li>
+<li>where在远程数据库执行</li>
+</ul>
+<p>9.EXAMPLE</p>
+<ul>
+<li>一个数据库引擎开发的范例，用作写新的数据库引擎的基础</li>
+</ul>
+<p><a href="https://blog.csdn.net/u013986386/article/details/52869648" target="_blank" rel="noopener">参考1</a></p>
+<p><a href="https://www.cnblogs.com/0201zcr/p/5296843.html" target="_blank" rel="noopener">参考2</a></p>
+<p><a href="https://blog.csdn.net/a764340703/article/details/64129772" target="_blank" rel="noopener">参考3</a></p>
+<h1 id="InnoDB的数据结构是什么？"><a href="#InnoDB的数据结构是什么？" class="headerlink" title="InnoDB的数据结构是什么？"></a>InnoDB的数据结构是什么？</h1><h1 id="MySQL数据库索引的数据结构是什么？为什么不用二叉查找树（红黑树）？B树和B-树有什么区别？"><a href="#MySQL数据库索引的数据结构是什么？为什么不用二叉查找树（红黑树）？B树和B-树有什么区别？" class="headerlink" title="MySQL数据库索引的数据结构是什么？为什么不用二叉查找树（红黑树）？B树和B+树有什么区别？"></a>MySQL数据库索引的数据结构是什么？为什么不用二叉查找树（红黑树）？B树和B+树有什么区别？</h1><p>答：MySQL普遍使用B+树作为其索引结构。<br>与B-Tree相比，B+Tree有以下不同点：</p>
+<ol>
+<li>每个节点的指针上限为2d而不是2d+1。</li>
+<li>内节点不存储data，只存储key；叶子节点不存储指针。</li>
+</ol>
+<p>一般在数据库系统或文件系统中使用的B+Tree结构都在经典B+Tree的基础上进行了优化，增加了顺序访问指针。</p>
+<p>一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘I/O操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数。</p>
+<p>先从B-Tree分析，根据B-Tree的定义，可知检索一次最多需要访问h个节点。数据库系统的设计者巧妙利用了磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次I/O就可以完全载入。为了达到这个目的，在实际实现B-Tree还需要使用如下技巧：<br>每次新建节点时，直接申请一个页的空间，这样就保证一个节点物理上也存储在一个页里，加之计算机存储分配都是按页对齐的，就实现了一个node只需一次I/O。B-Tree中一次检索最多需要h-1次I/O（根节点常驻内存），渐进复杂度为O(h)=O(logdN)。一般实际应用中，出度d是非常大的数字，通常超过100，因此h非常小（通常不超过3）。</p>
+<p>综上所述，用B-Tree作为索引结构效率是非常高的。</p>
+<p>而红黑树这种结构，h明显要深的多。由于逻辑上很近的节点（父子）物理上可能很远，无法利用局部性，所以红黑树的I/O渐进复杂度也为O(h)，效率明显比B-Tree差很多。</p>
+<p>上文还说过，B+Tree更适合外存索引，原因和内节点出度d有关。从上面分析可以看到，d越大索引的性能越好，而出度的上限取决于节点内key和data的大小：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmax=floor(pagesize/(keysize+datasize+pointsize))</span><br></pre></td></tr></table></figure></p>
+<p>floor表示向下取整。由于B+Tree内节点去掉了data域，因此可以拥有更大的出度，拥有更好的性能。</p>
+<p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">参考</a></p>
+<h1 id="MySQL存储引擎都是如何实现索引的？各自的实现方式有什么区别？"><a href="#MySQL存储引擎都是如何实现索引的？各自的实现方式有什么区别？" class="headerlink" title="MySQL存储引擎都是如何实现索引的？各自的实现方式有什么区别？"></a>MySQL存储引擎都是如何实现索引的？各自的实现方式有什么区别？</h1><p>答：在MySQL中，索引属于存储引擎级别的概念，不同存储引擎对索引的实现方式是不同的。<br>MyISAM使用B+树作为索引的存储结构，叶子节点的data域存放的是数据记录的地址：<br><img src="/techlife/Java面试之数据库/4.jpg" alt=""></p>
+<p>在MyISAM中，主索引和辅助索引（Secondary key）在结构上没有任何区别，只是主索引要求key是唯一的，而辅助索引的key可以重复。MyISAM的索引方式也叫做“非聚集”的，之所以这么称呼是为了与InnoDB的聚集索引区分。</p>
+<p>虽然InnoDB也使用B+Tree作为索引结构，但具体实现方式却与MyISAM截然不同。<br>第一个重大区别是InnoDB的数据文件本身就是索引文件。从上文知道，MyISAM索引文件和数据文件是分离的，索引文件仅保存数据记录的地址。而在InnoDB中，表数据文件本身就是按B+Tree组织的一个索引结构，这棵树的叶节点data域保存了完整的数据记录。这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引。这种索引方式叫聚集索引。<br><img src="/techlife/Java面试之数据库/5.jpg" alt=""></p>
+<p>第二个与MyISAM索引的不同是InnoDB的辅助索引data域存储相应记录主键的值而不是地址。换句话说，InnoDB的所有辅助索引都引用主键作为data域：<br><img src="/techlife/Java面试之数据库/6.jpg" alt=""></p>
+<p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">参考</a></p>
+<h1 id="应该在哪些列上创建索引？"><a href="#应该在哪些列上创建索引？" class="headerlink" title="应该在哪些列上创建索引？"></a>应该在哪些列上创建索引？</h1><p>答：一般来说，应该在这些列上创建索引：</p>
+<ol>
+<li>在经常需要搜索的列上，可以加快搜索的速度；</li>
+<li>在经常需要根据范围进行搜索的列上创建索引，因为索引已经排序，其指定的范围是连续的；</li>
+<li>在作为主键的列上，强制该列的唯一性和组织表中数据的排列结构；</li>
+<li>在经常用在连接的列上，这些列主要是一些外键，可以加快连接的速度；</li>
+<li>在经常需要排序的列上创建索引，因为索引已经排序，这样查询可以利用索引的排序，加快排序查询时间；</li>
+<li>在经常使用在WHERE子句中的列上面创建索引，加快条件的判断速度。</li>
+</ol>
+<h1 id="不应该在哪些列上创建索引？"><a href="#不应该在哪些列上创建索引？" class="headerlink" title="不应该在哪些列上创建索引？"></a>不应该在哪些列上创建索引？</h1><p>答：一般两种情况下不建议建索引。<br>第一种情况是表记录比较少，例如一两千条甚至只有几百条记录的表，没必要建索引，让查询做全表扫描就好了。至于多少条记录才算多，这个个人有个人的看法，我个人的经验是以2000作为分界线，记录数不超过 2000可以考虑不建索引，超过2000条可以酌情考虑索引。</p>
+<p>另一种不建议建索引的情况是索引的选择性较低。所谓索引的选择性（Selectivity），是指不重复的索引值（也叫基数，Cardinality）与表记录数（#T）的比值：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Index Selectivity = Cardinality / #T</span><br></pre></td></tr></table></figure></p>
+<p>显然选择性的取值范围为(0, 1]，选择性越高的索引价值越大，这是由B+Tree的性质决定的。</p>
+<p>一般来说，不应该创建索引的的这些列具有下列特点：</p>
+<ol>
+<li>对于那些在查询中很少使用或者参考的列不应该创建索引。这是因为，既然这些列很少使用到，因此有索引或者无索引，并不能提高查询速度。相反，由于增加了索引，反而降低了系统的维护速度和增大了空间需求。</li>
+<li>对于那些只有很少数据值的列也不应该增加索引。这是因为，由于这些列的取值很少，例如人事表的性别列，在查询的结果中，结果集的数据行占了表中数据行的很大比例，即需要在表中搜索的数据行的比例很大。增加索引，并不能明显加快检索速度。</li>
+<li>对于那些定义为text, image和bit数据类型的列不应该增加索引。这是因为，这些列的数据量要么相当大，要么取值很少。</li>
+<li>当修改性能远远大于检索性能时，不应该创建索引。这是因为，修改性能和检索性能是互相矛盾的。当增加索引时，会提高检索性能，但是会降低修改性能。当减少索引时，会提高修改性能，降低检索性能。因此，当修改性能远远大于检索性能时，不应该创建索引<br><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">参考</a></li>
+</ol>
+<h1 id="索引的分类有哪些？"><a href="#索引的分类有哪些？" class="headerlink" title="索引的分类有哪些？"></a>索引的分类有哪些？</h1><p>答：</p>
+<ul>
+<li>顺序索引(ordered index)：基于值的顺序排序。</li>
+<li>散列索引(hash index)：基于将值平均分布到若干散列的桶中，一个所属的散列桶是由一个函数决定的，该函数称为散列函数。</li>
+</ul>
+<p>可以用索引顺序组织或B+树组织将记录文件组织成顺序文件，也可以用散列来组织文件。大多数数据库系统支持B+树索引，并且有可能还额外支持某种形式的散列文件组织或散列组织。</p>
+<p>如果基于码值查找并且不执行范围查询，散列组织对于在查询执行过程中创建的临时文件来说特别有用。如果会频繁地使用范围查询，使用顺序索引相对来说更好一点。</p>
+<h1 id="MySQL中怎么创建索引？用过索引么？"><a href="#MySQL中怎么创建索引？用过索引么？" class="headerlink" title="MySQL中怎么创建索引？用过索引么？"></a>MySQL中怎么创建索引？用过索引么？</h1><p>答：<code>create index  test_idx on tablename (col1,col2)。</code></p>
+<h1 id="索引的使用有什么策略？"><a href="#索引的使用有什么策略？" class="headerlink" title="索引的使用有什么策略？"></a>索引的使用有什么策略？</h1><p>答：高效使用索引的首要条件是知道什么样的查询会使用到索引，这个问题和B+Tree中的“最左前缀原理”有关。</p>
+<p>有一种与索引选择性有关的索引优化策略叫做前缀索引，就是用列的前缀代替整个列作为索引key，当前缀长度合适时，可以做到既使得前缀索引的选择性接近全列索引，同时因为索引key变短而减少了索引文件的大小和维护开销。</p>
+<p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">参考</a></p>
+<h1 id="索引在什么情况下会失效？如何查看索引的使用情况？"><a href="#索引在什么情况下会失效？如何查看索引的使用情况？" class="headerlink" title="索引在什么情况下会失效？如何查看索引的使用情况？"></a>索引在什么情况下会失效？如何查看索引的使用情况？</h1><p>答：</p>
+<ol>
+<li>如果条件中有or，即使有条件可以使用索引也不会使用。</li>
+<li>对于多列索引，不是使用的最左的一部分，则不会使用索引。</li>
+<li>Like查询以“%”开头。</li>
+<li>如果列类型是字符串，那么一定要在条件中将数据使用引号括起来，否则不使用索引。</li>
+<li>如果MySQL判定全表扫描要比使用索引快，则不使用索引。</li>
+</ol>
+<p>查看索引的使用情况：<code>show status like ‘Handler_read%’;</code><br>handler_read_key:这个值越高越好，越高表示使用索引查询到的次数<br>handler_read_rnd_next:这个值越高，说明查询低效</p>
+<p><a href="http://www.cnblogs.com/hongfei/archive/2012/10/20/2732589.html" target="_blank" rel="noopener">参考</a></p>
+<h1 id="Explain命令的用途是什么？用过么？输出结果中各列的含义是什么？"><a href="#Explain命令的用途是什么？用过么？输出结果中各列的含义是什么？" class="headerlink" title="Explain命令的用途是什么？用过么？输出结果中各列的含义是什么？"></a>Explain命令的用途是什么？用过么？输出结果中各列的含义是什么？</h1><p>答：explain命令用于查看sql语句的语句执行计划。这条命令的输出结果能够让我们了解MySQL 优化器是如何执行SQL 语句的。这条命令并没有提供任何调整建议，但它能够提供重要的信息帮助你做出调优决策。</p>
+<p>EXPLAIN 语法可以运行在SELECT 语句或者特定表上。如果作用在表上，那么此命令等同于DESC 表命令。<br>示例：<br><img src="/techlife/Java面试之数据库/7.jpg" alt=""></p>
+<p><a href="https://blog.csdn.net/woshiqjs/article/details/24135495." target="_blank" rel="noopener">参考</a></p>
+<h1 id="数据库连接池的工作原理是什么？用过连接池么？用的哪种连接池？"><a href="#数据库连接池的工作原理是什么？用过连接池么？用的哪种连接池？" class="headerlink" title="数据库连接池的工作原理是什么？用过连接池么？用的哪种连接池？"></a>数据库连接池的工作原理是什么？用过连接池么？用的哪种连接池？</h1><p>答：建立数据库连接的部分通常是整个应用系统的瓶颈所在，因为建立数据库连接的速度很多时候都决定了整个系统的运行速度。原因就是在建立数据库连接的时候需要同数据库系统建立通讯、分配资源和进行权限认证等操作，这些操作对应用程序来说是很耗费时间的。</p>
+<p>为了解决数据库连接的瓶颈问题，所以提出了数据库连接池的概念，核心理念就是在一个虚拟的容器中存放已经预先建立好的数据库连接对象，把这些数据库连接对象分配给需要的程序使用，当连接对象使用完之后不直接将这些连接关闭，而是再放回到这个池子中。</p>
+<p>通过使用连接池的技术，大大缓解了数据库连接的瓶颈问题，让开发的java应用程序具有更快的运行效率。并且通过数据库连接池具有更好的安全性，并且可以根据应用系统的需要，实时的修改连接池中保存的数据库连接对象的数量，将更有效地使用数据库连接池中的数据库连接对象。</p>
+<p>自己写的连接池是一个单例模式的connectionpool，然后初始化的时候根据配置文件中的连接数初始化好相应的数据库连接池中，用ArrayList维护这个连接。每次获取连接时从ArrayList中分配一个连接即可，然后把这个连接对象，等不用的时候再放到池子中。</p>
+<p>现在很多WEB服务器(Weblogic, WebSphere, Tomcat)都提供了DataSoruce的实现，即连接池的实现。通常我们把DataSource的实现，按其英文含义称之为数据源，数据源中都包含了数据库连接池的实现。也有一些开源组织提供了数据源的独立实现：</p>
+<ol>
+<li>DBCP 数据库连接池：DBCP 是 Apache 软件基金组织下的开源连接池实现，要使用DBCP数据源，需要应用程序应在系统中增加如下两个 jar 文件① Commons-dbcp.jar：连接池的实现② Commons-pool.jar：连接池实现的依赖库。</li>
+<li>C3P0 数据库连接池：C3P0是一个开源的JDBC连接池，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有Hibernate，Spring等。C3P0数据源在项目开发中使用得比较多。</li>
+<li>c3p0与dbcp区别<br>dbcp没有自动回收空闲连接的功能，c3p0有自动回收空闲连接功能。</li>
+</ol>
+<h1 id="大数据量下的优化方法有哪些？"><a href="#大数据量下的优化方法有哪些？" class="headerlink" title="大数据量下的优化方法有哪些？"></a>大数据量下的优化方法有哪些？</h1><p>答：</p>
+<ol>
+<li>编写优良的程序代码</li>
+<li>对海量数据进行分区操作</li>
+<li>建立缓存机制</li>
+<li>优化查询SQL语句</li>
+<li>避免使用耗费资源的操作:<br>带有DISTINCT,UNION,MINUS,INTERSECT的SQL语句会启动SQL引擎执行耗费资源的排序(SORT)功能. DISTINCT需要一次排序操作, 而其他的至少需要执行两次排序. 通常, 带有UNION, MINUS , INTERSECT的SQL语句都可以用其他方式重写. 如果你的数据库的SORT_AREA_SIZE调配得好, 使用UNION , MINUS, INTERSECT也是可以考虑的, 毕竟它们的可读性很强</li>
+<li>通常来说，如果语句能够避免子查询的使用，就尽量不用子查询。因为子查询的开销是相当昂贵的。</li>
+<li>分页处理；</li>
+<li>优化业务逻辑；</li>
+<li>只返回需要的数据</li>
+</ol>
+<h1 id="能否描述使用JDBC-操作数据库的步骤？"><a href="#能否描述使用JDBC-操作数据库的步骤？" class="headerlink" title="能否描述使用JDBC    操作数据库的步骤？"></a>能否描述使用JDBC    操作数据库的步骤？</h1><p>答：下面的代码以连接本机的Oracle数据库为例，演示JDBC操作数据库的步骤。<br>1.加载驱动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>2.创建连接<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Connection con = DriverManager.getConnection(&quot;jdbc:oracle:thin:@localhost:1521:orcl&quot;, &quot;scott&quot;, &quot;tiger&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>3.创建语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PreparedStatement ps = con.prepareStatement(&quot;select * from emp where sal between ? and ?&quot;);</span><br><span class="line">ps.setInt(1, 1000);</span><br><span class="line">ps.setInt(2, 3000);</span><br></pre></td></tr></table></figure></p>
+<p>4.执行语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResultSet rs = ps.executeQuery();</span><br></pre></td></tr></table></figure></p>
+<p>5.处理结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">while(rs.next()) &#123;</span><br><span class="line">    System.out.println(rs.getInt(&quot;empno&quot;) + &quot; - &quot; + rs.getString(&quot;ename&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>6.关闭资源<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">finally &#123;</span><br><span class="line">    if(con != null) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            con.close();</span><br><span class="line">        &#125; catch (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>提示：关闭外部资源的顺序应该和打开的顺序相反，也就是说先关闭ResultSet、再关闭Statement、在关闭Connection。上面的代码只关闭了Connection（连接），虽然通常情况下在关闭连接时，连接上创建的语句和打开的游标也会关闭，但不能保证总是如此，因此应该按照刚才说的顺序分别关闭。此外，第一步加载驱动在JDBC 4.0中是可以省略的（自动从类路径中加载驱动），但是我们建议保留。</p>
+<h1 id="statement和preparedStatement有什么区别？"><a href="#statement和preparedStatement有什么区别？" class="headerlink" title="statement和preparedStatement有什么区别？"></a>statement和preparedStatement有什么区别？</h1><p>答：与Statement相比</p>
+<ol>
+<li>安全：PreparedStatement接口代表预编译的语句，它主要的优势在于可以减少SQL的编译错误并增加SQL的安全性（减少SQL注射攻击的可能性）；</li>
+<li>可读性：PreparedStatement中的SQL语句是可以带参数的，避免了用字符串连接拼接SQL语句的麻烦和不安全；</li>
+<li>性能：当批量处理SQL或频繁执行相同的查询时，PreparedStatement有明显的性能上的优势，由于数据库可以将编译优化后的SQL语句缓存起来，下次执行相同结构的语句时就会很快（不用再次编译和生成执行计划）。</li>
+</ol>
+<p>补充：为了提供对存储过程的调用，JDBC API中还提供了CallableStatement接口。存储过程（Stored Procedure）是数据库中一组为了完成特定功能的SQL语句的集合，经编译后存储在数据库中，用户通过指定存储过程的名字并给出参数（如果该存储过程带有参数）来执行它。虽然调用存储过程会在网络开销、安全性、性能上获得很多好处，但是存在如果底层数据库发生迁移时就会有很多麻烦，因为每种数据库的存储过程在书写上存在不少的差别。</p>
+<h1 id="Sql语句的语法顺序和执行顺序各是什么？"><a href="#Sql语句的语法顺序和执行顺序各是什么？" class="headerlink" title="Sql语句的语法顺序和执行顺序各是什么？"></a>Sql语句的语法顺序和执行顺序各是什么？</h1><p>答：语法顺序：</p>
+<ol>
+<li>SELECT[DISTINCT]</li>
+<li>FROM</li>
+<li>WHERE</li>
+<li>GROUP BY</li>
+<li>HAVING</li>
+<li>UNION</li>
+<li>ORDER BY</li>
+</ol>
+<p>执行顺序：</p>
+<ol>
+<li>from</li>
+<li>join</li>
+<li>on</li>
+<li>where</li>
+<li>group by(开始使用select中的别名，后面的语句中都可以使用)</li>
+<li>avg,sum….</li>
+<li>having</li>
+<li>select</li>
+<li>distinct</li>
+<li>order by</li>
+</ol>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/techlife/Java面试之操作系统/" data-toggle="tooltip" data-placement="top" title="Java面试之操作系统">&larr; 上一篇</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/techlife/Java面试之数据结构和算法/" data-toggle="tooltip" data-placement="top" title="Java面试之数据结构和算法">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/techlife/Java面试之数据库/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

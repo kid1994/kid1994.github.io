@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Java面试之JavaIO - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/techlife/Java面试之JavaIO/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                              <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                            
+                        </div>
+                        <h1>Java面试之JavaIO</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2018-04-02
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>这是Java面试复习点的Java I/O部分。</p>
+<p>面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。</p>
+<a id="more"></a>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#java中io流的基本架构是怎样的流的类的名字有什么特点">Java中IO流的基本架构是怎样的？流的类的名字有什么特点？</a></li>
+<li><a href="#linux环境下的5种io模型是什么各自有什么区别">Linux环境下的5种IO模型是什么？各自有什么区别？</a></li>
+<li><a href="#select和epoll之间有什么区别">select和epoll之间有什么区别？</a></li>
+<li><a href="#nio的三大组件是什么如何使用">NIO的三大组件是什么？如何使用？</a></li>
+<li><a href="#aio如何使用怎么实现的">AIO如何使用？怎么实现的？</a></li>
+<li><a href="#nio和aio有什么区别">NIO和AIO有什么区别?</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="Java中IO流的基本架构是怎样的？流的类的名字有什么特点？"><a href="#Java中IO流的基本架构是怎样的？流的类的名字有什么特点？" class="headerlink" title="Java中IO流的基本架构是怎样的？流的类的名字有什么特点？"></a>Java中IO流的基本架构是怎样的？流的类的名字有什么特点？</h1><p>答：<br><img src="/techlife/Java面试之JavaIO/1.jpg" alt=""><br>以Reader或Writer结尾的都是字符流；以InputStream或OutputStream结尾的都是字节流。</p>
+<h1 id="Linux环境下的5种IO模型是什么？各自有什么区别？"><a href="#Linux环境下的5种IO模型是什么？各自有什么区别？" class="headerlink" title="Linux环境下的5种IO模型是什么？各自有什么区别？"></a>Linux环境下的5种IO模型是什么？各自有什么区别？</h1><p>答：首先要注意的是一个network IO会涉及到两个系统对象，一个是调用这个IO的process或Thread，另一个是系统内核（kernel）。当一个read操作发生时，会经历两个阶段：</p>
+<ol>
+<li>等待数据准备</li>
+<li>将数据从内核拷贝到进程中</li>
+</ol>
+<p>5种IO模型的区别就是在这两个阶段上各有不同的情况。<br>5种IO模型分别是：</p>
+<ol>
+<li>阻塞IO模型<br><img src="/techlife/Java面试之JavaIO/io1.jpg" alt=""></li>
+<li>非阻塞IO模型<br><img src="/techlife/Java面试之JavaIO/io2.jpg" alt=""></li>
+<li>多路复用IO模型<br><img src="/techlife/Java面试之JavaIO/io3.jpg" alt=""></li>
+<li>信号驱动IO模型</li>
+<li>异步IO模型<br><img src="/techlife/Java面试之JavaIO/io5.jpg" alt=""><br>5种IO模型的比较。<br><img src="/techlife/Java面试之JavaIO/io6.jpg" alt=""></li>
+</ol>
+<p><a href="https://blog.csdn.net/historyasamirror/article/details/5778378
+      https://blog.csdn.net/hguisu/article/details/7453390" target="_blank" rel="noopener">参考</a></p>
+<h1 id="select和epoll之间有什么区别？"><a href="#select和epoll之间有什么区别？" class="headerlink" title="select和epoll之间有什么区别？"></a>select和epoll之间有什么区别？</h1><p>答：<br>Select：</p>
+<ol>
+<li>每次调用select，都需要把fd集合从用户态拷贝到内核态，这个开销在fd很多时会很大</li>
+<li>同时每次调用select都需要在内核遍历传递进来的所有fd，这个开销在fd很多时也很大</li>
+<li>select支持的文件描述符数量太小了，默认是1024</li>
+</ol>
+<p>epoll：</p>
+<ol>
+<li>select，poll实现需要自己不断轮询所有fd集合，直到设备就绪，期间可能要睡眠和唤醒多次交替。而epoll其实也需要调用epoll_wait不断轮询就绪链表，期间也可能多次睡眠和唤醒交替，但是它是设备就绪时，调用回调函数，把就绪fd放入就绪链表中，并唤醒在epoll_wait中进入睡眠的进程。虽然都要睡眠和交替，但是select和poll在“醒着”的时候要遍历整个fd集合，而epoll在“醒着”的时候只要判断一下就绪链表是否为空就行了，这节省了大量的CPU时间。这就是回调机制带来的性能提升。</li>
+<li>select，poll每次调用都要把fd集合从用户态往内核态拷贝一次，并且要把current往设备等待队列中挂一次，而epoll只要一次拷贝，而且把current往等待队列上挂也只挂一次（在epoll_wait的开始，注意这里的等待队列并不是设备等待队列，只是一个epoll内部定义的等待队列）。这也能节省不少的开销<br><a href="https://www.cnblogs.com/creazylinux/p/7364685.html" target="_blank" rel="noopener">参考</a></li>
+</ol>
+<h1 id="NIO的三大组件是什么？如何使用？"><a href="#NIO的三大组件是什么？如何使用？" class="headerlink" title="NIO的三大组件是什么？如何使用？"></a>NIO的三大组件是什么？如何使用？</h1><p>答：NIO三大组件为Buffer、Channel和Selector。<br>Buffer表示内存中的一块区域，可以写入或读取数据。Java.nio中定义了几个Buffer的实现：<br><img src="/techlife/Java面试之JavaIO/2.jpg" alt=""><br>其中核心是ByteBuffer。Buffer的几个重要属性：</p>
+<ol>
+<li>position表示下一次的写入或读取位置。</li>
+<li>limit在写模式下表示最大能写入的数据大小，在读模式下表示实际的数据大小。</li>
+<li>capacity表示缓冲区的容量，一旦设定就不可更改。</li>
+<li>mark用来临时保存position的值。</li>
+</ol>
+<p>Buffer 的几个重要方法：</p>
+<ol>
+<li>静态方法allocat(int capacity)用来初始化Buffer。</li>
+<li>wrap(byte[] array)也可以用来初始化buffer。</li>
+<li>put(int index, byte b)用来填充buffer。</li>
+<li>flip方法用来切换读写模式。</li>
+<li>get(int index)用来读取数据，和put方法对应。</li>
+<li>mark()方法用来设置mark属性的值。</li>
+<li>reset方法用来将position设置为上次保存的marik的值。</li>
+<li>rewind()方法用来重置position的值为0。</li>
+<li>clear()方法用来重置buffer。</li>
+<li>compact方法也用来在向buffer中填充新的数据之前调用，区别是clear方法不会将buffer中的数据情况，只会覆盖，而调用compact方法后，会先处理还没有读取的数据。<br>Channel通道，表示数据来源或数据写入的目的地。Java.nio中几个Channel实现：<br><img src="/techlife/Java面试之JavaIO/3.jpg" alt=""><br>Channel直接和Buffer打交道，channel.read(buffer)和channel.write(buffer)。<br>FileChannel是不支持非阻塞的。</li>
+</ol>
+<p>最后是Selector，它建立在非阻塞的基础上，表示多路复用，用于实现一个线程管理多个Channel。Selector的基本操作：</p>
+<ol>
+<li>Selector s = Selector.open()打开一个Selector。</li>
+<li>SelectionKey key = channel.register(selector, SelectionKey.OP_READ)将一个Channel注册到一个Selector上。第二个 int 型参数（使用二进制的标记位）用于表明需要监听哪些感兴趣的事件。</li>
+<li>调用select方法来获取通道信息，用于判断我们感兴趣的事件是否已经发生了。</li>
+</ol>
+<p>Selector几个重要方法：</p>
+<ol>
+<li>Select()方法，调用此方法，会将上次 select 之后的准备好的 channel 对应的 SelectionKey 复制到 selected set 中。如果没有任何通道准备好，这个方法会阻塞，直到至少有一个通道准备好。</li>
+<li>selectNow()，功能和 select 一样，区别在于如果没有准备好的通道，那么此方法会立即返回 0。</li>
+<li>select(long timeout)，如果没有通道准备好，此方法会等待一会。</li>
+<li>wakeup()，这个方法是用来唤醒等待在 select() 和 select(timeout) 上的线程的。如果 wakeup() 先被调用，此时没有线程在 select 上阻塞，那么之后的一个 select() 或 select(timeout) 会立即返回，而不会阻塞，当然，它只会作用一次。<br><a href="https://javadoop.com/post/java-nio" target="_blank" rel="noopener">参考</a></li>
+</ol>
+<h1 id="AIO如何使用？怎么实现的？"><a href="#AIO如何使用？怎么实现的？" class="headerlink" title="AIO如何使用？怎么实现的？"></a>AIO如何使用？怎么实现的？</h1><p>答：Java中的异步IO提供了两种使用方式，分别是返回Future实例和使用回调函数。<br>Future接口的几个语义方法：</p>
+<ol>
+<li>Future.isDone():判断操作是否已经完成，包括正常完成，异常抛出和取消</li>
+<li>Future.cancle(ture):中断取消操作。参数true表示即使在运行也会进行中断。</li>
+<li>Future.isCancled():判断是否被取消</li>
+<li>Future.get():获取结果，会阻塞</li>
+<li>Future.get(10,TimeUnit.SECONDS):获取结果设置超时时间。<br>Java.nio.channels.CompletionHandler回调函数接口定义：</li>
+</ol>
+<p>Java中的异步IO使用一个线程池来负责执行任务，然后使用回调或自己去查询结果。异步IO主要是为了控制线程数量，减少过多的线程带来的内存消耗和CPU在线程调度上的开销。<br>在Unix/Linux系统中，JDK使用了并发包中的线程池来管理任务。而在Windows系统中，提供了一种叫IO completion ports的解决方案，简称IOCP，由操作系统负责管理线程池，性能非常优异，所以JDK在windows中直接使用的是IOCP。<br><a href="https://javadoop.com/post/nio-and-aio" target="_blank" rel="noopener">参考</a></p>
+<h1 id="NIO和AIO有什么区别"><a href="#NIO和AIO有什么区别" class="headerlink" title="NIO和AIO有什么区别?"></a>NIO和AIO有什么区别?</h1><p>答：非阻塞同步IO指用户调用读写方法是不阻塞的，立刻返回的，而且需要用户线程来检查IO状态。需要注意的是，如果发现有可以操作的IO，那么实际用户进程还是会阻塞等待内核复制数据到用户进程，它与同步阻塞IO的区别是后者全程等待。</p>
+<p>非阻塞异步IO指用户调用读写方法是不阻塞的，立刻返回，而且用户不需要关注读写，只需要提供回调操作，内核线程在完成读写后回调用户提供的callback。<br>两个概念的不同造成了编程模型的不同。</p>
+<p>非阻塞同步IO由于读写方法非阻塞，并且需要用户自己来进行读写，所以每次调用读写方法实际读写的字节数是不确定的，所以需要一个Buffer来保存每次读写的字节状态。更重要的是用户不知道什么时候完成了读写，一般需要用while循环判断Buffer的状态来跟踪读写。</p>
+<p>非阻塞异步IO由于是内核线程进行读写，并且在IO完成后会回调用户提供的callback，编程模型就比较简单，用户只需要调用读写，提供回调就可以了，比如 read(filename, callback)<br>select / poll / epoll 从本质上说都是非阻塞同步IO，select会收到IO就绪的状态，然后通知用户去处理IO，实际的IO操作还需要用户等待内核复制操作。</p>
+<p>要理解IO就绪和完成的区别。就绪指的是还需要用户自己去处理，完成指的是内核帮助完成了，用户不用关心IO过程，只需要提供回调函数。</p>
+<p>理解了非阻塞同步IO和非阻塞异步IO的区别之后，就不难理解Java NIO的设计了。NIO是围绕ByteBuffer来进行读写的，ByteBuffer是一个缓冲区，用来记录读写的状态，通过多次检查ByteBuffer的状态来确定IO是否完成。</p>
+<p>Java 1.7的NIO2.0 引入了非阻塞异步IO的概念，编程模型大大简化了。用户只需要关注回调函数即可。<br><a href="https://blog.csdn.net/iter_zc/article/details/39291647" target="_blank" rel="noopener">参考</a></p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/techlife/Java面试之Java集合/" data-toggle="tooltip" data-placement="top" title="Java面试之Java集合">&larr; 上一篇</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/techlife/Java面试之Java基础/" data-toggle="tooltip" data-placement="top" title="Java面试之Java基础">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/techlife/Java面试之JavaIO/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

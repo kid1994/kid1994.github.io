@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Java面试之设计模式 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/techlife/Java面试之设计模式/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                              <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                            
+                        </div>
+                        <h1>Java面试之设计模式</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2018-04-07
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>这是Java面试复习点的设计模式部分。</p>
+<p>面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。</p>
+<a id="more"></a>
+<p>图片来自：《大话设计模式》,清华出版社，程杰</p>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#设计模式的六大原则是哪些">设计模式的六大原则是哪些</a></li>
+<li><a href="#创建型模式有哪些每种模式的概念是什么每种模式的举例各自有哪些应用">创建型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？</a><ul>
+<li><a href="#简单工厂">简单工厂</a></li>
+<li><a href="#工厂方法">工厂方法</a></li>
+<li><a href="#抽象工厂">抽象工厂</a></li>
+<li><a href="#建造者">建造者</a></li>
+<li><a href="#原型">原型</a></li>
+<li><a href="#单例">单例</a></li>
+</ul>
+</li>
+<li><a href="#结构型模式有哪些每种模式的概念是什么每种模式的举例各自有哪些应用">结构型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？</a><ul>
+<li><a href="#适配器">适配器</a></li>
+<li><a href="#组合">组合</a></li>
+<li><a href="#装饰">装饰</a></li>
+<li><a href="#外观">外观</a></li>
+<li><a href="#代理">代理</a></li>
+</ul>
+</li>
+<li><a href="#行为型模式有哪些每种模式的概念是什么每种模式的举例各自有哪些应用">行为型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？</a><ul>
+<li><a href="#观察者发布-订阅模式">观察者（发布-订阅模式）</a></li>
+<li><a href="#模板方法">模板方法</a></li>
+<li><a href="#职责链">职责链</a></li>
+<li><a href="#迭代器">迭代器</a></li>
+<li><a href="#访问者visitor">访问者visitor</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="设计模式的六大原则是哪些"><a href="#设计模式的六大原则是哪些" class="headerlink" title="设计模式的六大原则是哪些"></a>设计模式的六大原则是哪些</h1><p>答：</p>
+<ol>
+<li>开放封闭原则：软件实体（类、模块、函数等）应该可以扩展，但是不可以修改。</li>
+<li>单一职责原则:就一个类而言，应该仅有一个引起它变化的原因。</li>
+<li>依赖倒转原则：高层模块不应该依赖底层模块，两个应该都依赖抽象。抽象不应该依赖细节，细节应该依赖抽象。</li>
+<li>接口隔离原则：客户端不应该依赖它不需要的接口，类之间的依赖关系应该建立在最小的接口上。</li>
+<li>里氏代换原则：子类必须能够替换掉它们的父类类型。</li>
+<li>迪米特法则（最少知识原则）：如果两个类不必彼此直接通信，那么这两个类就不应该发生直接的相互作用。如果其中一个类需要调用另一个类的方法，可以通过第三方转发这个调用。</li>
+<li>合成/聚合复用原则：尽量不使用继承，而是使用合成/聚合。</li>
+</ol>
+<h1 id="创建型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？"><a href="#创建型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？" class="headerlink" title="创建型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？"></a>创建型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？</h1><h2 id="简单工厂"><a href="#简单工厂" class="headerlink" title="简单工厂"></a>简单工厂</h2><p>答：类比：计算器。<br><img src="/techlife/Java面试之设计模式/1.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter1</p>
+<h2 id="工厂方法"><a href="#工厂方法" class="headerlink" title="工厂方法"></a>工厂方法</h2><p>答：定义：定义一个用于创建对象的接口，让子类决定实例化哪个类。工厂方法时一个类的实例化延迟到它的子类。<br>结构图：<br><img src="/techlife/Java面试之设计模式/2.jpg" alt=""></p>
+<p>类比：计算器：<br><img src="/techlife/Java面试之设计模式/3.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter8</p>
+<h2 id="抽象工厂"><a href="#抽象工厂" class="headerlink" title="抽象工厂"></a>抽象工厂</h2><p>答：定义：提供一个创建一系列或相关依赖对象的接口，而无需指定它们具体的类。<br>结构图：<br><img src="/techlife/Java面试之设计模式/4.jpg" alt=""></p>
+<p>类比：更换数据库：<br><img src="/techlife/Java面试之设计模式/5.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter15</p>
+<h2 id="建造者"><a href="#建造者" class="headerlink" title="建造者"></a>建造者</h2><p>答：定义：将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。<br>结构图：<br><img src="/techlife/Java面试之设计模式/6.jpg" alt=""></p>
+<p>类比：建造小人：<br><img src="/techlife/Java面试之设计模式/7.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter13</p>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p>答：定义：用原型实例指定创建对象的种类，并通过拷贝这些原型创建新的对象。结构图：<br><img src="/techlife/Java面试之设计模式/8.jpg" alt=""></p>
+<p>类比：复制简历。</p>
+<p>参考：大话设计模式Chapter9</p>
+<h2 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h2><p>答：定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点。结构图：<br><img src="/techlife/Java面试之设计模式/9.jpg" alt=""></p>
+<p>实现方式：</p>
+<ol>
+<li>懒汉式</li>
+<li>加同步的懒汉式</li>
+<li>饿汉式</li>
+<li>双重加锁式</li>
+<li>静态内部类式</li>
+<li>枚举类式<br>参考：大话设计模式Chapter21</li>
+</ol>
+<h1 id="结构型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？"><a href="#结构型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？" class="headerlink" title="结构型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？"></a>结构型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？</h1><h2 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h2><p>答：将一个类的接口转换成客户希望的另一个接口。Adapter模式使得那些原本因为接口不兼容而不能一起工作的类可以一起工作。结构图：<br><img src="/techlife/Java面试之设计模式/10.jpg" alt=""></p>
+<p>类比：NBA球员翻译：<br><img src="/techlife/Java面试之设计模式/11.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter17</p>
+<h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>答：定义：将对象组合成树形结构以表示“部分-整体”的层次结构。组合模式使得用户对单个对象和组合对象的使用具有一致性。结构图：<br><img src="/techlife/Java面试之设计模式/12.jpg" alt=""></p>
+<p>类比：公司不同部门的管理系统：<br><img src="/techlife/Java面试之设计模式/13.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter19</p>
+<h2 id="装饰"><a href="#装饰" class="headerlink" title="装饰"></a>装饰</h2><p>答：定义：动态地给一个对象添加一些额外的职责，就增加功能来说，装饰模式比生成子类更加灵活。结构图：<br><img src="/techlife/Java面试之设计模式/14.jpg" alt=""></p>
+<p>类比：人要衣装：<br><img src="/techlife/Java面试之设计模式/15.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter6</p>
+<h2 id="外观"><a href="#外观" class="headerlink" title="外观"></a>外观</h2><p>答：定义：为子系统中的一组接口提供一个一致的界面，此模式定义了一个高层的接口，这个接口使得这一子系统更加容易使用。结构图：<br><img src="/techlife/Java面试之设计模式/16.jpg" alt=""></p>
+<p>类比：投资基金：<br><img src="/techlife/Java面试之设计模式/17.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter12</p>
+<h2 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h2><p>答：定义：为其它对象提供一种代理以控制对该对象的访问。结构图：<br><img src="/techlife/Java面试之设计模式/18.jpg" alt=""></p>
+<p>类比：为别人做嫁衣：<br><img src="/techlife/Java面试之设计模式/19.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter7</p>
+<h1 id="行为型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？"><a href="#行为型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？" class="headerlink" title="行为型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？"></a>行为型模式有哪些？每种模式的概念是什么？每种模式的举例？各自有哪些应用？</h1><h2 id="观察者（发布-订阅模式）"><a href="#观察者（发布-订阅模式）" class="headerlink" title="观察者（发布-订阅模式）"></a>观察者（发布-订阅模式）</h2><p>答：定义：定义了一种一对多的依赖关系，让多个观察者对象同时监听一个主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自动更新自己。结构图：<br><img src="/techlife/Java面试之设计模式/20.jpg" alt=""></p>
+<p>类比：老板回来通知员工：<br><img src="/techlife/Java面试之设计模式/21.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter14</p>
+<h2 id="模板方法"><a href="#模板方法" class="headerlink" title="模板方法"></a>模板方法</h2><p>答：定义：定义一个操作中算法的骨架，而将一些步骤延迟到子类中。模板方法可以使得子类不改变一个算法的结构即可重新定义该算法的某些特定步骤。结构图：<br><img src="/techlife/Java面试之设计模式/22.jpg" alt=""></p>
+<p>类比：学生抄试卷答题：<br><img src="/techlife/Java面试之设计模式/23.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter10</p>
+<h2 id="职责链"><a href="#职责链" class="headerlink" title="职责链"></a>职责链</h2><p>答：定义：使多个对象都有机会处理请求，从而避免请求的发送者和接受者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递请求，知道有一个对象处理它为止。结构图：<br><img src="/techlife/Java面试之设计模式/24.jpg" alt=""></p>
+<p>类比：老板审批加薪：<br><img src="/techlife/Java面试之设计模式/25.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter24</p>
+<h2 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h2><p>答：定义：提供一种方法顺序访问一个聚合对象中的各个元素，又不暴露该对象的内部表示。结构图：<br><img src="/techlife/Java面试之设计模式/26.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter20</p>
+<h2 id="访问者visitor"><a href="#访问者visitor" class="headerlink" title="访问者visitor"></a>访问者visitor</h2><p>答：定义：表示一个作用于某对象结构上的各元素的操作。它可以使你在不改变各元素的类的前提下定义对这些元素的操作。访问者模式是为了解耦数据结构和作用于这些结构上的操作，使得操作集合可以相对自由地演化。结构图：<br><img src="/techlife/Java面试之设计模式/27.jpg" alt=""></p>
+<p>类比：男人和女人：<br><img src="/techlife/Java面试之设计模式/28.jpg" alt=""></p>
+<p>参考：大话设计模式Chapter28</p>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/techlife/Java面试之数据结构和算法/" data-toggle="tooltip" data-placement="top" title="Java面试之数据结构和算法">&larr; 上一篇</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/techlife/Java面试之Spring/" data-toggle="tooltip" data-placement="top" title="Java面试之Spring">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/techlife/Java面试之设计模式/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

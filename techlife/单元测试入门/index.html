@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          单元测试 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/techlife/单元测试入门/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#单元测试" title="单元测试">单元测试</a>
+                            
+                        </div>
+                        <h1>单元测试</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2018-07-15
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>单元测试是指对系统中的功能单元进行测试。维基百科上的解释是：单元测试（又称为模块测试, Unit Testing）是针对程序模块（软件设计的最小单位）来进行正确性检验的测试工作。程序单元是应用的最小可测试部件。在过程化编程中，一个单元就是单个程序、函数、过程等；对于面向对象编程，最小单元就是方法，包括基类（超类）、抽象类、或者派生类（子类）中的方法。</p>
+<p><img src="https://kid1994.github.io/2018/07/15/单元测试入门/test.jpg" alt=""></p>
+<a id="more"></a>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#单测的必要性">单测的必要性</a></li>
+<li><a href="#单测的难点">单测的难点</a></li>
+<li><a href="#单测的技术栈">单测的技术栈</a><ul>
+<li><a href="#junit">junit</a><ul>
+<li><a href="#基本使用">基本使用</a></li>
+<li><a href="#注解">注解</a></li>
+<li><a href="#断言">断言</a></li>
+<li><a href="#test-runners">test runners</a></li>
+</ul>
+</li>
+<li><a href="#spring-test">spring test</a><ul>
+<li><a href="#基本使用">基本使用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#实践及遇到的问题">实践及遇到的问题</a></li>
+<li><a href="#参考">参考</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="单测的必要性"><a href="#单测的必要性" class="headerlink" title="单测的必要性"></a>单测的必要性</h1><p>个人认为单测的必要性有以下几点：</p>
+<ol>
+<li>保证代码的质量。这点不言自明，单测可以保证代码正确地实现了功能。</li>
+<li>提高开发的效率。虽然表面上编写单测代码可能会花更多的时间，但从长远的角度来看，实际上是能够提高开发效率的。因为保证了一个功能单元的正确和可靠性，将不会威胁到其它功能单元的运行，在出现了bug时也能更方便地调试。</li>
+<li>降低项目的风险。单测能够尽早地发现bug，避免了bug的堆积为项目带来的风险。</li>
+</ol>
+<h1 id="单测的难点"><a href="#单测的难点" class="headerlink" title="单测的难点"></a>单测的难点</h1><p>单测虽然带来了诸多好处，但实施的时候也会面临诸多难点：</p>
+<ol>
+<li>学习成本。在单测的过程中会面临许多的问题场景，为了解决这些问题，我们需要额外学习一些工具和框架。比如为了避免外部依赖的影响，我们需要学习mock框架；为了避免产生脏数据，我们需要学习内存数据库等。</li>
+<li>开发成本。为功能单元编写全面的测试用例，无疑会增加团队的开发成本。</li>
+</ol>
+<h1 id="单测的技术栈"><a href="#单测的技术栈" class="headerlink" title="单测的技术栈"></a>单测的技术栈</h1><h2 id="junit"><a href="#junit" class="headerlink" title="junit"></a>junit</h2><p>Junit是一个经典的单元测试框架。</p>
+<p>如果不使用框架，我们要去测试一个类，最直接的方法就是在main函数里面编写测试代码，并且用System.out输出一些信息，然后执行main函数来判断测试是否通过。</p>
+<p>举例，如果我们要测试下面的类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Calculator &#123;</span><br><span class="line">  public int add(int a, int b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>直接的方法就是这样做：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Calculator &#123;</span><br><span class="line">  public int add(int a, int b) &#123;</span><br><span class="line">    return a + b;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    Calculator c = new Calculator();</span><br><span class="line">    int re = c.add(1, 1);</span><br><span class="line">    System.out.printlng(re);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后执行main方法，看是否会输出2；</p>
+<p>但这种方法在测试一两个类的时候还好，一旦要测试大量的类或者方法，将会暴露出一些问题：</p>
+<ol>
+<li>测试代码和非测试代码混在一起，难以管理。</li>
+<li>每次测试的时候都要一个一个地执行main方法，难以实现自动化。</li>
+</ol>
+<p>因此我们就需要一种框架来帮我们解决上述问题，Junit就是其中一种。</p>
+<h3 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h3><p>我用maven管理项目，首先加入Junit的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.12&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>还以上面的Calculator类举例,用Junit框架我们就可以这样测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class CalculatorTest &#123;</span><br><span class="line">  @Test</span><br><span class="line">  public void testAdd() &#123;</span><br><span class="line">    Calculator c = new Calculator();</span><br><span class="line">    int re = c.add(1, 1);</span><br><span class="line">    Assert.assertEquals(re, 2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，我们新建了一个类，然后在testAdd()方法里测试Calculator类的add方法。有两点区别：</p>
+<ol>
+<li>多了一个@Test注解。这是Junit框架提供的一种注解，来标识一个方法为测试方法。这样框架运行的时候就可以执行该方法了。</li>
+<li>通过assertEquals来断言结果，而不是输出来人工看。这就是自动化。</li>
+</ol>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><p>Junit提供了一系列注解帮助我们执行测试，除了上述@Test注解外，还有以下几种:</p>
+<ol>
+<li>@Ignore : 可用于标注类或方法，表示忽略该类或方法的测试。</li>
+<li>@BeforeClass : 用于标注方法，表示该方法需要在所有单测方法执行前执行一次，通常用于执行一些初始化的工作。该注解标注的方法必须是public static void且无参数的,通常命名为setup。</li>
+<li>@AfterClass : 用于标注方法，表示该方法需要在所有单测方法执行完后再执行，通常用于执行一些回收资源之类的工作。该注解标注的方法同样必须是public static void且无参数，通常命名为teardown。</li>
+<li>@Before : 用于标注方法，表示该方法在每个单测方法执行前都要执行一次，用于执行一些准备工作。标注的方法必须是public void且无参数的。</li>
+<li>@After ： 和@Before对应。</li>
+</ol>
+<h3 id="断言"><a href="#断言" class="headerlink" title="断言"></a>断言</h3><p>断言是一种自动化测试的机制，表示程序执行的结果要符合某种预期，不然就是失败的。除了上面的assertEquals断言，Junit还提供了针对原子类型、数组和引用类型的各种断言：</p>
+<ol>
+<li><code>assertEquals</code>表示结果要等于某个给定的值。</li>
+<li><code>assertArrayEquals</code>表示一个数组里的值都要等于某个给定数组里对应的值。</li>
+<li><code>assertTrue</code>和<code>assertFalse</code>表示结果要为真/假。</li>
+<li><code>assertNull</code>和<code>assertNotNull</code>表示结果为空或不为空。</li>
+<li><code>assertSame</code>和<code>assertNotSame</code>表示两个对象是否为同一个对象。</li>
+<li><code>assertThat</code>是最复杂也最灵活的一种断言，是在其它断言都不能满足使用的时候用的。它表示断言执行的结果要满足某种条件。该方法的签名如下:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* @param reason:断言失败时输出的关于错误的相关信息</span><br><span class="line">* @param actual:待比较的值，即执行的结果</span><br><span class="line">* @param matcher:需要满足的条件的表达式</span><br><span class="line">*/</span><br><span class="line">public static &lt;T&gt; void assertThat(String reason, T actual,</span><br><span class="line">            Matcher&lt;? super T&gt; matcher) &#123;</span><br><span class="line">        MatcherAssert.assertThat(reason, actual, matcher);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>举个例子：断言字符串”ab”既包含”a”又包含”b”:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assertThat(&quot;字符串&quot;ab只包含&quot;a&quot;和&quot;b&quot;中的一种&quot;,ab&quot;, both(containsString(&quot;a&quot;)).and(containsString(&quot;b&quot;)));</span><br></pre></td></tr></table></figure>
+<h3 id="test-runners"><a href="#test-runners" class="headerlink" title="test runners"></a>test runners</h3><p>待续…</p>
+<h2 id="spring-test"><a href="#spring-test" class="headerlink" title="spring test"></a>spring test</h2><p>Spring test是Spring框架中的一个模块，也就是说，它可以使用Spring提供的IOC特性。使用Spring test的原因主要就是项目使用了Spring，所有bean都是由Spring负责注入的，这样我们如果要测试某个类的时候，就不能直接new了，还得从Spring的容器中去获取。</p>
+<p>Spring test相当于在Junit之上加入了IoC特性，这样在单测中需要使用的Bean就可以由Spring    帮忙注入了。另一方面，Spring test可以在运行多个单测时，只初始化一次容器，加快了单测执行的速度和效率。</p>
+<h3 id="基本使用-1"><a href="#基本使用-1" class="headerlink" title="基本使用"></a>基本使用</h3><p>为了只让Spring初始化一次容器，可以创建一个BaseTest类:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringJUnit4ClassRunner.class)</span><br><span class="line">@ContextConfiguration(&quot;classpath:applicationContext-test.xml&quot;)</span><br><span class="line">public BaseTest &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有两点需要注意的：</p>
+<ol>
+<li><code>@RunWith(SpringJUnit4ClassRunner.class)</code>表示使用Spring的Test runner来执行单测。</li>
+<li><code>@ContextConfiguration(&quot;classpath:applicationContext-test.xml&quot;)</code>表示设置bean的配置文件，该文件里就是Spring负责管理的所有Bean了。</li>
+</ol>
+<p>然后其它的测试类就可以继承这个BaseTest类，然后使用Spring所提供的服务了，比如测试上述的Calculator类:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class CalculatorTest extends BaseTest &#123;</span><br><span class="line">  @Autowaired</span><br><span class="line">  private CalculateService calculateService;</span><br><span class="line"></span><br><span class="line">  @Test</span><br><span class="line">  public void testAdd() &#123;</span><br><span class="line">    int re = calculateService.add(1, 1);</span><br><span class="line">    assertEquals(re, 2);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>CalculatorTest类里的CalculateService就是由Spring负责注入的。</p>
+<h1 id="实践及遇到的问题"><a href="#实践及遇到的问题" class="headerlink" title="实践及遇到的问题"></a>实践及遇到的问题</h1><p>今天在用Junit进行单元测试的时候遇到了一个问题，测试是pass的，但是总没有出现我要的结果。单步调试的时候会在某一步突然退出，控制台打印“disconnect from the target JVM”。</p>
+<p>到网上搜这个错误，没找到我这种情况的解决办法。最后只能用暴力的老办法了—打日志，能打的地方都打上，然后发现一个现象，程序每次所能执行到的代码行是不一样的，但是运行时间是几乎一样的，脑子嗡的一下，突然明白是怎么回事了。我的代码是在子线程中运行的，但是单测的主线程每次运行完就终止了，而不会等待子线程运行完，从而终止了子线程的运行。</p>
+<p>又到网上一查，发现Junit是不支持执行多线程测试的。那要怎么办呢？一个最直接的办法就是让单测主线程等待子线程运行完才退出，即sleep一段时间，但也很显然，缺点是主线程不知道要等待多久，所以只能尽可能等待地久一点。这种方法很不优雅，另一种方法就是利用同步结构工具来同步单测主线程和子线程。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://junit.org/junit4/" target="_blank" rel="noopener">Junit4</a></li>
+<li><a href="https://junit.org/junit5/docs/current/user-guide/" target="_blank" rel="noopener">Junit5 user guide</a></li>
+<li><a href="https://martinfowler.com/articles/mocksArentStubs.html" target="_blank" rel="noopener">Mocks Aren’t Stubs</a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/techlife/Quartz源码分析之任务的调度和执行/" data-toggle="tooltip" data-placement="top" title="Quartz源码分析之任务的调度和执行">&larr; 上一篇</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/techlife/Quartz源码分析之任务存储/" data-toggle="tooltip" data-placement="top" title="Quartz源码分析之任务存储">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#单元测试" title="单元测试">单元测试</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/techlife/单元测试入门/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

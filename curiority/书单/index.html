@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          书单 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/curiority/书单/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#好奇心" title="好奇心">好奇心</a>
+                            
+                              <a class="tag" href="/tags/#书单" title="书单">书单</a>
+                            
+                        </div>
+                        <h1>书单</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2018-10-28
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>记录一些已看和待看的书籍。</p>
+<p><img src="https://kid1994.github.io/2018/10/28/书单/book.jpg" alt=""></p>
+<a id="more"></a>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#计算机科学">计算机科学</a></li>
+<li><a href="#思维与成长">思维与成长</a></li>
+<li><a href="#经济">经济</a></li>
+<li><a href="#文学">文学</a></li>
+<li><a href="#其它">其它</a></li>
+</ul>
+<!-- /TOC -->
+<h1 id="计算机科学"><a href="#计算机科学" class="headerlink" title="计算机科学"></a>计算机科学</h1><ul>
+<li><a href="https://book.douban.com/subject/1230413/" target="_blank" rel="noopener">深入理解计算机系统</a></li>
+<li><a href="https://book.douban.com/subject/2130190/" target="_blank" rel="noopener">Java编程思想</a></li>
+<li><a href="https://book.douban.com/subject/3360807/" target="_blank" rel="noopener">Effective Java</a></li>
+<li><a href="https://book.douban.com/subject/24722612/" target="_blank" rel="noopener">深入理解Java虚拟机</a></li>
+<li><a href="https://book.douban.com/subject/10484692/" target="_blank" rel="noopener">Java并发编程</a></li>
+<li><a href="https://book.douban.com/subject/25866350/" target="_blank" rel="noopener">Spring源码深度解析</a></li>
+<li><a href="https://book.douban.com/subject/10426640/" target="_blank" rel="noopener">深入剖析Tomcat</a></li>
+<li><a href="https://book.douban.com/subject/25723064/" target="_blank" rel="noopener">大型网站技术架构</a></li>
+<li><a href="https://book.douban.com/subject/26302533/" target="_blank" rel="noopener">编程珠玑</a></li>
+<li><a href="https://book.douban.com/subject/3004255/" target="_blank" rel="noopener">编程之美</a></li>
+<li><a href="https://book.douban.com/subject/2230248/" target="_blank" rel="noopener">人月神话</a></li>
+<li><a href="https://book.douban.com/subject/25965995/" target="_blank" rel="noopener">构建之法</a></li>
+<li><a href="https://book.douban.com/subject/25752043/" target="_blank" rel="noopener">信息简史</a></li>
+<li><a href="https://book.douban.com/subject/1477390/" target="_blank" rel="noopener">代码大全</a></li>
+<li><a href="https://book.douban.com/subject/2334288/" target="_blank" rel="noopener">大话设计模式</a></li>
+<li><a href="https://book.douban.com/subject/2243615/" target="_blank" rel="noopener">head first设计模式</a></li>
+<li><a href="https://book.douban.com/subject/23008813/" target="_blank" rel="noopener">高性能MySQL</a></li>
+<li><a href="https://book.douban.com/subject/6847455/" target="_blank" rel="noopener">高可用MySQL</a></li>
+<li><a href="https://book.douban.com/subject/25662138/" target="_blank" rel="noopener">NoSQL精粹</a></li>
+<li><a href="https://book.douban.com/subject/27039508/" target="_blank" rel="noopener">企业IT架构转型之道</a></li>
+<li><a href="https://book.douban.com/subject/5387402/" target="_blank" rel="noopener">程序员修炼之道</a></li>
+<li><a href="https://book.douban.com/subject/6523762/" target="_blank" rel="noopener">Hadoop权威指南</a></li>
+<li><a href="https://book.douban.com/subject/27193496/" target="_blank" rel="noopener">人工智能简史</a></li>
+<li><a href="https://book.douban.com/subject/26757965/" target="_blank" rel="noopener">机器学习导论</a></li>
+<li><a href="https://book.douban.com/subject/30333919/" target="_blank" rel="noopener">架构整洁之道</a></li>
+<li><a href="https://book.douban.com/subject/30253246/" target="_blank" rel="noopener">大型网站技术架构演进和性能优化</a></li>
+<li><a href="https://book.douban.com/subject/1309230/" target="_blank" rel="noopener">网络渗透技术</a></li>
+<li><a href="https://book.douban.com/subject/25881855/" target="_blank" rel="noopener">大教堂与集市</a></li>
+<li><a href="https://book.douban.com/subject/33456375/" target="_blank" rel="noopener">产品思维</a></li>
+<li><a href="https://book.douban.com/subject/30333948/" target="_blank" rel="noopener">码出高效</a></li>
+<li><a href="https://book.douban.com/subject/27116724/" target="_blank" rel="noopener">图解Java多线程设计模式</a></li>
+<li><a href="https://book.douban.com/subject/3652388/" target="_blank" rel="noopener">程序员的自我修养</a></li>
+</ul>
+<h1 id="思维与成长"><a href="#思维与成长" class="headerlink" title="思维与成长"></a>思维与成长</h1><ul>
+<li><a href="https://book.douban.com/subject/6021440/" target="_blank" rel="noopener">黑客与画家</a></li>
+<li><a href="https://book.douban.com/subject/1013208/" target="_blank" rel="noopener">如何阅读一本书</a></li>
+<li><a href="https://book.douban.com/subject/27614523/" target="_blank" rel="noopener">刷新</a></li>
+<li><a href="https://book.douban.com/subject/25862667/" target="_blank" rel="noopener">解释的工具</a></li>
+<li><a href="https://book.douban.com/subject/6709783/" target="_blank" rel="noopener">浪潮之巅</a></li>
+<li><a href="https://book.douban.com/subject/27129563/" target="_blank" rel="noopener">用户思维+</a></li>
+<li><a href="https://book.douban.com/subject/30198038/" target="_blank" rel="noopener">跃迁</a></li>
+<li><a href="https://book.douban.com/subject/27608239/" target="_blank" rel="noopener">原则</a></li>
+<li><a href="https://book.douban.com/subject/26835090/" target="_blank" rel="noopener">软技能</a></li>
+<li><a href="https://book.douban.com/subject/3609132/" target="_blank" rel="noopener">把时间当作朋友</a></li>
+<li><a href="https://book.douban.com/subject/6709809/" target="_blank" rel="noopener">暗时间</a></li>
+<li><a href="https://book.douban.com/subject/25985683/" target="_blank" rel="noopener">人性的弱点</a></li>
+<li><a href="https://book.douban.com/subject/26936065/" target="_blank" rel="noopener">请停止无效努力</a></li>
+<li><a href="https://book.douban.com/subject/20492550/" target="_blank" rel="noopener">清醒思考的艺术</a></li>
+<li><a href="https://book.douban.com/subject/26606009/" target="_blank" rel="noopener">精力管理</a></li>
+<li><a href="https://book.douban.com/subject/1464593/" target="_blank" rel="noopener">目标</a></li>
+<li><a href="https://book.douban.com/subject/6946410/" target="_blank" rel="noopener">抉择</a></li>
+<li><a href="https://book.douban.com/subject/26369699/" target="_blank" rel="noopener">被讨厌的勇气</a></li>
+<li><a href="https://book.douban.com/subject/1775691/" target="_blank" rel="noopener">少有人走的路</a></li>
+<li><a href="https://book.douban.com/subject/1476651/" target="_blank" rel="noopener">社会心理学</a></li>
+<li><a href="https://book.douban.com/subject/30325730/" target="_blank" rel="noopener">七年就是一辈子</a></li>
+<li><a href="https://book.douban.com/subject/6811366/" target="_blank" rel="noopener">禅与摩托车维修技术</a></li>
+<li><a href="https://book.douban.com/subject/30376593/" target="_blank" rel="noopener">当下的启蒙</a></li>
+<li><a href="https://book.douban.com/subject/1102715/" target="_blank" rel="noopener">从一到无穷大</a></li>
+<li><a href="https://book.douban.com/subject/26434953/" target="_blank" rel="noopener">一个冥想者的觉知书</a></li>
+<li><a href="https://book.douban.com/subject/1048007/" target="_blank" rel="noopener">高效能人士的七个习惯</a></li>
+</ul>
+<h1 id="经济"><a href="#经济" class="headerlink" title="经济"></a>经济</h1><ul>
+<li><a href="https://book.douban.com/subject/1095634/" target="_blank" rel="noopener">小狗钱钱</a></li>
+<li><a href="https://book.douban.com/subject/1033778/" target="_blank" rel="noopener">穷爸爸富爸爸</a></li>
+<li><a href="https://book.douban.com/subject/30336949/" target="_blank" rel="noopener">傻瓜式投资</a></li>
+<li><a href="https://book.douban.com/subject/26201890/" target="_blank" rel="noopener">第四消费时代</a></li>
+<li><a href="https://book.douban.com/subject/30314653/" target="_blank" rel="noopener">韭菜的自我修养</a></li>
+<li><a href="https://book.douban.com/subject/3025921/" target="_blank" rel="noopener">黑天鹅</a></li>
+<li><a href="https://book.douban.com/subject/26297606/" target="_blank" rel="noopener">从0到1</a></li>
+</ul>
+<h1 id="文学"><a href="#文学" class="headerlink" title="文学"></a>文学</h1><ul>
+<li><a href="https://book.douban.com/subject/1089243/" target="_blank" rel="noopener">黄金时代</a></li>
+<li><a href="https://book.douban.com/subject/1090043/" target="_blank" rel="noopener">倾城之恋</a></li>
+<li><a href="https://book.douban.com/subject/25862578/" target="_blank" rel="noopener">解忧杂货店</a></li>
+<li><a href="https://book.douban.com/subject/1008145/" target="_blank" rel="noopener">围城</a></li>
+<li><a href="https://book.douban.com/subject/3633461/" target="_blank" rel="noopener">一句顶一万句</a></li>
+<li><a href="https://book.douban.com/subject/1361264/" target="_blank" rel="noopener">撒哈拉的故事</a></li>
+<li><a href="https://book.douban.com/subject/2154960/" target="_blank" rel="noopener">一个陌生女人的来信</a></li>
+<li><a href="https://book.douban.com/subject/1084336/" target="_blank" rel="noopener">小王子</a></li>
+<li><a href="https://book.douban.com/subject/1036274/" target="_blank" rel="noopener">夏洛特的网</a></li>
+<li><a href="https://book.douban.com/subject/1394364/" target="_blank" rel="noopener">银河系漫游指南</a></li>
+<li><a href="https://book.douban.com/subject/1047719/" target="_blank" rel="noopener">付雷家书</a></li>
+<li><a href="https://book.douban.com/subject/1064275/" target="_blank" rel="noopener">老人与海</a></li>
+<li><a href="https://book.douban.com/subject/1316648/" target="_blank" rel="noopener">查令十字街84号</a></li>
+<li><a href="https://book.douban.com/subject/2010284/" target="_blank" rel="noopener">春风沉醉的晚上</a></li>
+<li><a href="https://book.douban.com/subject/1200840/" target="_blank" rel="noopener">平凡的世界</a></li>
+<li><a href="https://book.douban.com/subject/3369600/" target="_blank" rel="noopener">当我谈跑步我谈些什么</a></li>
+<li><a href="https://book.douban.com/subject/1227844/" target="_blank" rel="noopener">雅舍谈吃</a></li>
+<li><a href="https://book.douban.com/subject/3483910/" target="_blank" rel="noopener">堂吉柯德</a></li>
+<li><a href="https://book.douban.com/subject/2158684/" target="_blank" rel="noopener">象棋的故事</a></li>
+<li><a href="https://book.douban.com/subject/1029791" target="_blank" rel="noopener">许三观卖血记</a></li>
+<li><a href="https://book.douban.com/subject/1054685/" target="_blank" rel="noopener">沉默的大多数</a></li>
+<li><a href="https://book.douban.com/subject/25891771/" target="_blank" rel="noopener">失乐园</a></li>
+<li><a href="https://book.douban.com/subject/2053249/" target="_blank" rel="noopener">麦田里的守望者</a></li>
+<li><a href="https://book.douban.com/subject/1046265/" target="_blank" rel="noopener">挪威的森林</a></li>
+<li><a href="https://book.douban.com/subject/30177173/" target="_blank" rel="noopener">假如真有时光机</a></li>
+<li><a href="https://book.douban.com/subject/26889236/" target="_blank" rel="noopener">我的职业是小说家</a></li>
+<li><a href="https://book.douban.com/subject/1858513/" target="_blank" rel="noopener">月亮和六便士</a></li>
+<li><a href="https://book.douban.com/subject/2567698/" target="_blank" rel="noopener">三体</a></li>
+<li><a href="https://book.douban.com/subject/26803714/" target="_blank" rel="noopener">人性的枷锁</a></li>
+<li><a href="https://book.douban.com/subject/2035162/" target="_blank" rel="noopener">刀锋</a></li>
+<li><a href="https://book.douban.com/subject/26951584/" target="_blank" rel="noopener">小说课</a></li>
+</ul>
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><ul>
+<li><a href="https://book.douban.com/subject/26849305/" target="_blank" rel="noopener">成为乔布斯</a></li>
+<li><a href="https://book.douban.com/subject/6798611/" target="_blank" rel="noopener">史蒂夫·乔布斯传</a></li>
+<li><a href="https://book.douban.com/subject/2275502/" target="_blank" rel="noopener">十年一觉电影梦</a></li>
+<li><a href="https://book.douban.com/subject/5366248/" target="_blank" rel="noopener">你一定爱读的极简欧洲史</a></li>
+<li><a href="https://book.douban.com/subject/25985021/" target="_blank" rel="noopener">人类简史</a></li>
+<li><a href="https://book.douban.com/subject/1201620/" target="_blank" rel="noopener">人类群星闪耀时</a></li>
+<li><a href="https://book.douban.com/subject/27043843/" target="_blank" rel="noopener">拍出绝世光线</a></li>
+<li><a href="https://book.douban.com/subject/24152951/" target="_blank" rel="noopener">雕刻光线</a></li>
+<li><a href="https://book.douban.com/subject/3178741/" target="_blank" rel="noopener">来自民间的叛逆</a></li>
+<li><a href="https://book.douban.com/subject/26318465/" target="_blank" rel="noopener">中国快递桐庐帮</a></li>
+<li><a href="https://book.douban.com/subject/27013525/" target="_blank" rel="noopener">物流3.0</a></li>
+<li><a href="https://book.douban.com/subject/26995807/" target="_blank" rel="noopener">供应链架构师</a></li>
+<li><a href="https://book.douban.com/subject/3323633/" target="_blank" rel="noopener">写给大家的设计书</a></li>
+<li><a href="https://book.douban.com/subject/1941558/" target="_blank" rel="noopener">设计中的设计</a></li>
+<li><a href="https://book.douban.com/subject/24869617/" target="_blank" rel="noopener">通用设计法则</a></li>
+</ul>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/techlife/Java中的动态代理/" data-toggle="tooltip" data-placement="top" title="Java中的动态代理">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#好奇心" title="好奇心">好奇心</a>
+                        
+                          <a class="tag" href="/tags/#书单" title="书单">书单</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/curiority/书单/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

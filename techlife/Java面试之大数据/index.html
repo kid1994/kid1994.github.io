@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Java面试之大数据 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/techlife/Java面试之大数据/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                              <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                            
+                        </div>
+                        <h1>Java面试之大数据</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2018-04-12
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+	var hder = document.getElementById('headerid');
+    var c = document.getElementsByTagName('canvas')[0],
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+		
+        h = window.innerHeight/2,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+	    var hder = document.getElementById('headerid');
+		if(hder)
+	    {
+   		h = hder.clientHeight;
+		c.height = h*pr;
+		}
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){   
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>这是Java面试复习点的大数据部分。</p>
+<p>面经只是一种方法，一种手段，而不是目的，最终要能够自己将点织成线，将线编成面，将面合成体。</p>
+<a id="more"></a>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<ul>
+<li><a href="#hadoop">Hadoop</a><ul>
+<li><a href="#hadoop生态系统包括哪些项目">Hadoop生态系统包括哪些项目？</a></li>
+<li><a href="#hadoop的安装过程包括哪些">Hadoop的安装过程包括哪些？</a></li>
+<li><a href="#hadoop的常用命令是否知道">Hadoop的常用命令是否知道？</a></li>
+<li><a href="#hadoop中的hdfs的架构是怎样的">Hadoop中的HDFS的架构是怎样的？</a></li>
+<li><a href="#能否描述一下hdfs读写数据的过程">能否描述一下HDFS读写数据的过程？</a></li>
+<li><a href="#如果一个datanode宕机要如何恢复">如果一个datanode宕机，要如何恢复？</a></li>
+<li><a href="#mapreduce的原理是什么">MapReduce的原理是什么？</a></li>
+<li><a href="#能否举例说明mapreduce的运行过程">能否举例说明MapReduce的运行过程？</a></li>
+<li><a href="#经典的mapreduce和yarn有什么区别">经典的MapReduce和YARN有什么区别？</a></li>
+<li><a href="#mapreduce的map数量和reduce数量如何确定怎么配置">MapReduce的map数量和reduce数量如何确定，怎么配置？</a></li>
+<li><a href="#reduce阶段是必须的么可以去掉么怎么去掉">Reduce阶段是必须的么？可以去掉么？怎么去掉？</a></li>
+<li><a href="#能否用mapreduce解决一些例题">能否用MapReduce解决一些例题？</a></li>
+<li><a href="#能否描述一下hadoop的shuffle过程">能否描述一下Hadoop的shuffle过程？</a></li>
+<li><a href="#hadoop中combiner的作用是什么">Hadoop中Combiner的作用是什么？</a></li>
+<li><a href="#hadoop中partition的作用是什么">Hadoop中partition的作用是什么？</a></li>
+<li><a href="#hadoop的调度器有哪些">Hadoop的调度器有哪些？</a></li>
+<li><a href="#用mapreduce如何处理数据倾斜问题">用MapReduce如何处理数据倾斜问题？</a></li>
+<li><a href="#hadoop中怎么进行优化">Hadoop中怎么进行优化？</a></li>
+<li><a href="#hadoop中哪些地方使用了缓存机制有什么作用">Hadoop中哪些地方使用了缓存机制，有什么作用？</a></li>
+</ul>
+</li>
+<li><a href="#spark">Spark</a><ul>
+<li><a href="#spark生态系统包括哪些方面">Spark生态系统包括哪些方面？</a></li>
+<li><a href="#spark和hadoop有什么区别可以完全替代hadoop么">Spark和Hadoop有什么区别？可以完全替代Hadoop么？</a></li>
+<li><a href="#spark集群运算有哪些模式分别描述一下">Spark集群运算有哪些模式？分别描述一下？</a></li>
+<li><a href="#spark比hadoop快的原因有哪些">Spark比Hadoop快的原因有哪些？</a></li>
+<li><a href="#spark应用的整体架构有哪些">Spark应用的整体架构有哪些？</a></li>
+<li><a href="#spark任务的基本运行流程是怎么样的">Spark任务的基本运行流程是怎么样的？</a></li>
+<li><a href="#spark-api的两个主要抽象部件是什么分别解释">Spark API的两个主要抽象部件是什么？分别解释？</a></li>
+<li><a href="#能否说出rdd的一些基本操作">能否说出RDD的一些基本操作？</a></li>
+<li><a href="#rdd中reducebykey和groupbykey哪个性能好为什么">RDD中reduceByKey和groupByKey哪个性能好？为什么？</a></li>
+<li><a href="#rdd怎么区分宽依赖和窄依赖">RDD怎么区分宽依赖和窄依赖？</a></li>
+<li><a href="#rdd怎么划分stage">RDD怎么划分stage？</a></li>
+<li><a href="#checkpoint是指什么">Checkpoint是指什么？</a></li>
+<li><a href="#能否用spark解决一些例题">能否用Spark解决一些例题？</a></li>
+</ul>
+</li>
+<li><a href="#redis">Redis</a><ul>
+<li><a href="#redis传统关系数据库hbase和hive之间的区别">Redis，传统关系数据库，hbase和hive之间的区别？</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+<h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="Hadoop生态系统包括哪些项目？"><a href="#Hadoop生态系统包括哪些项目？" class="headerlink" title="Hadoop生态系统包括哪些项目？"></a>Hadoop生态系统包括哪些项目？</h2><p>答：</p>
+<ol>
+<li>Common：一系列组件和接口，用于分布式文件系统和同样IO（序列化、Java RPC和持久化数据化结构）</li>
+<li>Avro：一种序列化系统，用于支持高效、跨语言的RPC和持久化数据存储</li>
+<li>MapReduce：分布式数据处理模型和执行环境，运行与大型商用机集群</li>
+<li>HDFS：分布式文件系统，运行与大型商用机集群</li>
+<li>Pig：数据流语言和运行环境，用于探究非常庞大的数据集。Pig运行于MapReduce和HDFS集群上。</li>
+<li>Hive：一种分布式的、按列存储的数据仓库。Hive管理HDFS中存储的数据，并提供基于sql的查询语言（运行时翻译成MapReduce作业）用于查询数据。</li>
+<li>Hbase：一种分布式的、按列存储的数据库。Hbase使用HDFS作为底层存储，同时支持MapReduce的批量式计算和点查询（随机读取）。</li>
+<li>ZooKeeper：一种分布式的、高可用性的协调服务。提供分布式锁之类的基本服务用于构建分布式应用。</li>
+<li>Sqoop：该工具用于在结构化数据存储（如关系数据库）和HDFS之间高效批量地传输数据。</li>
+<li>Oozie：该服务用于运行和调度Hadoop作业（如MapReduce，Pig，Hive和Sqoop作业）。</li>
+</ol>
+<h2 id="Hadoop的安装过程包括哪些？"><a href="#Hadoop的安装过程包括哪些？" class="headerlink" title="Hadoop的安装过程包括哪些？"></a>Hadoop的安装过程包括哪些？</h2><p>答：</p>
+<ol>
+<li>创建hadoop用户</li>
+<li>改IP，修改HOSTS文件域名</li>
+<li>安装SSH，配置无密钥通信</li>
+<li>安装JAVA，配置JAVA的环境变量</li>
+<li>解压hadoop</li>
+<li>配置conf下的core-site.xml，hdfs-site.xml，mapred-site.xml，yarn-site.xml</li>
+<li>配置hadoop的环境变量</li>
+<li>hadoop namenode –format</li>
+<li>start-all.sh</li>
+</ol>
+<h2 id="Hadoop的常用命令是否知道？"><a href="#Hadoop的常用命令是否知道？" class="headerlink" title="Hadoop的常用命令是否知道？"></a>Hadoop的常用命令是否知道？</h2><p>答：<br>1.杀死一个job</p>
+<ul>
+<li>hadoop job -list 拿到job-id，</li>
+<li>hadoop job -kill job-id</li>
+</ul>
+<p>2.删除hdfs上的/tmp/aaa目录</p>
+<ul>
+<li>hadoop fs -rmr /tmp/aaa</li>
+</ul>
+<p>3.加入一个新的存储节点和删除一个计算节点需要刷新集群状态命令</p>
+<p>加新节点时：</p>
+<ul>
+<li>hadoop-daemon.sh start datanode<br>yarn-daemon.sh start nodemanager</li>
+</ul>
+<p>删除时：</p>
+<ul>
+<li>hadoop mradmin –refreshnodes</li>
+<li>hadoop dfsadmin -refreshnodes</li>
+</ul>
+<h2 id="Hadoop中的HDFS的架构是怎样的？"><a href="#Hadoop中的HDFS的架构是怎样的？" class="headerlink" title="Hadoop中的HDFS的架构是怎样的？"></a>Hadoop中的HDFS的架构是怎样的？</h2><p>答：hdfs由namenode、secondraynamenode、datanode组成。为n+1模式</p>
+<ol>
+<li>namenode负责管理datanode和记录元数据</li>
+<li>secondraynamenode负责合并日志</li>
+<li>datanode负责存储数据</li>
+</ol>
+<h2 id="能否描述一下HDFS读写数据的过程？"><a href="#能否描述一下HDFS读写数据的过程？" class="headerlink" title="能否描述一下HDFS读写数据的过程？"></a>能否描述一下HDFS读写数据的过程？</h2><p>答：HDFS写流程：</p>
+<ol>
+<li>client链接namenode存数据</li>
+<li>namenode记录一条数据位置信息（元数据），告诉client存哪。</li>
+<li>client用hdfs的api将数据块（默认是64M）存储到datanode上。</li>
+<li>datanode将数据水平备份。并且备份完将反馈client。</li>
+<li>client通知namenode存储块完毕。</li>
+<li>namenode将元数据同步到内存中。</li>
+</ol>
+<p>HDFS读流程：</p>
+<ol>
+<li>client链接namenode，查看元数据，找到数据的存储位置。</li>
+<li>client通过hdfs的api并发读取数据。</li>
+</ol>
+<p>读：</p>
+<ol>
+<li>跟namenode通信查询元数据，找到文件块所在的datanode服务器</li>
+<li>挑选一台datanode（就近原则，然后随机）服务器，请求建立socket流</li>
+<li>datanode开始发送数据（从磁盘里面读取数据放入流，以packet为单位来做校验）</li>
+<li>客户端以packet为单位接收，先在本地缓存，然后写入目标文件</li>
+</ol>
+<p>写：</p>
+<ol>
+<li>跟namenode通信请求上传文件，namenode检查目标文件是否已存在，父目录是否存在</li>
+<li>namenode返回是否可以上传</li>
+<li>client请求第一个 block该传输到哪些datanode服务器上</li>
+<li>namenode返回3个datanode服务器ABC</li>
+<li>client请求3台dn中的一台A上传数据（本质上是一个RPC调用，建立pipeline），A收到请求会继续调用B，然后B调用C，将真个pipeline建立完成，逐级返回客户端</li>
+<li>client开始往A上传第一个block（先从磁盘读取数据放到一个本地内存缓存），以packet为单位，A收到一个packet就会传给B，B传给C；A每传一个packet会放入一个应答队列等待应答</li>
+<li>当一个block传输完成之后，client再次请求namenode上传第二个block的服务器。</li>
+</ol>
+<h2 id="如果一个datanode宕机，要如何恢复？"><a href="#如果一个datanode宕机，要如何恢复？" class="headerlink" title="如果一个datanode宕机，要如何恢复？"></a>如果一个datanode宕机，要如何恢复？</h2><p>答：将datanode数据删除，重新当成新节点加入即可。</p>
+<h2 id="MapReduce的原理是什么？"><a href="#MapReduce的原理是什么？" class="headerlink" title="MapReduce的原理是什么？"></a>MapReduce的原理是什么？</h2><p>答：MapReduce采用”分而治之”的思想，把对大规模数据集的操作，分发给一个主节点管理下的各个分节点共同完成，然后通过整合各个节点的中间结果，得到最终结果。简单地说，MapReduce就是”任务的分解与结果的汇总”。在Hadoop中，用于执行MapReduce任务的机器角色有两个：一个是JobTracker；另一个是TaskTracker，JobTracker是用于调度工作的，TaskTracker是用于执行工作的。一个Hadoop集群中只有一台JobTracker。</p>
+<p>在分布式计算中，MapReduce框架负责处理了并行编程中分布式存储、工作调度、负载均衡、容错均衡、容错处理以及网络通信等复杂问题，把处理过程高度抽象为两个函数：map和reduce，map负责把任务分解成多个任务，reduce负责把分解后多任务处理的结果汇总起来。</p>
+<p>需要注意的是，用MapReduce来处理的数据集（或任务）必须具备这样的特点：待处理的数据集可以分解成许多小的数据集，而且每一个小数据集都可以完全并行地进行处理。</p>
+<h2 id="能否举例说明MapReduce的运行过程？"><a href="#能否举例说明MapReduce的运行过程？" class="headerlink" title="能否举例说明MapReduce的运行过程？"></a>能否举例说明MapReduce的运行过程？</h2><p>答：MapReduce运行的时候，会通过Mapper运行的任务读取HDFS中的数据文件，然后调用自己的方法，处理数据，最后输出。</p>
+<p>Reducer任务会接收Mapper任务输出的数据，作为自己的输入数据，调用自己的方法，最后输出到HDFS的文件中。</p>
+<p>Mapper任务的执行过程详解：<br>每个Mapper任务是一个Java进程，它会读取HDFS中的文件，解析成很多的键值对，经过我们覆盖的map方法处理后，转换为很多的键值对再输出。整个Mapper任务的处理过程又可以分为以下六个阶段：</p>
+<p>第一阶段是把输入文件按照一定的标准分片(InputSplit)，每个输入片的大小是固定的。默认情况下，输入片(InputSplit)的大小与数据块(Block)的大小是相同的。如果数据块(Block)的大小是默认值128MB，输入文件有两个，一个是32MB，一个是172MB。那么小的文件是一个输入片，大文件会分为两个数据块，那么是两个输入片。一共产生三个输入片。每一个输入片由一个Mapper进程处理。这里的三个输入片，会有三个Mapper进程处理。</p>
+<p>第二阶段是对输入片中的记录按照一定的规则解析成键值对。有个默认规则是把每一行文本内容解析成键值对。“键”是每一行的起始位置(单位是字节)，“值”是本行的文本内容。</p>
+<p>第三阶段是调用Mapper类中的map方法。第二阶段中解析出来的每一个键值对，调用一次map方法。如果有1000个键值对，就会调用1000次map方法。每一次调用map方法会输出零个或者多个键值对。</p>
+<p>第四阶段是按照一定的规则对第三阶段输出的键值对进行分区。比较是基于键进行的。比如我们的键表示省份(如北京、上海、山东等)，那么就可以按照不同省份进行分区，同一个省份的键值对划分到一个区中。默认是只有一个区。分区的数量就是Reducer任务运行的数量。默认只有一个Reducer任务。</p>
+<p>第五阶段是对每个分区中的键值对进行排序。首先，按照键进行排序，对于键相同的键值对，按照值进行排序。比如三个键值对&lt;2,2&gt;、&lt;1,3&gt;、&lt;2,1&gt;，键和值分别是整数。那么排序后的结果是&lt;1,3&gt;、&lt;2,1&gt;、&lt;2,2&gt;。如果有第六阶段，那么进入第六阶段；如果没有，直接输出到本地的Linux文件中。</p>
+<p>第六阶段是对数据进行归约处理，也就是reduce处理。键相等的键值对会调用一次reduce方法。经过这一阶段，数据量会减少。归约后的数据输出到本地的linxu文件中。本阶段默认是没有的，需要用户自己增加这一阶段的代码。Reducer任务的执行过程详解每个Reducer任务是一个java进程。Reducer任务接收Mapper任务的输出，归约处理后写入到HDFS中，可以分为三个阶段：</p>
+<p>第一阶段是Reducer任务会主动从Mapper任务复制其输出的键值对。Mapper任务可能会有很多，因此Reducer会复制多个Mapper的输出。</p>
+<p>第二阶段是把复制到Reducer本地数据，全部进行合并，即把分散的数据合并成一个大的数据。再对合并后的数据排序。</p>
+<p>第三阶段是对排序后的键值对调用reduce方法。键相等的键值对调用一次reduce方法，每次调用会产生零个或者多个键值对。最后把这些输出的键值对写入到HDFS文件中。<br>在整个MapReduce程序的开发过程中，我们最大的工作量是覆盖map函数和覆盖reduce函数。</p>
+<h2 id="经典的MapReduce和YARN有什么区别？"><a href="#经典的MapReduce和YARN有什么区别？" class="headerlink" title="经典的MapReduce和YARN有什么区别？"></a>经典的MapReduce和YARN有什么区别？</h2><p>答：首先介绍一下老的MapReduce的机制，老的MapReduce的具体流程如下， JobClient提交Job给Job Tracker，Job Tracker与集群所有机器通信(heartbeat)，管理所有job失败、重启等操作。Task Tracker是在每一台机器上都有的，主要用来监视自己所在机器的task运行情况及机器的资源情况，然后把这些信息通过heartbeat发送给Job Tracker。</p>
+<p>MapReduce存在的问题：</p>
+<ol>
+<li>Job Tracker 存在单点故障</li>
+<li>Job Tracker 完成太多任务，当MR任务非常多时，造成很大的内存开</li>
+<li>Task Tracker 端，如果两个大内存消耗的任务一起调度，容易出现OOM，如果只有Map任务或Reduce任务时会造成资源浪费</li>
+</ol>
+<p>下面介绍一下YARN的机制及与MapReduce相比的优势， 老的MapReduce主要包括Job Tracker和Task Tracker，YARN中主要是三个组件：Resource Manager、Node Manager和Application Master。Resource Manager负责全局资源分配，Application Master每个节点一个，负责当前节点的调度和协调。Node Manager是每台机器的代理，监控应用程序的资源使用情况，并汇报给Resource Manager。因此与老的MapReduce相比，YARN把资源管理与任务调度的工作分离开来，减少了MapReduce中Job Tracker的压力。</p>
+<p>相比于MapReduce，YARN主要优势如下，</p>
+<ol>
+<li>YARN大大减少了Job Tracker的资源消耗，并且让监测每个Job子任务状态的程序分布式化了。</li>
+<li>YARN中Application Master是一个可变更部分，用户可以对不同编程模型编写自己的AppMst，让更多类型的编程模型能跑在Hadoop集群中。</li>
+<li>老的框架中，Job Tracker一个很大的负担就是监控Job下任务的运行状况，现在由Application Master去做，而Resource Manager是监测Application Master的运行状况，如果出问题，会将其在其他机器上重启。</li>
+</ol>
+<h2 id="MapReduce的map数量和reduce数量如何确定，怎么配置？"><a href="#MapReduce的map数量和reduce数量如何确定，怎么配置？" class="headerlink" title="MapReduce的map数量和reduce数量如何确定，怎么配置？"></a>MapReduce的map数量和reduce数量如何确定，怎么配置？</h2><p>答：map的数量由数据块决定，reduce数量随便配置。</p>
+<h2 id="Reduce阶段是必须的么？可以去掉么？怎么去掉？"><a href="#Reduce阶段是必须的么？可以去掉么？怎么去掉？" class="headerlink" title="Reduce阶段是必须的么？可以去掉么？怎么去掉？"></a>Reduce阶段是必须的么？可以去掉么？怎么去掉？</h2><p>答：Reduce阶段不是必须的，可以去掉。设置reduce为0即可。</p>
+<h2 id="能否用MapReduce解决一些例题？"><a href="#能否用MapReduce解决一些例题？" class="headerlink" title="能否用MapReduce解决一些例题？"></a>能否用MapReduce解决一些例题？</h2><h2 id="能否描述一下Hadoop的shuffle过程？"><a href="#能否描述一下Hadoop的shuffle过程？" class="headerlink" title="能否描述一下Hadoop的shuffle过程？"></a>能否描述一下Hadoop的shuffle过程？</h2><p>答：<br><img src="/techlife/Java面试之大数据/1.jpg" alt=""></p>
+<p>1.Map端的shuffle<br>Map端会处理输入数据并产生中间结果，这个中间结果会写到本地磁盘，而不是HDFS。每个Map的输出会先写到内存缓冲区中，当写入的数据达到设定的阈值时，系统将会启动一个线程将缓冲区的数据写到磁盘，这个过程叫做spill。</p>
+<p>在spill写入之前，会先进行二次排序，首先根据数据所属的partition进行排序，然后每个partition中的数据再按key来排序。partition的目是将记录划分到不同的Reducer上去，以期望能够达到负载均衡，以后的Reducer就会根据partition来读取自己对应的数据。接着运行combiner(如果设置了的话)，combiner的本质也是一个Reducer，其目的是对将要写入到磁盘上的文件先进行一次处理，这样，写入到磁盘的数据量就会减少。最后将数据写到本地磁盘产生spill文件(spill文件保存在{mapred.local.dir}指定的目录中，Map任务结束后就会被删除)。</p>
+<p>最后，每个Map任务可能产生多个spill文件，在每个Map任务完成前，会通过多路归并算法将这些spill文件归并成一个文件。至此，Map的shuffle过程就结束了。</p>
+<p>2.Reduce端的shuffle<br>Reduce端的shuffle主要包括三个阶段，copy、sort(merge)和reduce。</p>
+<p>首先要将Map端产生的输出文件拷贝到Reduce端，但每个Reducer如何知道自己应该处理哪些数据呢？因为Map端进行partition的时候，实际上就相当于指定了每个Reducer要处理的数据(partition就对应了Reducer)，所以Reducer在拷贝数据的时候只需拷贝与自己对应的partition中的数据即可。每个Reducer会处理一个或者多个partition，但需要先将自己对应的partition中的数据从每个Map的输出结果中拷贝过来。</p>
+<p>接下来就是sort阶段，也称为merge阶段，因为这个阶段的主要工作是执行了归并排序。从Map端拷贝到Reduce端的数据都是有序的，所以很适合归并排序。最终在Reduce端生成一个较大的文件作为Reduce的输入。</p>
+<p>最后就是Reduce过程了，在这个过程中产生了最终的输出结果，并将其写到HDFS上。</p>
+<h2 id="Hadoop中Combiner的作用是什么？"><a href="#Hadoop中Combiner的作用是什么？" class="headerlink" title="Hadoop中Combiner的作用是什么？"></a>Hadoop中Combiner的作用是什么？</h2><p>答：combiner是reduce的实现，在map端运行计算任务，减少map端的输出数据。作用就是优化。但是combiner的使用场景是mapreduce的map和reduce输入输出一样。</p>
+<h2 id="Hadoop中partition的作用是什么？"><a href="#Hadoop中partition的作用是什么？" class="headerlink" title="Hadoop中partition的作用是什么？"></a>Hadoop中partition的作用是什么？</h2><p>答：partition的默认实现是hashpartition，是map端将数据按照reduce个数取余，进行分区，不同的reduce来copy自己的数据。partition的作用是将数据分到不同的reduce进行计算，加快计算效果。</p>
+<p>Partition主要作用就是将map的结果发送到相应的reduce。这就对partition有两个要求：</p>
+<ol>
+<li>均衡负载，尽量的将工作均匀地分配给不同的reduce。</li>
+<li>效率，分配速度一定要快。</li>
+</ol>
+<p>Mapreduce默认的partitioner是HashPartitioner。除了这个mapreduce还提供了3种partitioner。</p>
+<ol>
+<li>Partitioner是partitioner的基类，如果需要定制partitioner也需要继承该类。</li>
+<li>HashPartitioner是mapreduce的默认partitioner。计算方法是<br>which reducer=(key.hashCode() &amp; Integer.MAX_VALUE) % numReduceTasks，得到当前的目的reducer。</li>
+<li>BinaryPatitioner继承于Partitioner&lt; BinaryComparable ,V&gt;，是Partitioner的偏特化子类。该类提供leftOffset和rightOffset，在计算which reducer时仅对键值K的[rightOffset，leftOffset]这个区间取hash。<br>Which reducer=(hash &amp; Integer.MAX_VALUE) % numReduceTasks</li>
+<li>KeyFieldBasedPartitioner也是基于hash的个partitioner。和BinaryPatitioner不同，它提供了多个区间用于计算hash。当区间数为0时KeyFieldBasedPartitioner退化成HashPartitioner。</li>
+<li>TotalOrderPartitioner这个类可以实现输出的全排序。不同于以上3个partitioner，这个类并不是基于hash的。在下一节里详细的介绍totalorderpartitioner。</li>
+</ol>
+<p>每一个reducer的输出在默认的情况下都是有顺序的，但是reducer之间在输入是无序的情况下也是无序的。如果要实现输出是全排序的那就会用到TotalOrderPartitioner。<br>要使用TotalOrderPartitioner，得给TotalOrderPartitioner提供一个partition file。这个文件要求Key （这些key就是所谓的划分）的数量和当前reducer的数量-1相同并且是从小到大排列。对于为什么要用到这样一个文件，以及这个文件的具体细节待会 还会提到。</p>
+<p>TotalOrderPartitioner对不同Key的数据类型提供了两种方案：</p>
+<p>1.对于非BinaryComparable（参考附录A）类型的Key，TotalOrderPartitioner采用二分发查找当前的K所在的index。<br>例如reducer的数量为5，partition file 提供的4个划分为【2，4，6，8】。如果当前的一个key value pair 是&lt;4,”good”&gt;利用二分法查找到index=1，index+1=2那么这个key value pair将会发送到第二个reducer。如果一个key value pair为&lt;4.5, “good”&gt;那么二分法查找将返回-3，同样对-3加1然后取反就是这个key value pair 将要去的reducer。<br>对于一些数值型的数据来说，利用二分法查找复杂度是o（log (reducer count)），速度比较快。</p>
+<p>2.对于BinaryComparable类型的Key（也可以直接理解为字符串）。字符串按照字典顺序也是可以进行排序的。这样的话也可以给定一些划分，让不同的字符串key分配到不同的reducer里。这里的处理和数值类型的比较相近。<br>例如reducer的数量为5，partition file 提供了4个划分为【“abc”, “bce”, “eaa”, ”fhc”】那么“ab”这个字符串将会被分配到第一个reducer里，因为它小于第一个划分“abc”。</p>
+<p>但是不同于数值型的数据，字符串的查找和比较不能按照数值型数据的比较方法。mapreducer采用的Tire tree的字符串查找方法。查找的时间复杂度o(m)，m为树的深度，空间复杂度o(255^m-1)。是一个典型的空间换时间的案例。</p>
+<h2 id="Hadoop的调度器有哪些？"><a href="#Hadoop的调度器有哪些？" class="headerlink" title="Hadoop的调度器有哪些？"></a>Hadoop的调度器有哪些？</h2><p>答：</p>
+<ol>
+<li>FIFO schedular：默认，先进先出的原则</li>
+<li>Capacity schedular：计算能力调度器，选择占用最小、优先级高的先执行，依此类推</li>
+<li>Fair schedular：公平调度，所有的job具有相同的资源。</li>
+</ol>
+<h2 id="用MapReduce如何处理数据倾斜问题？"><a href="#用MapReduce如何处理数据倾斜问题？" class="headerlink" title="用MapReduce如何处理数据倾斜问题？"></a>用MapReduce如何处理数据倾斜问题？</h2><p>答：数据倾斜：map /reduce程序执行时，reduce节点大部分执行完毕，但是有一个或者几个reduce节点运行很慢，导致整个程序的处理时间很长，这是因为某一个key的条数比其他key多很多（有时是百倍或者千倍之多），这条key所在的reduce节点所处理的数据量比其他节点就大很多，从而导致某几个节点迟迟运行不完，此称之为数据倾斜。</p>
+<p>解决办法：自己实现partition类，用key和value相加取hash值：<br>1.方式1：<br>源代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public int getPartition(K key, V value,int numReduceTasks) &#123;</span><br><span class="line">    return (key.hashCode() &amp; Integer.MAX_VALUE) % numReduceTasks;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public int getPartition(K key, V value,int numReduceTasks) &#123;</span><br><span class="line">    return ((（key).hashCode()+value.hashCode()） &amp; Integer.MAX_VALUE) % numReduceTasks;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2.方式2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class HashPartitioner&lt;K, V&gt; extends Partitioner&lt;K, V&gt; &#123;</span><br><span class="line">    private int aa= 0;</span><br><span class="line">    /** Use &#123;@link Object#hashCode()&#125; to partition. */</span><br><span class="line"></span><br><span class="line">    public int getPartition(K key, V value,int numReduceTasks) &#123;</span><br><span class="line">    return (key.hashCode()+(aa++) &amp; Integer.MAX_VALUE) % numReduceTasks;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.方式3：重新设计key</p>
+<h2 id="Hadoop中怎么进行优化？"><a href="#Hadoop中怎么进行优化？" class="headerlink" title="Hadoop中怎么进行优化？"></a>Hadoop中怎么进行优化？</h2><p>答：从应用程序角度进行优化。由于mapreduce是迭代逐行解析数据文件的，怎样在迭代的情况下，编写高效率的应用程序，是一种优化思路。</p>
+<p>对Hadoop参数进行调优。当前hadoop系统有190多个配置参数，怎样调整这些参数，使hadoop作业运行尽可能的快，也是一种优化思路。</p>
+<p>从系统实现角度进行优化。这种优化难度是最大的，它是从hadoop实现机制角度，发现当前Hadoop设计和实现上的缺点，然后进行源码级地修改。该方法虽难度大，但往往效果明显。</p>
+<p>linux内核参数调整<br>1.从应用程序角度进行优化</p>
+<p>（1） 避免不必要的reduce任务<br>如果mapreduce程序中reduce是不必要的，那么我们可以在map中处理数据, Reducer设置为0。这样避免了多余的reduce任务。</p>
+<p>（2） 为job添加一个Combiner<br>为job添加一个combiner可以大大减少shuffle阶段从map task拷贝给远程reduce task的数据量。一般而言，combiner与reducer相同。</p>
+<p>（3） 根据处理数据特征使用最适合和简洁的Writable类型<br>Text对象使用起来很方便，但它在由数值转换到文本或是由UTF8字符串转换到文本时都是低效的，且会消耗大量的CPU时间。当处理那些非文本的数据时，可以使用二进制的Writable类型，如IntWritable， FloatWritable等。二进制writable好处：避免文件转换的消耗；使map task中间结果占用更少的空间。</p>
+<p>（4） 重用Writable类型<br>很多MapReduce用户常犯的一个错误是，在一个map/reduce方法中为每个输出都创建Writable对象。例如，你的Wordcout mapper方法可能<br>这样写：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void map(...) &#123;</span><br><span class="line">  …</span><br><span class="line">    for (String word : words) &#123;</span><br><span class="line">        output.collect(new Text(word), new IntWritable(1));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样会导致程序分配出成千上万个短周期的对象。Java垃圾收集器就要为此做很多的工作。更有效的写法是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class MyMapper … &#123;</span><br><span class="line">    Text wordText = new Text();</span><br><span class="line">    IntWritable one = new IntWritable(1);</span><br><span class="line"></span><br><span class="line">    public void map(...) &#123;</span><br><span class="line">        for (String word: words) &#123;</span><br><span class="line">            wordText.set(word);</span><br><span class="line">            output.collect(wordText, one);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>（5） 使用StringBuffer而不是String<br>当需要对字符串进行操作时，使用StringBuffer而不是String，String是read-only的，如果对它进行修改，会产生临时对象，而StringBuffer是可修改的，不会产生临时对象。<br>2.对参数进行调优</p>
+<h2 id="Hadoop中哪些地方使用了缓存机制，有什么作用？"><a href="#Hadoop中哪些地方使用了缓存机制，有什么作用？" class="headerlink" title="Hadoop中哪些地方使用了缓存机制，有什么作用？"></a>Hadoop中哪些地方使用了缓存机制，有什么作用？</h2><p>答：在mapreduce提交job的获取id之后，会将所有文件存储到分布式缓存上，这样文件可以被所有的mapreduce共享。</p>
+<h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><h2 id="Spark生态系统包括哪些方面？"><a href="#Spark生态系统包括哪些方面？" class="headerlink" title="Spark生态系统包括哪些方面？"></a>Spark生态系统包括哪些方面？</h2><p>答：<br><img src="/techlife/Java面试之大数据/2.jpg" alt=""></p>
+<ol>
+<li>Spark Core：用于通用分布式数据处理的引擎，不依赖于任何其它组件，可以运行在任何商用服务器集群上。</li>
+<li>Spark Sql：运行在Spark上的sql查询语句，支持一系列sql函数和HiveQL。</li>
+<li>Spark Streaming：基于Spark的微批处理引擎，支持各种数据源的导入。唯一依赖Spark Core。</li>
+<li>Mlib：构建于Spark之上的机器学习库。</li>
+</ol>
+<h2 id="Spark和Hadoop有什么区别？可以完全替代Hadoop么？"><a href="#Spark和Hadoop有什么区别？可以完全替代Hadoop么？" class="headerlink" title="Spark和Hadoop有什么区别？可以完全替代Hadoop么？"></a>Spark和Hadoop有什么区别？可以完全替代Hadoop么？</h2><p>答：<br>1.Spark只是分布式计算平台，而Hadoop已经是分布式计算、存储和管理的生态系统。与Spark对应的应该是Hadoop MapReduce。相比MapReduce基于磁盘的批量处理引擎，Spark赖以成名之处是其数据实时处理功能。Spark与Hadoop及其模块兼容。实际上，在Hadoop的项目页面上，Spark就被列为是一个模块。Spark使用内存，也可以使用磁盘进行处理，而MapReduce完全基于磁盘。MapReduce和Spark的主要区别在于，MapReduce使用持久存储，而Spark使用弹性分布式数据集(RDDS)。</p>
+<p>2.Spark比MapReduce更快。<br><img src="/techlife/Java面试之大数据/3.jpg" alt=""></p>
+<p>3.Spark比MapReduce更加容易使用，不需要编写map+reduce函数。除Java外，还支持Scala、Python和R。Spark还有一种交互模式，那样开发人员和用户都可以获得查询和其他操作的即时反馈。MapReduce没有交互模式，不过有了Hive和Pig等附加模块，采用者使用MapReduce来得容易一点。<br><img src="/techlife/Java面试之大数据/4.jpg" alt=""></p>
+<p>4.Spark比Hadoop有更多的库，SQL，流处理，机器学习，图计算等。<br><img src="/techlife/Java面试之大数据/5.jpg" alt=""></p>
+<p>5.Spark比Hadoop运行更加方便。<br><img src="/techlife/Java面试之大数据/6.jpg" alt=""></p>
+<p>6.容错性方面，MapReduce和Spark从两个不同的方向来解决问题。MapReduce使用TaskTracker节点，它为 JobTracker节点提供了心跳(heartbeat)。如果没有心跳，那么JobTracker节点重新调度所有将执行的操作和正在进行的操作，交 给另一个TaskTracker节点。这种方法在提供容错性方面很有效，可是会大大延长某些操作(即便只有一个故障)的完成时间。</p>
+<p>Spark使用弹性分布式数据集(RDD)，它们是容错集合，里面<br>的数据元素可执行并行操作。RDD可以引用外部存储系统中的数据集，比如共享式文件系统、HDFS、HBase，或者提供Hadoop InputFormat的任何数据源。Spark可以用Hadoop支持的任何存储源创建RDD，包括本地文件系统，或前面所列的其中一种文件系统。Spark的缓存具有容错性，原因在于如果RDD的任何分区丢失，就会使用原始转换，自动重新计算。</p>
+<p>7.Spark与MapReduce是一种相互共生的关系。Hadoop提供了Spark所没有的功能特性，比如分布式文件系统，而Spark 为需要它的那些数据集提供了实时内存处理。完美的大数据场景正是设计人员当初预想的那样：让Hadoop和Spark在同一个团队里面协同运行。</p>
+<p><a href="http://www.huochai.mobi/p/d/3967708/?share_tid=8a85c44b0ea3&amp;fmid=10786192" target="_blank" rel="noopener">参考</a></p>
+<h2 id="Spark集群运算有哪些模式？分别描述一下？"><a href="#Spark集群运算有哪些模式？分别描述一下？" class="headerlink" title="Spark集群运算有哪些模式？分别描述一下？"></a>Spark集群运算有哪些模式？分别描述一下？</h2><p>答：Spark 有很多种模式，最简单就是单机本地模式，还有单机伪分布式模式，复杂的则运行在集群中，目前能很好的运行在 Yarn和 Mesos 中，当然 Spark 还有自带的 Standalone 模式，对于大多数情况 Standalone 模式就足够了，如果企业已经有 Yarn 或者 Mesos 环境，也是很方便部署的。</p>
+<ol>
+<li>standalone(集群模式)：典型的Mater/slave模式，不过也能看出Master是有单点故障的；Spark支持ZooKeeper来实现 HA</li>
+<li>on yarn(集群模式)： 运行在 yarn 资源管理器框架之上，由 yarn 负责资源管理，Spark 负责任务调度和计算</li>
+<li>on mesos(集群模式)： 运行在 mesos 资源管理器框架之上，由 mesos 负责资源管理，Spark 负责任务调度和计算</li>
+<li>on cloud(集群模式)：比如 AWS 的 EC2，使用这个模式能很方便的访问 Amazon的 S3;Spark 支持多种分布式存储系统：HDFS 和 S3</li>
+</ol>
+<h2 id="Spark比Hadoop快的原因有哪些？"><a href="#Spark比Hadoop快的原因有哪些？" class="headerlink" title="Spark比Hadoop快的原因有哪些？"></a>Spark比Hadoop快的原因有哪些？</h2><p>答：一方面，它可以使用基于内存的集群运算。另一方面，它实现了更先进的执行引擎。<br>得益于基于内存的集群运算，Spark的性能有了数量级的提升。相比于从硬盘读取数据，采用从内存读取数据的方式，获得的顺序读取吞吐量要打100倍。</p>
+<p>第二个原因是Spark拥有更先进的作业执行引擎。Spark和Hadoop都将一个作业转化为由若干个阶段构成的有向无环图（DAG）。Hadoop MapReduce对任意一个作业都会创建由map和reduce两个阶段组成的DAG。如果一个复杂的数据处理算法用MapReduce实现，可能需要划分多个作业，而后按顺序执行。这种设计导致MapReduce无法做任何优化。而Spark并没有迫使开发者在实现数据处理算法的时候将其划分成多个作业。Spark中的DAG可以包含任意多个阶段。一个简单的作业可能只能一个阶段，而一个复杂的作业可能会有多个阶段。这使得Spark可以做些Hadoop无法实现的优化。Spark可以一次执行一个包含多个阶段的复杂作业。因为它拥有所有阶段的信息，所以可以进行优化。举例来说，它可以减少磁盘I/O和数据shuffle操作的时间。数据的shuffle操作通常会涉及网络间的数据传输，并且会增加应用程序的执行时间。</p>
+<h2 id="Spark应用的整体架构有哪些？"><a href="#Spark应用的整体架构有哪些？" class="headerlink" title="Spark应用的整体架构有哪些？"></a>Spark应用的整体架构有哪些？</h2><p>答：一个Spark应用包括5部分：<br><img src="/techlife/Java面试之大数据/7.jpg" alt=""></p>
+<ol>
+<li>驱动程序：一个把Spark当成库使用的应用。它提供数据处理的代码，Spark将在worker节点上执行这些代码。一个驱动程序可以在Spark集群上启动一个或多个作业。</li>
+<li>集群管理员：Spark使用集群管理员来获得执行作业所需要的集群资源，负责管理集群中worker节点的计算资源，能跨应用从底层调度集群资源，可以让多个应用分享集群资源并且运行在同一个worker节点上。</li>
+<li>Worker：为Spark应用提供CPU，内存和存储资源。Woker把Spark应用当成分布式进程在集群节点上运行。</li>
+<li>执行者：是一个JVM进程，对于一个应用由Spark在每一个worker上创建。它可以以多线程的方式并发执行应用代码，也可以把数据缓存在内存或硬盘中。执行者的生命周期和创建它的应用一样，一旦Spark应用结束，那么为它创建的执行者也将寿终正寝。</li>
+<li>任务：是Spark发送给执行者的最小单元。它运行在worker节点上执行者的一个线程中。每个任务都执行一些计算，然后将结果返回给驱动程序，或者分区以用于shuffle操作。Spark为每个数据分区创建一个任务。一个执行者可以并发执行一个或多个任务。任务数量由分区的数量决定，更多的分区意味着将有更多的任务并行处理数据。</li>
+</ol>
+<p>一些术语：</p>
+<ol>
+<li>Shuffle操作：是指在集群节点上对数据进行重新分配。这是一个耗时操作，因为它涉及在网络间传输数据。需要注意的是，shuffle操作不是对数据进行随机重新分配，它按照某些标准将数据分成不同的集合，每个集合就是一个新的分区。</li>
+<li>作业：就是一系列计算的集合，Spark执行这些计算并将结果返回给驱动程序。作业本质上就是在Spark集群上运行数据处理算法。一个应用程序可以发起多个作业。</li>
+<li>阶段：一个阶段由若干个任务构成。Spark将一个作业分解成一个由若干个阶段构成的DAG，每个阶段依赖于其它阶段。Spark利用shuffle边界将任务分成不同的阶段，不要求shuffle操作的任务属于同一个阶段。只有在开始一个新阶段时，任务才需要输入数据是经过shuffle操作的。</li>
+</ol>
+<h2 id="Spark任务的基本运行流程是怎么样的？"><a href="#Spark任务的基本运行流程是怎么样的？" class="headerlink" title="Spark任务的基本运行流程是怎么样的？"></a>Spark任务的基本运行流程是怎么样的？</h2><p>答：<br><img src="/techlife/Java面试之大数据/8.jpg" alt=""></p>
+<ol>
+<li>构建Spark Application的运行环境，启动SparkContext</li>
+<li>SparkContext向资源管理器（可以是Standalone，Mesos，Yarn）申请运行Executor资源，并启动StandaloneExecutorbackend，Executor向SparkContext申请Task</li>
+<li>SparkContext将应用程序分发给Executor</li>
+<li>SparkContext构建成DAG图，将DAG图分解成Stage、将Taskset发送给Task Scheduler，最后由Task Scheduler将Task发送给Executor运行</li>
+<li>Task在Executor上运行，运行完释放所有资源</li>
+</ol>
+<h2 id="Spark-API的两个主要抽象部件是什么？分别解释？"><a href="#Spark-API的两个主要抽象部件是什么？分别解释？" class="headerlink" title="Spark API的两个主要抽象部件是什么？分别解释？"></a>Spark API的两个主要抽象部件是什么？分别解释？</h2><p>答：Spark API主要有SparkContext和弹性分布式数据集（RDD）构成。</p>
+<ol>
+<li>SparkContext是一个在Spark库中定义的一个类，是Spark库的入口点。它表示与Spark的一个连接，使用Spark API创建的其它一些重要对象都依赖于它。每个Spark应用都必须创建一个SparkContext类实例。</li>
+<li>RDD表示一个关于分区数据元素的集合，可以在其上进行并行操作。它是Spark的主要数据抽象概念。从概念上讲，除了可以用于表示分布式数据集合支持惰性操作的特性外，RDD类似于Spark的集合。</li>
+</ol>
+<p>RDD的几个特点：</p>
+<ol>
+<li>不可变性。RDD是一种不可变的数据结构。一旦创建，它将不可以在原地修改。</li>
+<li>分片。RDD表示的是一组数据的分区。这些分区分布在多个集群节点上，然后，当Spark在单个节点上运行时，所有的分区都会在当前节点上。</li>
+<li>容错性。RDD是可容错的。RDD会自动处理节点出故障的情况。当一个节点出故障时，该节点上存储的数据将无法被访问。此时，Spark会在其它节点上重建丢失的RDD分区数据，Spark存储每个RDD的血统信息。通过这些血统信息，Spark可以恢复RDD的部分信息，当节点出故障的时候，它甚至可以恢复整个RDD。</li>
+<li>接口。RDD表示一个处理数据的接口，是一个抽象类，Spark为不同数据源提供了各自具体的实现类，比如HadoopRDD、ParallelCollectionRDD等。</li>
+<li>强类型。RDD有一个参数用于表示类型，这使得RDD可以表示不同类型的数据。</li>
+<li>驻留在内存中。RDD类提供一套支持内存计算的API，Spark允许RDD在内存中缓存或长期驻存。</li>
+</ol>
+<h2 id="能否说出RDD的一些基本操作？"><a href="#能否说出RDD的一些基本操作？" class="headerlink" title="能否说出RDD的一些基本操作？"></a>能否说出RDD的一些基本操作？</h2><p>答：RDD操作可以分为两类：转换和行动。转换会创建一个新的RDD实例。行动则会将结果返回给驱动程序。转换操作是惰性的。</p>
+<p>1.转换：map，filter，flatMap，mapPartitions，union，intersection，subtract，distinct，cartesian，zip，zipWithIndex，groupBy，keyBy，sortBy</p>
+<p>键值对型RDD的转换：keys，values，mapValues，join，leftOuterJoin，rightOuterJoin，fullOuterJoin，SampleByKey，subtractByKey，groupByKey，reduceByKey</p>
+<p>2.行动：collect，count，countByValue，first，max，min，take，takeOrdered，top，fold，reduce</p>
+<p>键值对型RDD的行动：countByKey，lookup</p>
+<p>数值型RDD上的操作：mean，stdev，sum，variance</p>
+<h2 id="RDD中reduceByKey和groupByKey哪个性能好？为什么？"><a href="#RDD中reduceByKey和groupByKey哪个性能好？为什么？" class="headerlink" title="RDD中reduceByKey和groupByKey哪个性能好？为什么？"></a>RDD中reduceByKey和groupByKey哪个性能好？为什么？</h2><p>答：reduceByKey：reduceByKey会在结果发送至reducer之前会对每个mapper在本地进行merge，有点类似于在MapReduce中的combiner。这样做的好处在于，在map端进行一次reduce之后，数据量会大幅度减小，从而减小传输，保证reduce端能够更快的进行结果计算。</p>
+<p>groupByKey：groupByKey会对每一个RDD中的value值进行聚合形成一个序列(Iterator)，此操作发生在reduce端，所以势必会将所有的数据通过网络进行传输，造成不必要的浪费。同时如果数据量十分大，可能还会造成OutOfMemoryError。</p>
+<p>通过以上对比可以发现在进行大量数据的reduce操作时候建议使用reduceByKey。不仅可以提高速度，还是可以防止使用groupByKey造成的内存溢出问题。</p>
+<h2 id="RDD怎么区分宽依赖和窄依赖？"><a href="#RDD怎么区分宽依赖和窄依赖？" class="headerlink" title="RDD怎么区分宽依赖和窄依赖？"></a>RDD怎么区分宽依赖和窄依赖？</h2><p>答：宽依赖：父RDD的分区被子RDD的多个分区使用   例如 groupByKey、reduceByKey、sortByKey等操作会产生宽依赖，会产生shuffle。</p>
+<p>窄依赖：父RDD的每个分区都只被子RDD的一个分区使用  例如map、filter、union等操作会产生窄依赖。</p>
+<h2 id="RDD怎么划分stage？"><a href="#RDD怎么划分stage？" class="headerlink" title="RDD怎么划分stage？"></a>RDD怎么划分stage？</h2><p>答：map,filtre为窄依赖， groupbykey为宽依赖，遇到一个宽依赖就分一个stage。</p>
+<h2 id="Checkpoint是指什么？"><a href="#Checkpoint是指什么？" class="headerlink" title="Checkpoint是指什么？"></a>Checkpoint是指什么？</h2><p>答：checkpoint的意思就是建立检查点,类似于快照,例如在spark计算里面 计算流程DAG特别长,服务器需要将整个DAG计算完成得出结果,但是如果在这很长的计算流程中突然中间算出的数据丢失了,spark又会根据RDD的依赖关系从头到尾计算一遍,这样子就很费性能,当然我们可以将中间的计算结果通过cache或者persist放到内存或者磁盘中,但是这样也不能保证数据完全不会丢失,存储的这个内存出问题了或者磁盘坏了,也会导致spark从头再根据RDD计算一遍,所以就有了checkpoint,其中checkpoint的作用就是将DAG中比较重要的中间数据做一个检查点将结果存储到一个高可用的地方(通常这个地方就是HDFS里面)。</p>
+<h2 id="能否用Spark解决一些例题？"><a href="#能否用Spark解决一些例题？" class="headerlink" title="能否用Spark解决一些例题？"></a>能否用Spark解决一些例题？</h2><h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="Redis，传统关系数据库，hbase和hive之间的区别？"><a href="#Redis，传统关系数据库，hbase和hive之间的区别？" class="headerlink" title="Redis，传统关系数据库，hbase和hive之间的区别？"></a>Redis，传统关系数据库，hbase和hive之间的区别？</h2><p>答：</p>
+<ol>
+<li>redis：分布式缓存，强调缓存，内存中数据</li>
+<li>传统数据库：注重关系</li>
+<li>hbase：列式数据库，无法做关系数据库的主外键，用于存储海量数据，底层基于hdfs</li>
+<li>hive：数据仓库工具，底层是mapreduce。不是数据库，不能用来做用户的交互存储</li>
+</ol>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/techlife/Hbase入门/" data-toggle="tooltip" data-placement="top" title="Hbase入门">&larr; 上一篇</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/techlife/Java面试之网络/" data-toggle="tooltip" data-placement="top" title="Java面试之网络">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#面试" title="面试">面试</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/techlife/Java面试之大数据/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
