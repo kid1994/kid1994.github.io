@@ -217,27 +217,9 @@
             <!-- 标签云 -->
             <div id='tag_cloud' class="tags">
                 
-                    <a href="#Dubbo" title="Dubbo" rel="0">Dubbo</a>
-                
-                    <a href="#Docker" title="Docker" rel="0">Docker</a>
-                
-                    <a href="#Go" title="Go" rel="0">Go</a>
-                
-                    <a href="#Hadoop" title="Hadoop" rel="0">Hadoop</a>
-                
-                    <a href="#Netty" title="Netty" rel="0">Netty</a>
-                
-                    <a href="#Redis" title="Redis" rel="0">Redis</a>
-                
-                    <a href="#Scala" title="Scala" rel="0">Scala</a>
-                
-                    <a href="#单元测试" title="单元测试" rel="1">单元测试</a>
-                
-                    <a href="#else" title="else" rel="0">else</a>
+                    <a href="#Groovy" title="Groovy" rel="2">Groovy</a>
                 
                     <a href="#sleepingtalk" title="sleepingtalk" rel="6">sleepingtalk</a>
-                
-                    <a href="#Groovy" title="Groovy" rel="2">Groovy</a>
                 
                     <a href="#Java" title="Java" rel="21">Java</a>
                 
@@ -253,9 +235,13 @@
                 
                     <a href="#书单" title="书单" rel="1">书单</a>
                 
+                    <a href="#线程状态" title="线程状态" rel="0">线程状态</a>
+                
                     <a href="#数据库" title="数据库" rel="1">数据库</a>
                 
                     <a href="#Hbase" title="Hbase" rel="1">Hbase</a>
+                
+                    <a href="#单元测试" title="单元测试" rel="1">单元测试</a>
                 
                     <a href="#Python" title="Python" rel="1">Python</a>
                 
@@ -265,57 +251,8 @@
 
             
             <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Dubbo">
-                    <span class="tag-text">Dubbo</span>
-                </span>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Docker">
-                    <span class="tag-text">Docker</span>
-                </span>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Go">
-                    <span class="tag-text">Go</span>
-                </span>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Hadoop">
-                    <span class="tag-text">Hadoop</span>
-                </span>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Netty">
-                    <span class="tag-text">Netty</span>
-                </span>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Redis">
-                    <span class="tag-text">Redis</span>
-                </span>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Scala">
-                    <span class="tag-text">Scala</span>
-                </span>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="单元测试">
-                    <span class="tag-text">单元测试</span>
+                <span class="fa fa-tag listing-seperator" id="Groovy">
+                    <span class="tag-text">Groovy</span>
                 </span>
                 
                   <!-- <li class="listing-item">
@@ -323,9 +260,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/techlife/单元测试入门/">
+                     <a href="/techlife/Groovy入门/">
                         <h2 class="post-title">
-                            单元测试
+                            Groovy入门
                         </h2>
                         
                     </a>
@@ -333,12 +270,20 @@
                 </div>
                 <hr>
                 
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="else">
-                    <span class="tag-text">else</span>
-                </span>
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/techlife/Java对Groovy的集成/">
+                        <h2 class="post-title">
+                            Java对Groovy的集成
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
                 
             </div>
             
@@ -355,6 +300,21 @@
                      <a href="/sleepingtalk/2018年度总结和规划/">
                         <h2 class="post-title">
                             2018年度总结和规划
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/sleepingtalk/听歌/">
+                        <h2 class="post-title">
+                            听歌
                         </h2>
                         
                     </a>
@@ -397,21 +357,6 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/sleepingtalk/听歌/">
-                        <h2 class="post-title">
-                            听歌
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
                      <a href="/sleepingtalk/蓝色的骨头/">
                         <h2 class="post-title">
                             蓝色的骨头
@@ -430,43 +375,6 @@
                      <a href="/sleepingtalk/视频清单/">
                         <h2 class="post-title">
                             视频清单
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-tag listing-seperator" id="Groovy">
-                    <span class="tag-text">Groovy</span>
-                </span>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/techlife/Groovy入门/">
-                        <h2 class="post-title">
-                            Groovy入门
-                        </h2>
-                        
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </div>
-                <hr>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <div class="post-preview">
-                     <a href="/techlife/Java对Groovy的集成/">
-                        <h2 class="post-title">
-                            Java对Groovy的集成
                         </h2>
                         
                     </a>
@@ -741,9 +649,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/techlife/Java面试之数据库/">
+                     <a href="/techlife/Java面试之大数据/">
                         <h2 class="post-title">
-                            Java面试之数据库
+                            Java面试之大数据
                         </h2>
                         
                     </a>
@@ -756,9 +664,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/techlife/Java面试之大数据/">
+                     <a href="/techlife/Java面试之数据库/">
                         <h2 class="post-title">
-                            Java面试之大数据
+                            Java面试之数据库
                         </h2>
                         
                     </a>
@@ -928,9 +836,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/techlife/Java面试之数据库/">
+                     <a href="/techlife/Java面试之大数据/">
                         <h2 class="post-title">
-                            Java面试之数据库
+                            Java面试之大数据
                         </h2>
                         
                     </a>
@@ -943,9 +851,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
                  <div class="post-preview">
-                     <a href="/techlife/Java面试之大数据/">
+                     <a href="/techlife/Java面试之数据库/">
                         <h2 class="post-title">
-                            Java面试之大数据
+                            Java面试之数据库
                         </h2>
                         
                     </a>
@@ -1141,6 +1049,13 @@
             </div>
             
             <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="线程状态">
+                    <span class="tag-text">线程状态</span>
+                </span>
+                
+            </div>
+            
+            <div class="one-tag-list">
                 <span class="fa fa-tag listing-seperator" id="数据库">
                     <span class="tag-text">数据库</span>
                 </span>
@@ -1175,6 +1090,28 @@
                      <a href="/techlife/Hbase入门/">
                         <h2 class="post-title">
                             Hbase入门
+                        </h2>
+                        
+                    </a>
+                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+                </div>
+                <hr>
+                
+            </div>
+            
+            <div class="one-tag-list">
+                <span class="fa fa-tag listing-seperator" id="单元测试">
+                    <span class="tag-text">单元测试</span>
+                </span>
+                
+                  <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+                 <div class="post-preview">
+                     <a href="/techlife/单元测试入门/">
+                        <h2 class="post-title">
+                            单元测试
                         </h2>
                         
                     </a>
