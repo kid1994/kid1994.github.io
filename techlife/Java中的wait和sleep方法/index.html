@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Java中的wait和sleep方法 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/techlife/Java中的wait和sleep方法/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                              <a class="tag" href="/tags/#线程状态" title="线程状态">线程状态</a>
+                            
+                        </div>
+                        <h1>Java中的wait和sleep方法</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2019-08-17
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><img src="/techlife/Java中的wait和sleep方法/lock.png" alt=""></p>
+<p>Java中的wait和sleep方法都可以让线程等待，而关于二者的不同，我们当初也都背过：</p>
+<a id="more"></a>
+<p>1.wait是Object类的方法，是对象方法，签名为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public final native void wait(long timeoutMillis) throws InterruptedException;</span><br></pre></td></tr></table></figure></p>
+<p>而sleep是Thread类的方法，是类的静态方法，签名为:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static native void sleep(long millis) throws InterruptedException;</span><br></pre></td></tr></table></figure></p>
+<p>wait方法通常用于线程间通信的目的，而sleep方法只是让线程等待一段时间，没有通信的作用。</p>
+<p>2.是否会释放锁：wait方法会释放锁，而sleep方法不会。<br>关于释放锁的问题，我的一个理解是：一个人在蹲坑，不释放锁就是在占着茅坑不ls，状态就是<code>WAITING</code>；而外面的人就是在等待锁（即茅坑），状态就是<code>BLOCKED</code>。</p>
+<p>3.唤醒方法不同：wait方法需要由notify或notifyAll方法唤醒；而sleep方法到了指定的时间就会被唤醒。</p>
+<p>4.使用区域不同：sleep方法是静态方法，可以在任何地方使用；而wait方法需要在synchronized同步的obj的临界区中使用。</p>
+<h1 id="关于锁释放的问题"><a href="#关于锁释放的问题" class="headerlink" title="关于锁释放的问题"></a>关于锁释放的问题</h1><p>其中关于是否会释放锁的问题，是否有方法来验证呢？</p>
+<p>我们可以利用jdk提供的<code>jstack</code>来查看一个Java进程运行时的线程状态，通过该工具就可以查看调用wait和sleep方法时的线程状态了。</p>
+<p>这里贴一张线程的状态及状态间的转换图，来自网络，侵删。</p>
+<p><img src="/techlife/Java中的wait和sleep方法/线程状态转换.jpg" alt=""></p>
+<p>首先看调用sleep方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS,</span><br><span class="line">                new LinkedBlockingDeque&lt;&gt;(), new ThreadFactory() &#123;</span><br><span class="line">    // 自定义一个ThreadFactory</span><br><span class="line">    @Override</span><br><span class="line">    public Thread newThread(Runnable r) &#123;</span><br><span class="line">        Thread myThread = new Thread(r, &quot;myThread-&quot; + new Random().nextInt());</span><br><span class="line">        return myThread;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">int count = 2;</span><br><span class="line">for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">    executorService.execute(() -&gt; &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(1000 * 1000);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    Thread.sleep(1000 * 1000);</span><br><span class="line">&#125; catch (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 关闭线程池</span><br><span class="line">executorService.shutdown();</span><br></pre></td></tr></table></figure></p>
+<p>启动进程后，通过<code>jstack -pid</code>命令查看线程状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$ jstack 21564</span><br><span class="line">&quot;myThread-817172965&quot; #13 prio=5 os_prio=31 cpu=0.14ms elapsed=13.54s tid=0x00007f8250001000 nid=0x6103 waiting on condition  [0x0000700003944000]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">	at java.lang.Thread.sleep(java.base@13-ea/Native Method)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample.lambda$main$0(WaitSleepExample.java:25)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample$$Lambda$15/0x0000000800b4dc40.run(Unknown Source)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@13-ea/ThreadPoolExecutor.java:1128)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@13-ea/ThreadPoolExecutor.java:628)</span><br><span class="line">	at java.lang.Thread.run(java.base@13-ea/Thread.java:830)</span><br><span class="line"></span><br><span class="line">&quot;myThread--1735506911&quot; #14 prio=5 os_prio=31 cpu=0.10ms elapsed=13.54s tid=0x00007f8251806000 nid=0x6203 waiting on condition  [0x0000700003a47000]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">	at java.lang.Thread.sleep(java.base@13-ea/Native Method)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample.lambda$main$0(WaitSleepExample.java:25)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample$$Lambda$15/0x0000000800b4dc40.run(Unknown Source)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@13-ea/ThreadPoolExecutor.java:1128)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@13-ea/ThreadPoolExecutor.java:628)</span><br><span class="line">	at java.lang.Thread.run(java.base@13-ea/Thread.java:830)</span><br></pre></td></tr></table></figure></p>
+<p>可以发现，两个线程的状态都是<code>TIMED_WAITING (sleeping)</code>。</p>
+<p>然后再加上锁：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">private static final Object lock = new Object();</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">ExecutorService executorService = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS,</span><br><span class="line">        new LinkedBlockingDeque&lt;&gt;(), new ThreadFactory() &#123;</span><br><span class="line">    // 自定义一个ThreadFactory</span><br><span class="line">    @Override</span><br><span class="line">    public Thread newThread(Runnable r) &#123;</span><br><span class="line">        Thread myThread = new Thread(r, &quot;myThread-&quot; + new Random().nextInt());</span><br><span class="line">        return myThread;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">int count = 2;</span><br><span class="line">for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">    executorService.execute(() -&gt; &#123;</span><br><span class="line">        synchronized (lock) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Thread.sleep(1000 * 1000);</span><br><span class="line">            &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    Thread.sleep(1000 * 1000);</span><br><span class="line">&#125; catch (InterruptedException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 关闭线程池</span><br><span class="line">executorService.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再次查看线程状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&quot;myThread-1445420596&quot; #13 prio=5 os_prio=31 cpu=0.15ms elapsed=15.74s tid=0x00007fefd100b000 nid=0x9e03 waiting on condition  [0x0000700001b2d000]</span><br><span class="line">   java.lang.Thread.State: TIMED_WAITING (sleeping)</span><br><span class="line">	at java.lang.Thread.sleep(java.base@13-ea/Native Method)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample.lambda$main$0(WaitSleepExample.java:28)</span><br><span class="line">	- locked &lt;0x0000000787e9ac60&gt; (a java.lang.Object)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample$$Lambda$15/0x0000000800b4dc40.run(Unknown Source)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@13-ea/ThreadPoolExecutor.java:1128)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@13-ea/ThreadPoolExecutor.java:628)</span><br><span class="line">	at java.lang.Thread.run(java.base@13-ea/Thread.java:830)</span><br><span class="line"></span><br><span class="line">&quot;myThread--1246206287&quot; #14 prio=5 os_prio=31 cpu=0.81ms elapsed=15.74s tid=0x00007fefd100e000 nid=0x6403 waiting for monitor entry  [0x0000700001c30000]</span><br><span class="line">   java.lang.Thread.State: BLOCKED (on object monitor)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample.lambda$main$0(WaitSleepExample.java:28)</span><br><span class="line">	- waiting to lock &lt;0x0000000787e9ac60&gt; (a java.lang.Object)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample$$Lambda$15/0x0000000800b4dc40.run(Unknown Source)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@13-ea/ThreadPoolExecutor.java:1128)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@13-ea/ThreadPoolExecutor.java:628)</span><br><span class="line">	at java.lang.Thread.run(java.base@13-ea/Thread.java:830)</span><br></pre></td></tr></table></figure></p>
+<p>发现一个线程的状态为<code>TIMED_WAITING (sleeping)</code>，另一个线程状态为<code>BLOCKED (on object monitor)</code>，说明前一个线程在执行sleep方法，后一个线程在等待锁。</p>
+<p>接着再看wait方法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">private static final Object lock = new Object();</span><br><span class="line"></span><br><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    ExecutorService executorService = new ThreadPoolExecutor(5, 10, 5, TimeUnit.SECONDS,</span><br><span class="line">            new LinkedBlockingDeque&lt;&gt;(), new ThreadFactory() &#123;</span><br><span class="line">        // 自定义一个ThreadFactory</span><br><span class="line">        @Override</span><br><span class="line">        public Thread newThread(Runnable r) &#123;</span><br><span class="line">            Thread myThread = new Thread(r, &quot;myThread-&quot; + new Random().nextInt());</span><br><span class="line">            return myThread;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    int count = 2;</span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        executorService.execute(() -&gt; &#123;</span><br><span class="line">            synchronized (lock) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    lock.wait();</span><br><span class="line">                &#125; catch (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        Thread.sleep(1000 * 1000);</span><br><span class="line">    &#125; catch (InterruptedException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 关闭线程池</span><br><span class="line">    executorService.shutdown();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>查看线程状态：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&quot;myThread--344675211&quot; #13 prio=5 os_prio=31 cpu=0.15ms elapsed=11.66s tid=0x00007fdd0901c000 nid=0x9a03 in Object.wait()  [0x000070000f486000]</span><br><span class="line">   java.lang.Thread.State: WAITING (on object monitor)</span><br><span class="line">	at java.lang.Object.wait(java.base@13-ea/Native Method)</span><br><span class="line">	- waiting on &lt;0x0000000787e9ac70&gt; (a java.lang.Object)</span><br><span class="line">	at java.lang.Object.wait(java.base@13-ea/Object.java:326)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample.lambda$main$0(WaitSleepExample.java:28)</span><br><span class="line">	- locked &lt;0x0000000787e9ac70&gt; (a java.lang.Object)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample$$Lambda$14/0x0000000800b4d840.run(Unknown Source)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@13-ea/ThreadPoolExecutor.java:1128)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@13-ea/ThreadPoolExecutor.java:628)</span><br><span class="line">	at java.lang.Thread.run(java.base@13-ea/Thread.java:830)</span><br><span class="line"></span><br><span class="line">&quot;myThread-1812802029&quot; #14 prio=5 os_prio=31 cpu=0.10ms elapsed=11.66s tid=0x00007fdd0901d000 nid=0x5f03 in Object.wait()  [0x000070000f589000]</span><br><span class="line">   java.lang.Thread.State: WAITING (on object monitor)</span><br><span class="line">	at java.lang.Object.wait(java.base@13-ea/Native Method)</span><br><span class="line">	- waiting on &lt;0x0000000787e9ac70&gt; (a java.lang.Object)</span><br><span class="line">	at java.lang.Object.wait(java.base@13-ea/Object.java:326)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample.lambda$main$0(WaitSleepExample.java:28)</span><br><span class="line">	- locked &lt;0x0000000787e9ac70&gt; (a java.lang.Object)</span><br><span class="line">	at edu.xidian.howtodoinjava.javaconcurrencyinpractice.WaitSleepExample$$Lambda$14/0x0000000800b4d840.run(Unknown Source)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(java.base@13-ea/ThreadPoolExecutor.java:1128)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(java.base@13-ea/ThreadPoolExecutor.java:628)</span><br><span class="line">	at java.lang.Thread.run(java.base@13-ea/Thread.java:830)</span><br></pre></td></tr></table></figure></p>
+<p>这时发现两个线程状态都为<code>WAITING (on object monitor)</code>，说明两个线程都在执行wait方法，也就说明了第二个线程也进入了临界区，即说明了第一个线程的wait方法是释放了锁的。</p>
+<p>完。</p>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/sleepingtalk/2018年度总结和规划/" data-toggle="tooltip" data-placement="top" title="2018年度总结和规划">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#关于锁释放的问题"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">关于锁释放的问题</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                          <a class="tag" href="/tags/#线程状态" title="线程状态">线程状态</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2019 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+	<script src="/js/particles.js"></script>
+	<script src="/js/particles_config.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/techlife/Java中的wait和sleep方法/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
