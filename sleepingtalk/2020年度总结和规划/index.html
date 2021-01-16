@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Java对Groovy的集成 - 剑知
+          2020年度总结和规划 - 剑知
         
     </title>
 
-    <link rel="canonical" href="http://kid1994.github.io/techlife/Java对Groovy的集成/">
+    <link rel="canonical" href="http://kid1994.github.io/sleepingtalk/2020年度总结和规划/">
 
     <!-- Bootstrap Core CSS -->
 
@@ -104,16 +104,14 @@
                     <div class="post-heading" style="padding:40px">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#Groovy" title="Groovy">Groovy</a>
-                            
-                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                              <a class="tag" href="/tags/#sleepingtalk" title="sleepingtalk">sleepingtalk</a>
                             
                         </div>
-                        <h1>Java对Groovy的集成</h1>
+                        <h1>2020年度总结和规划</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by 剑知 on
-                            2018-08-01
+                            2021-01-03
                         </span>
                     </div>
                 
@@ -231,38 +229,25 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <p>既然Groovy是基于JVM平台的，那么它就可以很容易地集成到Java应用中，从而为应用提供诸多有用的能力和特性。那我们先来看下Java如何集成Groovy。</p>
-<a id="more"></a>
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-<ul>
-<li><a href="#java对groovy的集成">java对groovy的集成</a><ul>
-<li><a href="#groovyshell">groovyshell</a></li>
-<li><a href="#grooyclassloader">grooyclassloader</a></li>
-<li><a href="#groovyscriptengine">groovyscriptengine</a></li>
-</ul>
-</li>
-</ul>
-<!-- /TOC -->
-<h1 id="java对groovy的集成"><a href="#java对groovy的集成" class="headerlink" title="java对groovy的集成"></a>java对groovy的集成</h1><p>在Java中执行Groovy脚本有如下几种方式：</p>
-<h2 id="groovyshell"><a href="#groovyshell" class="headerlink" title="groovyshell"></a>groovyshell</h2><p>使用GroovyShell类来执行Groovy脚本是最简单和常用的一种方式，基本使用方式如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// Groovy脚本内容</span><br><span class="line">String groovyScript = &quot;def num = 10 if(num &gt; 1) return true else return false&quot;;</span><br><span class="line">// 创建一个GroovyShell实例</span><br><span class="line">GroovyShell shell = new GroovyShell();</span><br><span class="line">// 执行脚本，返回一个Script实例</span><br><span class="line">Script script = shell.parse(groovyScript);</span><br><span class="line">// 传给脚本的参数</span><br><span class="line">Map&lt;String, Object&gt; params = new HashMap()&lt;&gt;;</span><br><span class="line">map.put(&quot;name&quot;, &quot;kid&quot;);</span><br><span class="line">Binding binding = new Binding();</span><br><span class="line">binding.setVariable(&quot;params&quot;, params);</span><br><span class="line">script.setBinding(binding);</span><br><span class="line">// 执行脚本，返回执行的结果</span><br><span class="line">Object res = script.run();</span><br></pre></td></tr></table></figure></p>
-<p>其中涉及到3个实体：</p>
-<ol>
-<li>GroovyShell:用来解析或执行Groovy脚本，会返回一个Script实例</li>
-<li>Script：表示一个Groovy脚本，而且通常最佳实践是将该script对象缓存起来，避免重复解析。调用该对象的run方法就可以执行脚本了，返回的就是脚本执行的结果</li>
-<li>Binding：表示传递给脚本的外部参数</li>
-</ol>
-<h2 id="grooyclassloader"><a href="#grooyclassloader" class="headerlink" title="grooyclassloader"></a>grooyclassloader</h2><p>其实GroovyShell类执行Groovy脚本背后的原理，是依赖于GroovyClassLoader类的。类似于GroovyClassLoader动态地创建一个类，然后在这个类里面去执行Groovy脚本。</p>
-<p>因此如果我们的脚本里面定义了一个类，像这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Greeting &#123;</span><br><span class="line">  void sayHello() &#123;</span><br><span class="line">    println &quot;hello world&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>那我们就可以借助于GroovyClassLoader类来动态加载Greeting类，类似于这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GroovyClassLoader classLoader = new GroovyClassLoader();</span><br><span class="line">Class&lt;greeting&gt; clazz = classLoader.parseClass(groovyScript);</span><br><span class="line">Greeting greeting = clazz.newInstance();</span><br><span class="line">greeting.sayHello();</span><br></pre></td></tr></table></figure></p>
-<p>而且，GroovyClassLoader类还支持从文件里动态地加载类，类似于这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">GroovyClassLoader classLoader = new GroovyClassLoader();</span><br><span class="line">Class&lt;greeting&gt; clazz = classLoader.parseClass(new File(fileName));</span><br><span class="line">Greeting greeting = clazz.newInstance();</span><br><span class="line">greeting.sayHello();</span><br></pre></td></tr></table></figure></p>
-<h2 id="groovyscriptengine"><a href="#groovyscriptengine" class="headerlink" title="groovyscriptengine"></a>groovyscriptengine</h2><p>GroovyShell侧重脚本的执行，而GroovyClassLoader侧重动态地编译和加载类，GroovyScriptEngine则在两者的基础上再加了一层，为我们提供了脚本依赖和重新加载的能力。</p>
-<p>新建<code>ReloadingTest.groovy</code>文件，内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Greeter &#123;</span><br><span class="line">    String sayHello() &#123;</span><br><span class="line">        def greet = &quot;Hello, world!&quot;</span><br><span class="line">        greet</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">new Greeter()</span><br></pre></td></tr></table></figure></p>
-<p>然后执行如下Java代码,其中<code>dirName</code>表示上述<code>ReloadingTest.groovy</code>脚本所在的目录:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Binding binding = new Binding();</span><br><span class="line">URL[] urls = new URL[1];</span><br><span class="line">urls[0] = new File(dirName).toURI().toURL();</span><br><span class="line">GroovyScriptEngine scriptEngine = new GroovyScriptEngine(urls);</span><br><span class="line"></span><br><span class="line">while (true) &#123;</span><br><span class="line">    GroovyObject object = (GroovyObject)scriptEngine.run(&quot;ReloadingTest.groovy&quot;, binding);</span><br><span class="line">    String s = (String)object.invokeMethod(&quot;sayHello&quot;, null);</span><br><span class="line">    System.out.println(s);</span><br><span class="line"></span><br><span class="line">    Thread.sleep(1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>执行结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br></pre></td></tr></table></figure></p>
-<p>然后在让程序继续执行的情况下，修改<code>ReloadingTest.groovy</code>文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Greeter &#123;</span><br><span class="line">    String sayHello() &#123;</span><br><span class="line">        def greet = &quot;Hello, Groovy!&quot;</span><br><span class="line">        greet</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">new Greeter()</span><br></pre></td></tr></table></figure></p>
-<p>这时可以看到程序执行的结果变了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, world!</span><br><span class="line">Hello, groovy!</span><br><span class="line">Hello, groovy!</span><br><span class="line">Hello, groovy!</span><br><span class="line">Hello, groovy!</span><br></pre></td></tr></table></figure></p>
-<p>借助于GroovyScriptEngine，我们可以实现Java类的热部署，即在不用重新启动程序的情况下，动态修改类的行为。</p>
-<p>完。</p>
+                <p>2020年也过去了。似乎一到跨年之际，身体就要犯点毛病，去年是头晕犯了，今年是眼疾犯了，所以年度总结又拖了几天。</p>
+<p>今年是不如意的一年。不管是对于这个世界，还是对于我个人及家庭。年初突如其来的新冠肺炎打得人们措手不及，在疫情爆发之前，我还刚到武汉出过差，并且离那个海鲜市场也非常近，还好并没有”中奖”，只能说是非常幸运了。疫情也让我爸妈今年没挣到多少钱，再加上下半年奶奶生病，再到去世，他们这一年也过的很不舒服。</p>
+<p>春节过后，由于疫情太过严重，我们被通知不能回去上班了，只能在家办公。最终在家工作了两个星期后回到了杭州，又在杭州的家里办公了两周。我想要不是由于这次的疫情，大家也不会有这样一段经历。</p>
+<p>今年在工作上也不尽人意。上半年财年结束后评绩效，结果出乎我的意料，当时也让我受了一点打击，并且为此颓废了一段时间。事后也经过了一定的反思。但是现在再去看，我承认自己存在不足，但并不认为都是我的原因。不过我已经不再纠结了。</p>
+<p>在新的财年，我的工作内容发生了很大的变动，特别是在师兄走之后，让我独自负责一个业务中间件。其实在师兄走之前，我就一直心神不宁了，担心自己一个人hold不住。事实也证明，在师兄走之后的一段时间里，确实抗的很吃力。所幸我并没有放弃，也没有和主管说我一个人不行，最终也慢慢地撑下来了。在这方面我对自己还是比较满意的，就是美中不足的是，S1的绩效并不完美。</p>
+<p>这一年我所在的团队也发生了很大的变化，用天翻地覆来形容也不为过。从很多师兄，再到主管，都相继转岗了。树倒猢狲散，之前大家重点做的东西也皮之不存，毛将焉附了。我个人也来到了新的团队，开始做新的东西。</p>
+<p>回想一下我入职以来做的东西，从刚开始做了一年的业务，然后做了半年的业务中间件，再到现在做的数据相关的业务。从好的方面来看，能够多多尝试不同的东西，从业务到技术，都有一定的收获；但是这样也导致了没有能够很长时间地聚焦在某一方面，从而没有获得令人满意的结果。从我个人的意愿角度来看，我是比较想做偏技术的东西的。我想很多和我类似的刚入职场的同学都是这样想的。</p>
+<p>在维持身体健康方面，虽然会时不时有点小毛病，但整体上还是比较满意的。颈椎病、腰椎病、胃病基本都没怎么复发过，头晕也是，很少发作的几次也不是很严重，几天就好了。眼睛问题之前没有得到足够的重视，最近难受了一个多月了，今年也要重视起来了。健身方面，除了年中有一段比较颓废的期间锻炼较少外，整体保持的还不错，9月份又重新办了健身房，主要还是觉得在家自重训练的效果不是很好，一个人也很难坚持下去，另外还办了两个月的私教，目前来看效果还不错。今年体重也基本稳定在了65Kg以上，体脂率也维持在了一个比较低的水平，算是一个相对比较满意的身材了。</p>
+<p>在今年的最后几个月的时候，很幸运地遇到了生命中的那个她。说来也比较奇妙，之前每年都会给自己定个找对象的目标，然后每年都没完成，去年索性懒得再定了。结果今年快要过完的时候，缘分就到了。我俩之间的关系，从开始，到后来的发展，其实并不算完美，即使只有短短的的两个月，我也觉得已经过了好几个阶段。目前还是处于一个比较幸福的状态。从我的角度，我会付出我该付出的，包括但不限于时间、精力、关心、呵护、金钱等。我希望我们能走到最后。</p>
+<p>去年还定了一个个人成长方面的目标，提升自己知识的深度和广度，写出至少48篇文章，平均每周一篇。实际完成率接近于0。反思了一下，最大的阻碍还是由于自己的懒惰，并且48篇文章可能对于我来说确实太难了一点。今年打算佛系一点了，其实我也仔细想了一下，我最大的愿望还是希望自己能够保持好奇心，不仅仅是所学的专业方面，还包括非专业的东西，像投资理财、营养健康、医学科普、健身等各种各样的东西。这需要在工作之余，还能抽出一些经历去阅读相关的书籍和文章，才能沉淀下来一点东西。可能真的得像工作上一样，设定个什么KPI，才有动力去完成吧。</p>
+<p>新一年的目标：</p>
+<p>今年工作上会来到一个里程碑的节点，两年了，希望能够得到提名并晋升成功。当然了，晋升只是一个结果，还是要努力让自己着眼并享受过程。</p>
+<p>身体健康方面，今年我觉得能够继续维持去年的状态就很不错了。注意保养身体，不犯老毛病的同时，保持健康的生活方式，不再出现新的毛病。健身再加把劲，争取冲到70KG，并且体脂保持在13%左右。</p>
+<p>继续好好爱她，每天道早安、晚安，给她买零食，重要的节日给她惊喜，关心她的生活，保持沟通，周末多陪陪她。希望经过这一年，我们能走到最后一步。</p>
+<p>去年由于疫情，没能带爸妈来杭州体检，等到了今年夏天，要继续带他们来体检一下，然后在杭州玩一下，吃一顿杭帮菜。平时尽可能和他们多说说话。</p>
+<p>今年到7月份就拥有摇号买房的资格了，争取能够顺利摇到号。不过由于杭州的买房政策原因，不做过多的期望。</p>
+<p>输出是进步最好的方式。今年还是要继续加强写作输出，目标定低点，平均每月输出一篇文章到自己的博客上，内容不限。输出需要更多的输入，要继续保持好奇心，不管是专业还是非专业领域。加入的知识星球不能只是再当一个看热闹的了，要真正参与进去，能够跟着帅张践行一些事情，包括知乎好物、视频号等。</p>
+<p>2021/01/03。<br>于骆家庄西苑三区。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://kid1994.github.io/sleepingtalk/2019%E5%B9%B4%E5%BA%A6%E6%80%BB%E7%BB%93%E5%92%8C%E8%A7%84%E5%88%92/">2019年度总结和规划</a></p>
 
 
 
@@ -270,13 +255,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/techlife/Java对象的序列化/" data-toggle="tooltip" data-placement="top" title="Java对象的序列化">&larr; 上一篇</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/techlife/Groovy入门/" data-toggle="tooltip" data-placement="top" title="Groovy入门">下一篇 &rarr;</a>
+                            <a href="/sleepingtalk/工作后的第一年/" data-toggle="tooltip" data-placement="top" title="工作后的第一年">下一篇 &rarr;</a>
                         </li>
                     
                 </ul>
@@ -312,7 +293,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#java对groovy的集成"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">java对groovy的集成</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#groovyshell"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">groovyshell</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#grooyclassloader"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">grooyclassloader</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#groovyscriptengine"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">groovyscriptengine</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#参考"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">参考</span></a></li></ol>
         
         </div>
       </aside>
@@ -332,9 +313,7 @@
                     <h5><a href="/tags/">标签云</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#Groovy" title="Groovy">Groovy</a>
-                        
-                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                          <a class="tag" href="/tags/#sleepingtalk" title="sleepingtalk">sleepingtalk</a>
                         
                     </div>
                 </section>
@@ -499,7 +478,7 @@
 <script>
     // only load tagcloud.js in tag.html
     if($('#tag_cloud').length !== 0){
-        async("http://kid1994.github.io/techlife/Java对Groovy的集成/index.html/js/jquery.tagcloud.js",function(){
+        async("http://kid1994.github.io/sleepingtalk/2020年度总结和规划/index.html/js/jquery.tagcloud.js",function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
                 color: {start: '#bbbbee', end: '#0085a1'},
