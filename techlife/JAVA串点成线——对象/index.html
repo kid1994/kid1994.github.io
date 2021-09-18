@@ -229,11 +229,24 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h1><p>在JAVA中，一切皆为对象。对象是类的实例，给类的所有属性赋值。</p>
+                <p><img src="/techlife/JAVA串点成线——对象/Java.webp" alt=""></p>
+<h1 id="什么是对象"><a href="#什么是对象" class="headerlink" title="什么是对象"></a>什么是对象</h1><p>在JAVA中，一切皆为对象。对象是类的实例，给类的所有属性赋值。</p>
 <p>对象分为类对象和实例对象，实例对象很好理解。而类对象是<code>Class</code>类的一个实例，用来描述某个类或某个接口的定义。<code>Class</code>类的构造方法是私有的，这意味着类对象是不能被new出来的，而是由JVM在加载类的时候通过<code>ClassLoader</code>的<code>defineClass</code>方法自动创建的（这应该也意味着类对象都是单例的）。如果想获得一个类的实例，可以有两种方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.通过实例</span><br><span class="line">obj.getClass().getName()</span><br><span class="line"></span><br><span class="line">2.通过类</span><br><span class="line">Foo.class.getName()</span><br></pre></td></tr></table></figure></p>
 <p><code>Class</code>常被用于反射中，后面在JAVA反射中再细讲。</p>
-<h1 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h1><p>在JAVA中，对象的创建有两种方式：<br>1.通过new关键字创建一个对象<br>2.通过<code>Class</code>对象的newInstance方法采用反射的方式创建一个对象</p>
-<p>创建对象时，会对对象的成员属性进行初始化，初始化语句的优先级顺序是:<br>1.属性的默认值<br>2.父类的静态语句块<br>3.子类的静态语句块<br>4.父类的无参构造方法<br>5.子类的构造方法</p>
+<h1 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h1><p>在JAVA中，对象的创建有3种方式：</p>
+<ol>
+<li>通过new关键字创建一个对象</li>
+<li>通过<code>Class</code>对象的newInstance方法采用反射的方式创建一个对象</li>
+<li>通过<code>clone</code>方法复制一个对象</li>
+</ol>
+<p>创建对象时，会对对象的成员属性进行初始化，初始化语句的优先级顺序是:</p>
+<ol>
+<li>属性的默认值</li>
+<li>父类的静态语句块</li>
+<li>子类的静态语句块</li>
+<li>父类的无参构造方法</li>
+<li>子类的构造方法</li>
+</ol>
 <h2 id="关于创建对象的一些最佳实践"><a href="#关于创建对象的一些最佳实践" class="headerlink" title="关于创建对象的一些最佳实践"></a>关于创建对象的一些最佳实践</h2><h3 id="使用静态工厂方法代替构造器"><a href="#使用静态工厂方法代替构造器" class="headerlink" title="使用静态工厂方法代替构造器"></a>使用静态工厂方法代替构造器</h3><p>即通过暴露一些类的静态方法给客户端，在这些静态方法里帮助用户创建对象，而不是让用户直接通过new的方式。</p>
 <p>这样做的第一个好处是，构造器其实是没有名字的，只能通过构造方法的签名（参数的类型、顺序）来区分不同的构造方法，这样用户在使用new的方式创建对象时可能会比较迷惑，不确定下一个该传什么参数（不过现在的一些智能IDE都会有提示的）。而通过静态工厂方法，可以通过给方法取合适的名字来屏蔽那些细节。</p>
 <p>其实我们在工作中也有用到这个方法，比如在封装RPC服务的调用结果时，会提供一些调用成功或者失败的静态方法直接返回封装后的调用结果。</p>
@@ -260,13 +273,96 @@
 <h2 id="getClass方法"><a href="#getClass方法" class="headerlink" title="getClass方法"></a><code>getClass</code>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public final native Class&lt;?&gt; getClass();</span><br></pre></td></tr></table></figure>
 <p><code>getClass</code>方法可以获取一个运行时的实例对象的类对象，有了类对象，我们就可以获取到对象的类型信息、成员属性、方法信息了，继而就可以使用反射能力。</p>
 <p>该方法是一个<code>native</code>方法。看一下它的实现？</p>
-<h2 id="hashcode和equals方法"><a href="#hashcode和equals方法" class="headerlink" title="hashcode和equals方法"></a><code>hashcode</code>和<code>equals</code>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public native int hashCode();</span><br><span class="line"></span><br><span class="line">public boolean equals(Object obj) &#123;</span><br><span class="line">    return (this == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="clone方法"><a href="#clone方法" class="headerlink" title="clone方法"></a><code>clone</code>方法</h2><h2 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a><code>toString</code>方法</h2><h2 id="wait和notify方法"><a href="#wait和notify方法" class="headerlink" title="wait和notify方法"></a><code>wait</code>和<code>notify</code>方法</h2><h2 id="finalize方法"><a href="#finalize方法" class="headerlink" title="finalize方法"></a><code>finalize</code>方法</h2>
+<h2 id="hashcode和equals方法"><a href="#hashcode和equals方法" class="headerlink" title="hashcode和equals方法"></a><code>hashcode</code>和<code>equals</code>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object obj) &#123;</span><br><span class="line">    return (this == obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public native int hashCode();</span><br></pre></td></tr></table></figure>
+<p><code>equals</code>方法用来判断两个对象是否相等。相等分为”物理”相等和”逻辑”相等，物理相等是指两个对象指向同一个实例，即指向同一块内存区域。该方法的默认实现就是判断两个对象是否是”物理”相等的。如果自定义的类有判断”逻辑”相等的需求，就需要重写<code>equals</code>方法了。</p>
+<p>重写<code>equals</code>方法需要遵循JDK规范中的通用约定，即要实现”等价关系”，包含以下几点：</p>
+<ol>
+<li>自反性：对于任何非null的值x，<code>x.equals(x)</code>必须返回<code>true</code>。</li>
+<li>对称性：对于任何非null的值x和y，当且仅当<code>x.equals(y)</code>返回<code>true</code>时，<code>y.equals(x)</code>也必须返回<code>true</code>。</li>
+<li>传递性：对于任何非null的值x、y和z，如果<code>x.equals(y)</code>返回<code>true</code>，且<code>y.equals(z)</code>也返回<code>true</code>，则<code>x.equals(z)</code>也必须返回<code>true</code>。</li>
+<li>一致性：对于任何非null的值x和y，只要x和y的对象信息没有被修改，那么<code>x.equals(y)</code>必须始终返回相同的结果。</li>
+<li>非空性：对于任何非null的值x，<code>x.equals(null)</code>必须返回<code>false</code>。</li>
+</ol>
+<p>结合上述要求，重写<code>equals</code>方法的一个最佳实践是：</p>
+<ol>
+<li>使用<code>==</code>检查是否是同一个对象的引用。</li>
+<li>使用<code>instanceOf</code>检查是否是正确的类型。</li>
+<li>将参数转换为正确的类型。</li>
+<li>对于每个”关键”域，检查是否相等。所谓的关键域，是指那些会影响对象逻辑相等的属性。最好不要包含冗余域，即那些可以通过关键域计算出来的域。</li>
+</ol>
+<p>示例代码如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public boolean equals(Object obj) &#123;</span><br><span class="line">    if (obj == this) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (!(obj instanceof Person)) &#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Person ap = (Person) obj;</span><br><span class="line">    return ap.getName().equals(name) &amp;&amp; ap.getSex().equals(sex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>hashcode</code>方法用来返回一个对象的散列值，本质上就是一个散列函数。JDK规范中对于该方法的实现约定是：</p>
+<ol>
+<li>在应用的执行期间，只要对象的信息没有被修改，那么多次调用<code>hashcode</code>方法必须返回同一个整数值。</li>
+<li>如果两个对象通过<code>equals</code>方法比较是相等的，那么它们的<code>hashcode</code>方法也必须返回相同的整数值。</li>
+<li>如果两个对象通过<code>equals</code>方法比较是不相等的，那么就不要求它们的<code>hashcode</code>必须返回相同的整数值。</li>
+</ol>
+<p><code>hashcode</code>方法的默认实现是<code>native</code>的，它会返回对象在内存中的地址的整数值。对于<code>equals</code>和<code>hashcode</code>方法的默认实现，可以发现是符合上述要求的。</p>
+<p>自定义类时，如果重写了<code>equals</code>方法时，必须也要重写<code>hashcode</code>方法，不然在和所有基于散列的集合（<code>HashMap</code>、<code>HashSet</code>、<code>HashTable</code>）一起使用时，可能会出现问题。比如自定义类的两个通过<code>equals</code>判定为相等的实例x和y，先以x为key放到散列集合中，再以y为key获取对应的value时，获取到的会是null，这是因为它们的散列值不同，会被放到不同的散列桶中。</p>
+<p>那么具体要如何重写<code>hashcode</code>方法呢？一个好的散列函数会倾向于为不相等的对象生成不同的散列码。下面是一个简单通用的实现方法：</p>
+<ol>
+<li>取一个非零的常量，比如17，作为变量result的值。</li>
+<li>对于每个关键域，分别进行一下步骤：<br> a. 计算int类型的散列码code。<pre><code>a.1 如果是boolean类型，计算`(f ? 1 : 0)`
+a.2 如果是byte、char、short或int类型，计算`(int)f`
+a.3 如果是long类型，计算`(int)(f ^ (f &gt;&gt;&gt; 32))`
+a.4 如果是float类型，计算`Float.floatToIntBits(f)`
+a.5 如果是double类型，计算`Double.doubleToLongBits(f)`得到long类型的值，然后继续计算`(int)(f ^ (f &gt;&gt;&gt; 32))`
+a.6 如果是对象引用，则通过递归的方式计算该对象的hashcode
+a.7 如果是数组，则按照递归的方式分别计算每个元素的值，然后再按照2.b的方法得到一个散列值。或者使用JDK1.5中增加的`Arrays.hashCode`方法
+</code></pre> b. 按照公式迭代计算result：<code>result = 31 * result + c</code></li>
+</ol>
+<p>上述2.b中的公式中之所以用31这个数字，是因为它是一个奇素数。如果乘数是偶数的话并且产生溢出的话，信息就会丢失（因为与2相乘等价于左移运算）；使用素数则是因为习惯使用素数计算散列结果。另外31还有个重要的特性，就是可以用移位运算和减法运算代替乘法（<code>i * 31 == i &lt;&lt; 5 - i</code>），VM可以自动完成这种优化。</p>
+<p>下面来看一下JDK类库中的<code>String</code>类是如何重写<code>equals</code>和<code>hashcode</code>方法的。</p>
+<p><code>equals</code>方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object anObject) &#123;</span><br><span class="line">    // 1.首先比较是否指向同一个对象</span><br><span class="line">    if (this == anObject) &#123;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 2. 判断是否是String实例</span><br><span class="line">    if (anObject instanceof String) &#123;</span><br><span class="line">        // 3. 转为String实例</span><br><span class="line">        String anotherString = (String)anObject;</span><br><span class="line"></span><br><span class="line">        // 4. 分别比较每个关键域是否相等。对于String类型来说，就是比较char数组的每个字符是否都是相等的</span><br><span class="line">        int n = value.length;</span><br><span class="line">        if (n == anotherString.value.length) &#123;</span><br><span class="line">            char v1[] = value;</span><br><span class="line">            char v2[] = anotherString.value;</span><br><span class="line">            int i = 0;</span><br><span class="line">            while (n-- != 0) &#123;</span><br><span class="line">                if (v1[i] != v2[i])</span><br><span class="line">                    return false;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>hashcode</code>方法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int hashCode() &#123;</span><br><span class="line">    int h = hash;</span><br><span class="line">    if (h == 0 &amp;&amp; value.length &gt; 0) &#123;</span><br><span class="line">        char val[] = value;</span><br><span class="line"></span><br><span class="line">        // 可以发现，String类实现hashcode的方法就是采用上述公式</span><br><span class="line">        for (int i = 0; i &lt; value.length; i++) &#123;</span><br><span class="line">            h = 31 * h + val[i];</span><br><span class="line">        &#125;</span><br><span class="line">        hash = h;</span><br><span class="line">    &#125;</span><br><span class="line">    return h;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="clone方法"><a href="#clone方法" class="headerlink" title="clone方法"></a><code>clone</code>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected native Object clone() throws CloneNotSupportedException;</span><br></pre></td></tr></table></figure>
+<p><code>clone</code>方法用于创建一个对象的拷贝，它提供了一种不需要构造器就可以创建对象的方法。该方法有如下约定：</p>
+<ol>
+<li>x.clone() != x</li>
+<li>x.clone().getClass() == x.getClass()</li>
+<li>x.clone().equals(x)</li>
+</ol>
+<p>但第2、3点都不是强制要求。</p>
+<p><code>clone</code>方法是<code>protected</code>的，因此它的子类实现时要改为<code>public</code>。此外想要实现<code>clone</code>方法的子类还必须实现<code>Cloneable</code>接口，表明该类拥有克隆对象的能力。如果没有实现<code>Cloneable</code>接口，调用<code>clone</code>方法会报<code>CloneNotSupportedException</code>异常。</p>
+<p><code>clone</code>方法虽然看上去很强大，很美好，但实际上用好却不容易。如果一个类只有基本类型的域或者指向不可变对象的引用域，那么按照如下方法重写即可:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public Person clone() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        return (Person)super.clone();</span><br><span class="line">    &#125; catch (CloneNotSupportedException e) &#123;</span><br><span class="line">        throw new AssertionError();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是如果一个类的域是指向可变对象的话，采用上述方法，新对象的域会指向被克隆的域所指向的对象，两者之间相互影响，就可产生不可预料的结果。因此对于这种情况，要采取”深度拷贝“的方法。可以有两种方法来实现：</p>
+<ol>
+<li>递归调用每个域的clone方法</li>
+<li>先调用<code>super.clone()</code>，然后把新对象的每个域设为空白状态，再通过调用高层方法来设置每个域的状态。比如拷贝一个散列表，先将每个散列桶置为空，然后使用put(key, value)方法将被克隆对象中的每个键值对放到新的散列桶中。</li>
+</ol>
+<p>我们也可以使用其它方法来替代<code>clone</code>方法:</p>
+<ol>
+<li>拷贝构造器：提供一个参数类型为类本身的构造器</li>
+<li>拷贝工厂：提供一个类似于拷贝构造器的静态工厂方法</li>
+</ol>
+<p>其实所有通用集合的实现都提供了一个拷贝构造器，例如HashMap：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public HashMap(Map&lt;? extends K, ? extends V&gt; m) &#123;</span><br><span class="line">    this.loadFactor = DEFAULT_LOAD_FACTOR;</span><br><span class="line">    putMapEntries(m, false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>而它的<code>clone</code>方法只实现了浅拷贝：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">@Override</span><br><span class="line">public Object clone() &#123;</span><br><span class="line">    HashMap&lt;K,V&gt; result;</span><br><span class="line">    try &#123;</span><br><span class="line">        result = (HashMap&lt;K,V&gt;)super.clone();</span><br><span class="line">    &#125; catch (CloneNotSupportedException e) &#123;</span><br><span class="line">        // this shouldn&apos;t happen, since we are Cloneable</span><br><span class="line">        throw new InternalError(e);</span><br><span class="line">    &#125;</span><br><span class="line">    result.reinitialize();</span><br><span class="line">    result.putMapEntries(this, false);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于一些不可变的类，重写<code>clone</code>方法是没有任何意义的，因为新对象和被克隆的对象之间没有实质的区别。例如<code>String</code>类就没有实现<code>Cloneable</code>接口。</p>
+<p>综上所述，子类尽量避免重写<code>clone</code>方法，也尽量避免调用<code>clone</code>方法（除非拷贝数组）。</p>
+<h2 id="toString方法"><a href="#toString方法" class="headerlink" title="toString方法"></a><code>toString</code>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public String toString() &#123;</span><br><span class="line">    return getClass().getName() + &quot;@&quot; + Integer.toHexString(hashCode());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方法用来返回类的一个相对有意义的名称，默认实现是类名+hashcode的16进制表示。JDK规范推荐子类最好都能重写该方法。因为当一个对象通过prinln，字符串联操作符（+）或者调试器打印时，都会默认调用它的toString方法，如果返回的名称是有意义、便于人阅读的，将会有利于代码的调试。</p>
+<p>在重写<code>toString</code>方法时，最好能够返回该对象中所有有意义的字段信息。</p>
+<p>JDK中<code>String</code>类重写<code>toString</code>方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 直接返回对象自身，因为该对象已经是一个string字符串了</span><br><span class="line">public String toString() &#123;</span><br><span class="line">    return this;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="wait和notify方法"><a href="#wait和notify方法" class="headerlink" title="wait和notify方法"></a><code>wait</code>和<code>notify</code>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public final native void wait(long timeout) throws InterruptedException;</span><br><span class="line">public final void wait() throws InterruptedException &#123;</span><br><span class="line">    wait(0);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public final native void notify();</span><br><span class="line">public final native void notifyAll();</span><br></pre></td></tr></table></figure>
+<p><code>wait</code>和<code>notify</code>方法用于实现线程间的同步，在JAVA并发编程中再细讲。</p>
+<h2 id="finalize方法"><a href="#finalize方法" class="headerlink" title="finalize方法"></a><code>finalize</code>方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protected void finalize() throws Throwable &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>当一个对象不再可达，被垃圾收集器回收时，就会执行该对象的<code>finalize</code>方法。</p>
+<p>但是执行<code>finalize</code>方法的时间是不确定的，因此不能像C++里的析构器那样用来做资源回收工作。此外，JDK规范里也没法保证<code>finalize</code>方法被哪一个线程执行，有可能执行<code>finalize</code>方法的线程优先级非常低。即使是<code>System.gc</code>和<code>System.runFinalization</code>方法也不能保证<code>finalize</code>方法一定会被执行。</p>
+<p>因此还是要尽量避免使用<code>finalize</code>方法。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>Java编程思想</li>
+<li>Effevtive Java</li>
+</ul>
+
 
 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/techlife/JAVA串点成线——集合/" data-toggle="tooltip" data-placement="top" title="JAVA串点成线——集合">&larr; 上一篇</a>
+                        </li>
                     
                     
                         <li class="next">
@@ -306,7 +402,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么是对象"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">什么是对象</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#对象的创建"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">对象的创建</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#关于创建对象的一些最佳实践"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">关于创建对象的一些最佳实践</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用静态工厂方法代替构造器"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">使用静态工厂方法代替构造器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#当构造器参数过多时采用Builder模式"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">当构造器参数过多时采用Builder模式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#避免创建不必要的对象"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">避免创建不必要的对象</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#对象的销毁"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">对象的销毁</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#所有对象的通用方法"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">所有对象的通用方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#getClass方法"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">getClass方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#hashcode和equals方法"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">hashcode和equals方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#clone方法"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">clone方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#toString方法"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">toString方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#wait和notify方法"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">wait和notify方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#finalize方法"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text">finalize方法</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#什么是对象"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">什么是对象</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#对象的创建"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">对象的创建</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#关于创建对象的一些最佳实践"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">关于创建对象的一些最佳实践</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#使用静态工厂方法代替构造器"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">使用静态工厂方法代替构造器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#当构造器参数过多时采用Builder模式"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">当构造器参数过多时采用Builder模式</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#避免创建不必要的对象"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">避免创建不必要的对象</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#对象的销毁"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">对象的销毁</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#所有对象的通用方法"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">所有对象的通用方法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#getClass方法"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">getClass方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#hashcode和equals方法"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">hashcode和equals方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#clone方法"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">clone方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#toString方法"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">toString方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#wait和notify方法"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">wait和notify方法</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#finalize方法"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text">finalize方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#参考"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">参考</span></a></li></ol>
         
         </div>
       </aside>

@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="剑知的博客.">
+    <meta name="keyword"  content="剑知">
+    <link rel="shortcut icon" href="/assets/blogImg/me.jpg">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          JAVA串点成线——集合 - 剑知
+        
+    </title>
+
+    <link rel="canonical" href="http://kid1994.github.io/techlife/JAVA串点成线——集合/">
+
+    <!-- Bootstrap Core CSS -->
+
+   <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+	<link rel="stylesheet" href="/css/w3.css">
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+    }
+   .post-heading{
+    padding:20px;
+    }
+  .person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+  }
+  .person:hover {
+    border-color: #f1f1f1;
+  }
+
+</style>
+
+<header id="headerid" class="w3-indigo intro-header" style="position:relative;">
+    <!-- Signature -->
+	
+        <div class="container">
+            <div class=" row" >
+			
+			<canvas id="particles-js-canvas" style="position:absolute;z-index:1;top:0px;left:0px;" width="100%" height="50%"></canvas>
+			
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" style="z-index:2;">
+                
+                    <div class="post-heading" style="padding:40px">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                            
+                        </div>
+                        <h1>JAVA串点成线——集合</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 剑知 on
+                            2021-08-22
+                        </span>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+  
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">剑知</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a  href="/">主页</a>
+                    </li>
+		    
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/技术人生">技术人生</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/我的梦呓">我的梦呓</a>
+                           
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+           
+                            <a  href="/好奇心">好奇心</a>
+                           
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p><img src="/techlife/JAVA串点成线——集合/Java.webp" alt=""></p>
+<h1 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h1><p>JAVA中的广义集合概念包括<code>Collection</code>集合和<code>Map</code>键值对型容器，都在JDK的<code>java.util</code>包中，而狭义的集合概念只包括<code>Collection</code>集合。下面是两类容器的类图结构，从上往下是按层次结构组织的，从接口，到抽象类实现，再到具体的实现类。</p>
+<p><img src="/techlife/JAVA串点成线——集合/Collection类图.png" alt=""></p>
+<h1 id="Collection集合"><a href="#Collection集合" class="headerlink" title="Collection集合"></a><code>Collection</code>集合</h1><h2 id="使用方法和场景"><a href="#使用方法和场景" class="headerlink" title="使用方法和场景"></a>使用方法和场景</h2><p><code>Collection</code>集合分为三类：</p>
+<ol>
+<li>List：表示一种有序集合，用户可以按照位置索引来访问集合中的元素，可以包含多个null对象（依据具体的实现）。</li>
+<li>Set：表示数学意义上的集合概念（满足自异性、无序性等），不能包含null对象。</li>
+<li>Queue：表示一种队列的概念。</li>
+</ol>
+<p>集合的共有方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">/*******查询操作*******/</span><br><span class="line">// 返回集合中元素的数量</span><br><span class="line">int size();</span><br><span class="line">// 判断集合中是否存在至少一个元素</span><br><span class="line">boolean isEmpty();</span><br><span class="line">// 判断某个元素在集合中是否存在，基于equals方法</span><br><span class="line">boolean contains(Object o);</span><br><span class="line">// 返回集合的迭代器，用于遍历集合</span><br><span class="line">Iterator&lt;E&gt; iterator();</span><br><span class="line">// 将集合转为数组</span><br><span class="line">Object[] toArray();</span><br><span class="line">// 按照传入的数组类型将集合转为对应的数组</span><br><span class="line">&lt;T&gt; T[] toArray(T[] a);</span><br><span class="line"></span><br><span class="line">/*******修改操作*******/</span><br><span class="line">// 向集合中添加一个元素</span><br><span class="line">boolean add(E e);</span><br><span class="line">// 从集合中删除一个元素</span><br><span class="line">boolean remove(Object o);</span><br><span class="line"></span><br><span class="line">/*******批处理操作*******/</span><br><span class="line">// 判断是否包含另一个集合里的所有元素</span><br><span class="line">boolean containsAll(Collection&lt;?&gt; c);</span><br><span class="line">// 批量添加另一个集合里的所有元素</span><br><span class="line">boolean addAll(Collection&lt;? extends E&gt; c);</span><br><span class="line">// 批量删除另一个集合里的所有元素</span><br><span class="line">boolean removeAll(Collection&lt;?&gt; c);</span><br><span class="line">// 批量删除集合中满足条件的元素，这是1.8中新增的方法，而且是接口的默认实现方法</span><br><span class="line">default boolean removeIf(Predicate&lt;? super E&gt; filter) &#123;</span><br><span class="line">    Objects.requireNonNull(filter);</span><br><span class="line">    boolean removed = false;</span><br><span class="line">    final Iterator&lt;E&gt; each = iterator();</span><br><span class="line">    while (each.hasNext()) &#123;</span><br><span class="line">        if (filter.test(each.next())) &#123;</span><br><span class="line">            each.remove();</span><br><span class="line">            removed = true;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return removed;</span><br><span class="line">&#125;</span><br><span class="line">// 只保留存在于另一个集合中的元素</span><br><span class="line">boolean retainAll(Collection&lt;?&gt; c);</span><br><span class="line">// 删除集合中所有元素</span><br><span class="line">void clear();</span><br><span class="line"></span><br><span class="line">/*******Stream相关*******/</span><br><span class="line">// 返回集合的一个顺序流Stream，也是在1.8中新增的，在Stream中再细讲</span><br><span class="line">default Stream&lt;E&gt; stream() &#123;</span><br><span class="line">    return StreamSupport.stream(spliterator(), false);</span><br><span class="line">&#125;</span><br><span class="line">// 返回集合的一个并行流Stream，同上</span><br><span class="line">default Stream&lt;E&gt; parallelStream() &#123;</span><br><span class="line">    return StreamSupport.stream(spliterator(), true);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="List"><a href="#List" class="headerlink" title="List"></a><code>List</code></h3><p><code>List</code>集合表示一个有序集合，因此它会增加一系列基于位置索引的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 返回某个位置的元素</span><br><span class="line">E get(int index);</span><br><span class="line"></span><br><span class="line">// 替换某个位置的元素</span><br><span class="line">E set(int index, E element);</span><br><span class="line"></span><br><span class="line">// 在某个位置插入一个元素</span><br><span class="line">void add(int index, E element);</span><br><span class="line"></span><br><span class="line">// 删除某个位置的元素</span><br><span class="line">E remove(int index);</span><br><span class="line"></span><br><span class="line">// 搜索某个元素第一次出现的位置</span><br><span class="line">int indexOf(Object o);</span><br><span class="line"></span><br><span class="line">// 搜索某个元素最后一次出现的位置</span><br><span class="line">int lastIndexOf(Object o);</span><br></pre></td></tr></table></figure></p>
+<p><code>AbstractList</code>提供了<code>List</code>集合的一个实现骨架，实现了一些通用的方法，比如通过迭代器实现元素的搜索：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public int indexOf(Object o) &#123;</span><br><span class="line">    ListIterator&lt;E&gt; it = listIterator();</span><br><span class="line">    if (o==null) &#123;</span><br><span class="line">        while (it.hasNext())</span><br><span class="line">            if (it.next()==null)</span><br><span class="line">                return it.previousIndex();</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        while (it.hasNext())</span><br><span class="line">            if (o.equals(it.next()))</span><br><span class="line">                return it.previousIndex();</span><br><span class="line">    &#125;</span><br><span class="line">    return -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>List</code>集合主要有3个具体的实现类：</p>
+<ol>
+<li><code>ArrayList</code>：基于数组实现的有序列表，使用最广泛。</li>
+<li><code>LinkedList</code>：基于链表实现的有序列表。</li>
+<li><code>Vector</code>：基于数组实现的有序列表，除了支持同步外，和ArrayList基本无区别。</li>
+</ol>
+<p>三者之间的比较如下：</p>
+<table>
+<thead>
+<tr>
+<th>比较项</th>
+<th>ArrayList</th>
+<th>LinkedList</th>
+<th>Vector</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开始引入的JDK版本</td>
+<td>1.2</td>
+<td>1.2</td>
+<td>1.1</td>
+</tr>
+<tr>
+<td>底层数据结构</td>
+<td>数组</td>
+<td>双向链表</td>
+<td>数组</td>
+</tr>
+<tr>
+<td>是否支持存储null元素</td>
+<td>是</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>是否支持扩容</td>
+<td>是</td>
+<td>无需扩容</td>
+<td>是</td>
+</tr>
+<tr>
+<td>添加元素时间复杂度</td>
+<td>O(n)</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>按位置查询元素时间复杂度</td>
+<td>O(1)</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>是否线程安全</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>需要随机访问元素，主要是顺序插入和删除，在中间插入和删除的情况较少</td>
+<td>在中间插入和删除较多，随机访问较少</td>
+<td>同ArrayList，另外还需要支持线程安全</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a><code>Set</code></h3><p>和<code>List</code>不同，<code>Set</code>集合表示数学意义上的集合，不支持按位置访问元素，不支持存储相同的元素，只继承了<code>Collection</code>接口中的方法。</p>
+<p><code>Set</code>接口主要有4个具体的实现类：</p>
+<ol>
+<li><code>EnumSet</code>：当枚举类型要用于集合中时，可以使用该集合实现类；各种操作都通过位运算实现，效率较高</li>
+<li><code>HashSet</code>：基于hash table实现的Set集合，不能保证元素的插入顺序</li>
+<li><code>LinkedHashSet</code>：基于hash table和双向链表实现的Set集合，可以保证元素的插入顺序</li>
+<li><code>TreeSet</code>：基于TreeMap实现的Set集合，可以保证元素的自然顺序</li>
+</ol>
+<p>4者之间的比较如下：</p>
+<table>
+<thead>
+<tr>
+<th>比较项</th>
+<th>EnumSet</th>
+<th>HashSet</th>
+<th>LinkedHashSet</th>
+<th>TreeSet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开始引入的JDK版本</td>
+<td>1.5</td>
+<td>1.2</td>
+<td>1.4</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>底层数据结构</td>
+<td>long</td>
+<td>HashMap</td>
+<td>HashMap和双向链表</td>
+<td>NavigableMap</td>
+</tr>
+<tr>
+<td>是否支持存储null元素</td>
+<td>否</td>
+<td>是</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>是否能保证插入顺序</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>是否能保证自然顺序</td>
+<td>是</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>添加元素时间复杂度</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>查询元素时间复杂度</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(1)</td>
+<td>O(logn)</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>枚举类型用于集合中，对增删改查性能要求较高</td>
+<td>适用于大多数没有特殊要求的场景</td>
+<td>要求能够维持元素的插入顺序</td>
+<td>需要按照自定义的某种顺序来存储元素</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a><code>Queue</code></h3><p><code>Queue</code>是JAVA中队列的实现，用来存储待处理的数据，数据按照一定的顺序进行排列，然后客户端从头至尾从队列中取出数据。</p>
+<p>除了<code>Collection</code>中的方法，<code>Queue</code>还提供了额外的插入和查询方法，每类方法都提供了两种形式，一种是执行失败会抛出异常，另一种是返回<code>false</code>或<code>null</code>，这是因为有些情况下接口执行失败属于正常情况的一种，所以不应该抛出异常，而是通过返回值的形式来标记失败，比如在一个容量有限且容量已满的队列上执行插入操作。</p>
+<p>接口方法如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>抛出异常的方法</th>
+<th>返回特定值的方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入操作</td>
+<td>add</td>
+<td>offer</td>
+</tr>
+<tr>
+<td>删除操作</td>
+<td>remove</td>
+<td>poll</td>
+</tr>
+<tr>
+<td>查询队列第一个元素</td>
+<td>element</td>
+<td>peek</td>
+</tr>
+</tbody>
+</table>
+<p><code>Queue</code>接口中没有定义阻塞型的方法，即需要等待其执行完成的方法，这是因为那些方法正常是用在多线程场景下的，比如<code>java.util.concurrent.BlockingQueue</code>，在并发篇再细讲。</p>
+<p><code>AbstractQueue</code>抽象类提供了<code>Queue</code>中一些方法的实现骨架，例如上述的<code>add</code>、<code>remove</code>、<code>element</code>方法都是基于对应的<code>offer</code>、<code>poll</code>、<code>peek</code>方法实现的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    if (offer(e))</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        throw new IllegalStateException(&quot;Queue full&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Deque</code>表示一种“双向队列”，所谓的双向队列就是指该队列的头和尾都支持插入和取出元素，而普通队列必须在尾部插入元素，在头部取出元素。因此和<code>Queue</code>比较而言，<code>Deque</code>还多出了若干方法，并且为了进行区分，在命名上也做了一些改动：<br>|  | 抛出异常的方法 | 返回特定值的方法 |<br>| — | — | — |<br>| 插入操作 | addFirst/addLast | offerFirst/offerLast |<br>| 删除操作 | removeFirst/removeLast | pollFirst/pollLast |<br>| 查询队列第一个元素 | getFisrt/getLast | peekFirst/peekLast |</p>
+<p><code>Qeque</code>除了可以用作FIFO队列，也可以用作LIFO队列，即栈。</p>
+<p>最后<code>Queue</code>接口一共有3个具体的实现，包括双向队列：</p>
+<ol>
+<li><code>ArrayDeque</code>：基于数组实现的可扩容的双向队列，用作栈时比<code>Stack</code>快，用作队列时比<code>LinkedList</code>快。</li>
+<li><code>PriorityQueue</code>：基于优先级算法的队列，使用平衡二叉树实现。</li>
+<li><code>LinkedList</code>：基于链表实现的队列，同时也属于有序列表。</li>
+</ol>
+<p>3者之间的比较如下：</p>
+<table>
+<thead>
+<tr>
+<th>比较项</th>
+<th>ArrayDeque</th>
+<th>PriorityQueue</th>
+<th>LinkedList</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>开始引入的JDK版本</td>
+<td>1.6</td>
+<td>1.5</td>
+<td>1.2</td>
+</tr>
+<tr>
+<td>底层数据结构</td>
+<td>数组</td>
+<td>平衡二叉树，数组存储</td>
+<td>链表</td>
+</tr>
+<tr>
+<td>是否支持存储null元素</td>
+<td>否</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td>扩容机制</td>
+<td>双倍扩容</td>
+<td>自动扩容</td>
+<td>无需扩容</td>
+</tr>
+<tr>
+<td>排队算法</td>
+<td>FIFO</td>
+<td>优先级</td>
+<td>FIFO</td>
+</tr>
+<tr>
+<td>使用场景</td>
+<td>大多数场景下的默认选择</td>
+<td>需要按优先级处理元素</td>
+<td>数据量较多，需要频繁扩容</td>
+</tr>
+</tbody>
+</table>
+<h2 id="一些最佳实践"><a href="#一些最佳实践" class="headerlink" title="一些最佳实践"></a>一些最佳实践</h2><h3 id="集合的初始化"><a href="#集合的初始化" class="headerlink" title="集合的初始化"></a>集合的初始化</h3><p>一种方法是先创建一个空集合，然后向集合中添加元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; arrayList = new ArrayList&lt;&gt;(10);</span><br><span class="line">arrayList.add(&quot;jianzhi&quot;);</span><br><span class="line">arrayList.add(null);</span><br></pre></td></tr></table></figure></p>
+<p>而且创建集合时，最好要通过构造方法的参数来指定集合的初始容量，这样可以避免很快导致集合空间不够进行扩容带来的开销。如果不指定容量，会默认创建一个长度为0的空数组。</p>
+<p>在JDK9中，对于一些小的集合，并且这些集合在其声明周期内不会被修改，<code>List</code>接口提供了一系列<code>of()</code>方法来初始化一个集合：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; arrayList = List.of(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>首先，这些<code>of()</code>方法返回的都是<code>AbstractImmutableList</code>的子类，<code>AbstractImmutableList</code>类对所有修改集合的方法都进行了重写，使它们都抛出<code>UnsupportedOperationException</code>异常：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Override public boolean add(E e) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public boolean addAll(Collection&lt;? extends E&gt; c) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public boolean addAll(int index, Collection&lt;? extends E&gt; c) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public void    clear() &#123; throw uoe(); &#125;</span><br><span class="line">@Override public boolean remove(Object o) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public boolean removeAll(Collection&lt;?&gt; c) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public boolean removeIf(Predicate&lt;? super E&gt; filter) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public void    replaceAll(UnaryOperator&lt;E&gt; operator) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public boolean retainAll(Collection&lt;?&gt; c) &#123; throw uoe(); &#125;</span><br><span class="line">@Override public void    sort(Comparator&lt;? super E&gt; c) &#123; throw uoe(); &#125;</span><br></pre></td></tr></table></figure></p>
+<p>其次，虽然JAVA支持不定长参数，但<code>List</code>接口中还是提供了从0个参数到10个参数的定长参数方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">static &lt;E&gt; List&lt;E&gt; of() &#123;</span><br><span class="line">    return ImmutableCollections.List0.instance();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static &lt;E&gt; List&lt;E&gt; of(E e1) &#123;</span><br><span class="line">    return new ImmutableCollections.List1&lt;&gt;(e1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static &lt;E&gt; List&lt;E&gt; of(E e1, E e2) &#123;</span><br><span class="line">    return new ImmutableCollections.List2&lt;&gt;(e1, e2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">....</span><br></pre></td></tr></table></figure></p>
+<p>这样虽然看起来非常不优雅，但其实是为了性能考虑的，因为JAVA在处理不定长参数的时候会有明显的额外开销。</p>
+<p><code>Set</code>集合类似。</p>
+<h3 id="集合和数组之间的转化"><a href="#集合和数组之间的转化" class="headerlink" title="集合和数组之间的转化"></a>集合和数组之间的转化</h3><p>这些转化方法本质上都是为了充当基于集合的api接口和基于数组的api接口之间的桥梁。</p>
+<p>以<code>List</code>集合为例，集合转数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = List.of(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;);</span><br><span class="line">Object[] array = list.toArray();</span><br></pre></td></tr></table></figure></p>
+<p>toArray方法是在<code>AbstractCollection</code>中就已经实现了的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public Object[] toArray() &#123;</span><br><span class="line">    // Estimate size of array; be prepared to see more or fewer elements</span><br><span class="line">    Object[] r = new Object[size()];</span><br><span class="line">    Iterator&lt;E&gt; it = iterator();</span><br><span class="line">    for (int i = 0; i &lt; r.length; i++) &#123;</span><br><span class="line">        if (! it.hasNext()) // fewer elements than expected</span><br><span class="line">            return Arrays.copyOf(r, i);</span><br><span class="line">        r[i] = it.next();</span><br><span class="line">    &#125;</span><br><span class="line">    return it.hasNext() ? finishToArray(r, it) : r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>数组转集合：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String[] array = &#123;&quot;rachale&quot;, &quot;ross&quot;&#125;;</span><br><span class="line">List&lt;String&gt; list = Arrays.asList(array);</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是<code>asList</code>方法返回的<code>ArrayList</code>并不是<code>java.util.ArrayList</code>，而是<code>Arrays</code>类中自定义的类，没有实现<code>add</code>等方法，所以返回的集合是不可添加和删除元素的，但是可以更新原来的元素。</p>
+<p><code>Set</code>集合是不能和数组互相转化的，因为<code>Set</code>集合不能存储相等的元素，会导致元素丢失。</p>
+<h3 id="集合的遍历与删除"><a href="#集合的遍历与删除" class="headerlink" title="集合的遍历与删除"></a>集合的遍历与删除</h3><p>第一种方法是最经典的根据索引来遍历和删除元素，但只有<code>List</code>这种有序集合才能使用这种方法，因为只有有序集合才支持按索引访问元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;(10);</span><br><span class="line">list.addAll(Arrays.asList(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;));</span><br><span class="line">for (int i = 0; i &lt; list.size(); i++) &#123;</span><br><span class="line">    System.out.println(list.get(i));</span><br><span class="line">    list.remove(i);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list);</span><br><span class="line"></span><br><span class="line">// 最终的打印结果是[green]，为什么呢？在遍历的过程中删除元素会导致这种诡异的现象。</span><br></pre></td></tr></table></figure></p>
+<p>第二种方法是采用更加简洁的语法，这种方法对于<code>List</code>、<code>Set</code>等集合都通用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;(10);</span><br><span class="line">list.addAll(Arrays.asList(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;));</span><br><span class="line">for (String s : list) &#123;</span><br><span class="line">    System.out.println(s);</span><br><span class="line">    list.remove(s);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list);</span><br><span class="line"></span><br><span class="line">// 这种在遍历时删除元素会报ConcurrentModificationException异常</span><br></pre></td></tr></table></figure></p>
+<p>第三种方法是采用迭代器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;(10);</span><br><span class="line">list.addAll(Arrays.asList(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;));</span><br><span class="line">Iterator iterator = list.iterator();</span><br><span class="line">while (iterator.hasNext()) &#123;</span><br><span class="line">    System.out.println(iterator.next());</span><br><span class="line">    iterator.remove();</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list);</span><br><span class="line"></span><br><span class="line">// 最终打印结果是[]</span><br></pre></td></tr></table></figure></p>
+<p>但如果使用迭代遍历的时候还是采用前两种删除元素的方法，就会报<code>ConcurrentModificationException</code>异常：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = new ArrayList&lt;&gt;(10);</span><br><span class="line">list.addAll(Arrays.asList(&quot;red&quot;, &quot;green&quot;, &quot;blue&quot;));</span><br><span class="line">Iterator iterator = list.iterator();</span><br><span class="line">while (iterator.hasNext()) &#123;</span><br><span class="line">    String s = (String) iterator.next();</span><br><span class="line">    System.out.println(s);</span><br><span class="line">    list.remove(s);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(list);</span><br></pre></td></tr></table></figure></p>
+<p>上面第二种方法之所以也会报<code>ConcurrentModificationException</code>异常就是因为那种遍历方法最终也是通过迭代器实现的。</p>
+<h3 id="集合的排序"><a href="#集合的排序" class="headerlink" title="集合的排序"></a>集合的排序</h3><p>一种方法是使用<code>Collections.sort()</code>静态方法，另一种方法是将集合转为数组，然后使用<code>Arrays.sort</code>静态方法。但前者会调用<code>List</code>接口的<code>sort</code>默认方法，该方法中也是先将集合转为数组，然后调用<code>Arrays.sort()</code>方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">default void sort(Comparator&lt;? super E&gt; c) &#123;</span><br><span class="line">    Object[] a = this.toArray();</span><br><span class="line">    Arrays.sort(a, (Comparator) c);</span><br><span class="line">    ListIterator&lt;E&gt; i = this.listIterator();</span><br><span class="line">    for (Object e : a) &#123;</span><br><span class="line">        i.next();</span><br><span class="line">        i.set((E) e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="用EnumSet代替位域"><a href="#用EnumSet代替位域" class="headerlink" title="用EnumSet代替位域"></a>用EnumSet代替位域</h3><p>位域表示法是指用2的不同倍数来表示若干常量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public static final int COLOR_RED = 1 &lt;&lt; 0; // 1</span><br><span class="line">public static final int COLOR_GREEN = 1 &lt;&lt; 1; // 2</span><br><span class="line">public static final int COLOR_BLUE = 1 &lt;&lt; 2; // 4</span><br></pre></td></tr></table></figure></p>
+<p>这种方法和int枚举模式差不多，不同点在于是用2的不同倍数来表示整数值，所以称为“位域”。之所以采用这种表示方法，是为了在包含这些值的集合里，可以通过位运算来高效地执行并集、交集等操作。</p>
+<p>但这种方法有一些缺点，比如位域没有自己的特定类型，无法进行编译期检查，以及需要自己实现若干位运算等。</p>
+<p>还有一种更好的办法，就是先用枚举表示上述常量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public enum ColorEnum &#123;</span><br><span class="line">    RED,</span><br><span class="line"></span><br><span class="line">    GREEN,</span><br><span class="line"></span><br><span class="line">    BLUE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后配合使用<code>EnumSet</code>来进行各种集合运算：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;ColorEnum&gt; set = EnumSet.allOf(ColorEnum.class);</span><br><span class="line">   System.out.println(set.contains(ColorEnum.RED)); // true</span><br></pre></td></tr></table></figure></p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><h4 id="关键属性"><a href="#关键属性" class="headerlink" title="关键属性"></a>关键属性</h4><p>JDK 1.8.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 集合的默认容量</span><br><span class="line">private static final int DEFAULT_CAPACITY = 10;</span><br><span class="line"></span><br><span class="line">// 空集合对应的空数组</span><br><span class="line">private static final Object[] EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">//</span><br><span class="line">private static final Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">// 存储集合数据的底层数组；非private是为了方便内部类访问；transient表示不会参与对象的序列化，为什么呢？</span><br><span class="line">transient Object[] elementData;</span><br><span class="line"></span><br><span class="line">// 保存集合大小，即当前数组中有多少元素</span><br><span class="line">private int size;</span><br></pre></td></tr></table></figure>
+<h4 id="通过构造方法拷贝另一个集合里的元素"><a href="#通过构造方法拷贝另一个集合里的元素" class="headerlink" title="通过构造方法拷贝另一个集合里的元素"></a>通过构造方法拷贝另一个集合里的元素</h4><p>JDK 1.8.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public ArrayList(Collection&lt;? extends E&gt; c) &#123;</span><br><span class="line">    // 1. 通过Collection的toArray方法转化成数组，是原集合数组的一个拷贝</span><br><span class="line">    Object[] a = c.toArray();</span><br><span class="line">    // 2. 判断是否是空数组</span><br><span class="line">    // 这个地方为什么不需要判空呢？因为规范约定了toArray方法返回不能为空</span><br><span class="line">    if ((size = a.length) != 0) &#123;</span><br><span class="line">        // 3. 如果原集合也是ArrayList类型，则直接赋值</span><br><span class="line">        // 这个地方为什么要判断一下类型呢？</span><br><span class="line">        if (c.getClass() == ArrayList.class) &#123;</span><br><span class="line">            elementData = a;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            // 如果是其它的类型，则进行数组拷贝</span><br><span class="line">            elementData = Arrays.copyOf(a, size, Object[].class);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // 4. 赋值空数组</span><br><span class="line">        elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="扩容"><a href="#扩容" class="headerlink" title="扩容"></a>扩容</h4><p>添加元素的时候会先检查数组的容量够不够，如果不够的话需要进行扩容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    ensureCapacityInternal(size + 1);</span><br><span class="line">    elementData[size++] = e;</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>ensureCapacityInternal</code>方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private void ensureCapacityInternal(int minCapacity) &#123;</span><br><span class="line">  ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>首先会算一下实际希望扩多少容量，注意只是计算期望容量，并不是实际扩容量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private static int calculateCapacity(Object[] elementData, int minCapacity) &#123;</span><br><span class="line">    // 如果创建集合的时候是创建的一个空集合，则第一次扩容的大小是集合的默认大小，也就是10</span><br><span class="line">    // 这就是将DEFAULTCAPACITY_EMPTY_ELEMENTDATA和EMPTY_ELEMENTDATA区分开来的原因</span><br><span class="line">    if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        return Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    // 如果创建集合的时候指定了集合大小，则使用minCapacity作为期望容量</span><br><span class="line">    return minCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>计算完期望容量后，正式进行扩容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private void ensureExplicitCapacity(int minCapacity) &#123;</span><br><span class="line">    modCount++;</span><br><span class="line"></span><br><span class="line">    // 如果期望容量比当前容量大的话则需要进行扩容</span><br><span class="line">    if (minCapacity - elementData.length &gt; 0)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>扩容的真正逻辑在<code>grow</code>方法中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private void grow(int minCapacity) &#123;</span><br><span class="line">    int oldCapacity = elementData.length;</span><br><span class="line">    // 1. 新容量是旧容量的1.5倍</span><br><span class="line">    int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1);</span><br><span class="line">    // 2. 当期望容量是默认容量的时候，可能会出现这种情况</span><br><span class="line">    if (newCapacity - minCapacity &lt; 0)</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    // 3. 检查一下有没有超出最大容量限制</span><br><span class="line">    if (newCapacity - MAX_ARRAY_SIZE &gt; 0)</span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    // minCapacity is usually close to size, so this is a win:这是什么意思？</span><br><span class="line">    // 4. 进行数组拷贝扩容</span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>Arrays.copyOf</code>最终会调用<code>System.copyarray</code>方法，这是一个<code>native</code>方法，暂不深究：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static native void arraycopy(Object src,  int  srcPos, Object dest, int destPos, int length);</span><br></pre></td></tr></table></figure></p>
+<p>整个扩容的过程如下图所示：<br><img src="/techlife/JAVA串点成线——集合/ArrayList扩容过程.png" alt=""></p>
+<p>看下一下几种情况的扩容过程：</p>
+<ol>
+<li><p>创建集合时不指定容量<br>1.1 创建一个默认容量空集合<br>1.2 添加第一个元素，期望容量=1<br>1.3 由于是默认容量空集合，期望容量=10<br>1.4 期望容量&gt;当前容量，开始进行扩容<br>1.5 新容量=1.5*当前容量=0<br>1.6 新容量&lt;期望容量，所以新容量=10<br>1.7 创建一个大小为10的数组进行扩容<br>1.8 添加第2个元素，经过上述过程，最后无需扩容<br>1.9 以此类推</p>
+</li>
+<li><p>创建集合时指定容量为0<br>2.1 创建一个空集合<br>2.2 添加第一个元素，期望容量=1<br>2.3 期望容量&gt;当前容量，开始进行扩容<br>2.4 新容量=1.5*当前容量=0<br>2.5 新容量&lt;期望容量，所以新容量=1<br>2.6 创建一个大小为1的数组进行扩容<br>2.7 添加第二个元素，经过上述过程，需要再次扩容（debug时发现和预期行为不一致？）<br>2.8 以此类推</p>
+</li>
+</ol>
+<p>因此我们在创建集合的时候最好指定一个预估的容量，避免数组拷贝扩容造成的性能损耗。</p>
+<p>在中间位置插入元素时，则是先进行扩容，然后利用数组拷贝将对应位置之后的元素向后移动一个位置，比直接用一个循环实现效率高：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void add(int index, E element) &#123;</span><br><span class="line">    rangeCheckForAdd(index);</span><br><span class="line"></span><br><span class="line">    ensureCapacityInternal(size + 1);</span><br><span class="line">    System.arraycopy(elementData, index, elementData, index + 1, size - index);</span><br><span class="line">    elementData[index] = element;</span><br><span class="line">    size++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="删除集合中的元素"><a href="#删除集合中的元素" class="headerlink" title="删除集合中的元素"></a>删除集合中的元素</h4><p>按位置删除元素，需要注意的是最后要将对旧值的引用置为空，方便垃圾回收：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public E remove(int index) &#123;</span><br><span class="line">    // 1. 越界检查，为什么没有检查位置为负数？</span><br><span class="line">    rangeCheck(index);</span><br><span class="line"></span><br><span class="line">    modCount++;</span><br><span class="line">    // 2. 保存旧值</span><br><span class="line">    E oldValue = elementData(index);</span><br><span class="line"></span><br><span class="line">    // 3. 是否删除的是中间的元素</span><br><span class="line">    int numMoved = size - index - 1;</span><br><span class="line">    if (numMoved &gt; 0)</span><br><span class="line">        System.arraycopy(elementData, index+1, elementData, index, numMoved);</span><br><span class="line"></span><br><span class="line">    // 4. 将对旧值的引用置为空，方便垃圾回收</span><br><span class="line">    elementData[--size] = null;</span><br><span class="line"></span><br><span class="line">    return oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>删除对象也是先找到对应的位置，然后按位置删除元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public boolean remove(Object o) &#123;</span><br><span class="line">    if (o == null) &#123;</span><br><span class="line">        for (int index = 0; index &lt; size; index++)</span><br><span class="line">            if (elementData[index] == null) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        for (int index = 0; index &lt; size; index++)</span><br><span class="line">            if (o.equals(elementData[index])) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><h3 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h3><h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><h3 id="EnumSet"><a href="#EnumSet" class="headerlink" title="EnumSet"></a>EnumSet</h3><h4 id="抽象类实现"><a href="#抽象类实现" class="headerlink" title="抽象类实现"></a>抽象类实现</h4><p><code>EnumSet</code>是一个抽象类，有如下几个关键属性:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 元素类型</span><br><span class="line">final Class&lt;E&gt; elementType;</span><br><span class="line"></span><br><span class="line">// 保存所有枚举值的数据</span><br><span class="line">final Enum&lt;?&gt;[] universe;</span><br><span class="line"></span><br><span class="line">// 长度为0的枚举数组</span><br><span class="line">private static Enum&lt;?&gt;[] ZERO_LENGTH_ENUM_ARRAY = new Enum&lt;?&gt;[0];</span><br></pre></td></tr></table></figure></p>
+<p><code>EnumSet</code>首先提供了一个<code>noneOf</code>静态方法来创建一个指定枚举类型的空集合对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static &lt;E extends Enum&lt;E&gt;&gt; EnumSet&lt;E&gt; noneOf(Class&lt;E&gt; elementType) &#123;</span><br><span class="line">    Enum&lt;?&gt;[] universe = getUniverse(elementType);</span><br><span class="line">    if (universe == null)</span><br><span class="line">        throw new ClassCastException(elementType + &quot; not an enum&quot;);</span><br><span class="line"></span><br><span class="line">    if (universe.length &lt;= 64)</span><br><span class="line">        return new RegularEnumSet&lt;&gt;(elementType, universe);</span><br><span class="line">    else</span><br><span class="line">        return new JumboEnumSet&lt;&gt;(elementType, universe);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>getUniverse</code>调用了一个底层方法，暂不深究：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private static &lt;E extends Enum&lt;E&gt;&gt; E[] getUniverse(Class&lt;E&gt; elementType) &#123;</span><br><span class="line">    return SharedSecrets.getJavaLangAccess().getEnumConstantsShared(elementType);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后从上述代码中可以看出，<code>EnumSet</code>有两个实现类，当枚举数量不大于64个时，就采用<code>RegularEnumSet</code>实现，否则采用<code>JumboEnumSet</code>实现。前者是基于<code>long</code>实现的，而后者是基于<code>long[]</code>实现的。</p>
+<p><code>EnumSet</code>还提供了其它一系列静态方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 创建一个包含所有枚举值的set集合</span><br><span class="line">*/</span><br><span class="line">public static &lt;E extends Enum&lt;E&gt;&gt; EnumSet&lt;E&gt; allOf(Class&lt;E&gt; elementType) &#123;</span><br><span class="line">    EnumSet&lt;E&gt; result = noneOf(elementType);</span><br><span class="line">    result.addAll();</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* 创建包含一个枚举值的set集合</span><br><span class="line">*/</span><br><span class="line">public static &lt;E extends Enum&lt;E&gt;&gt; EnumSet&lt;E&gt; of(E e) &#123;</span><br><span class="line">    EnumSet&lt;E&gt; result = noneOf(e.getDeclaringClass());</span><br><span class="line">    result.add(e);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* 创建包含2个枚举值的set集合</span><br><span class="line">*/</span><br><span class="line">public static &lt;E extends Enum&lt;E&gt;&gt; EnumSet&lt;E&gt; of(E e1, E e2) &#123;</span><br><span class="line">    EnumSet&lt;E&gt; result = noneOf(e1.getDeclaringClass());</span><br><span class="line">    result.add(e1);</span><br><span class="line">    result.add(e2);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 其它创建包含固定个数枚举值的set集合，同样是出于性能考虑</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">// 创建包含不定数量枚举值的set集合</span><br><span class="line">public static &lt;E extends Enum&lt;E&gt;&gt; EnumSet&lt;E&gt; of(E first, E... rest) &#123;</span><br><span class="line">    EnumSet&lt;E&gt; result = noneOf(first.getDeclaringClass());</span><br><span class="line">    result.add(first);</span><br><span class="line">    for (E e : rest)</span><br><span class="line">        result.add(e);</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="add方法实现"><a href="#add方法实现" class="headerlink" title="add方法实现"></a><code>add</code>方法实现</h4><p>按范围添加方法<code>addRange</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void addRange(E from, E to) &#123;</span><br><span class="line">    // 首先-1的二进制编码是64位1</span><br><span class="line">    // 然后逻辑右移负数，表示只保留最后几位的1</span><br><span class="line">    // 最后左移from的偏移量，实现从from到to的对应位置都置为1</span><br><span class="line">    elements = (-1L &gt;&gt;&gt;  (from.ordinal() - to.ordinal() - 1)) &lt;&lt; from.ordinal();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加所有元素方法<code>addAll</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void addAll() &#123;</span><br><span class="line">    if (universe.length != 0)</span><br><span class="line">        // 同上</span><br><span class="line">        elements = -1L &gt;&gt;&gt; -universe.length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>计算补集方法<code>complement</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void complement() &#123;</span><br><span class="line">    if (universe.length != 0) &#123;</span><br><span class="line">        // 首先对原有数据取反</span><br><span class="line">        elements = ~elements;</span><br><span class="line">        // 然后和所有数据相与，计算出补集</span><br><span class="line">        elements &amp;= -1L &gt;&gt;&gt; -universe.length;  // Mask unused bits</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加单个元素<code>add</code>方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    typeCheck(e);</span><br><span class="line"></span><br><span class="line">    long oldElements = elements;</span><br><span class="line">    elements |= (1L &lt;&lt; ((Enum&lt;?&gt;)e).ordinal());</span><br><span class="line">    return elements != oldElements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="remove方法实现"><a href="#remove方法实现" class="headerlink" title="remove方法实现"></a><code>remove</code>方法实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public boolean remove(Object e) &#123;</span><br><span class="line">    // 1. 元素不能为null</span><br><span class="line">    if (e == null)</span><br><span class="line">        return false;</span><br><span class="line"></span><br><span class="line">    // 2. 类型要匹配</span><br><span class="line">    Class&lt;?&gt; eClass = e.getClass();</span><br><span class="line">    if (eClass != elementType &amp;&amp; eClass.getSuperclass() != elementType)</span><br><span class="line">        return false;</span><br><span class="line"></span><br><span class="line">    // 3. 先取反，然后相与。和1与等于原值</span><br><span class="line">    long oldElements = elements;</span><br><span class="line">    elements &amp;= ~(1L &lt;&lt; ((Enum&lt;?&gt;)e).ordinal());</span><br><span class="line">    return elements != oldElements;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="查询方法实现"><a href="#查询方法实现" class="headerlink" title="查询方法实现"></a>查询方法实现</h4><p>判断是否包含某元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public boolean contains(Object e) &#123;</span><br><span class="line">    if (e == null)</span><br><span class="line">        return false;</span><br><span class="line">    Class&lt;?&gt; eClass = e.getClass();</span><br><span class="line">    if (eClass != elementType &amp;&amp; eClass.getSuperclass() != elementType)</span><br><span class="line">        return false;</span><br><span class="line"></span><br><span class="line">    return (elements &amp; (1L &lt;&lt; ((Enum&lt;?&gt;)e).ordinal())) != 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>统计元素个数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public int size() &#123;</span><br><span class="line">    return Long.bitCount(elements);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过调用<code>Long</code>的<code>bitCount</code>方法来统计二进制中1的个数（没看懂为什么要这么实现）:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public static int bitCount(long i) &#123;</span><br><span class="line">    // HD, Figure 5-14</span><br><span class="line">    i = i - ((i &gt;&gt;&gt; 1) &amp; 0x5555555555555555L);</span><br><span class="line">    i = (i &amp; 0x3333333333333333L) + ((i &gt;&gt;&gt; 2) &amp; 0x3333333333333333L);</span><br><span class="line">    i = (i + (i &gt;&gt;&gt; 4)) &amp; 0x0f0f0f0f0f0f0f0fL;</span><br><span class="line">    i = i + (i &gt;&gt;&gt; 8);</span><br><span class="line">    i = i + (i &gt;&gt;&gt; 16);</span><br><span class="line">    i = i + (i &gt;&gt;&gt; 32);</span><br><span class="line">    return (int)i &amp; 0x7f;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="ArrayQueue"><a href="#ArrayQueue" class="headerlink" title="ArrayQueue"></a>ArrayQueue</h3><h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h3><h3 id="集合的排序算法"><a href="#集合的排序算法" class="headerlink" title="集合的排序算法"></a>集合的排序算法</h3><h1 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a><code>Map</code>集合</h1><h2 id="使用方法和场景-1"><a href="#使用方法和场景-1" class="headerlink" title="使用方法和场景"></a>使用方法和场景</h2><h2 id="一些最佳实践-1"><a href="#一些最佳实践-1" class="headerlink" title="一些最佳实践"></a>一些最佳实践</h2><h2 id="源码分析-1"><a href="#源码分析-1" class="headerlink" title="源码分析"></a>源码分析</h2><h1 id="关于并发场景下的集合"><a href="#关于并发场景下的集合" class="headerlink" title="关于并发场景下的集合"></a>关于并发场景下的集合</h1><p>不要在并发场景下使用线程不安全的集合类，这本身就是一种错误的用法，会导致无法预料的现象。要想使用线程安全的集合，有如下几种方法：</p>
+<ol>
+<li>使用<code>Collections</code>工具类的<code>synchronized*</code>系列方法来获取各个集合所对应的线程安全版本的集合</li>
+<li>使用<code>java.util.concurrent</code>并发包下的线程安全集合类</li>
+</ol>
+<p>详细的在JAVA并发篇再细讲。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li>Thinking in JAVA</li>
+<li>Effective JAVA</li>
+<li>极客时间课程</li>
+<li>阿里巴巴JAVA开发手册</li>
+</ul>
+
+
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/techlife/JAVA串点成线——对象/" data-toggle="tooltip" data-placement="top" title="JAVA串点成线——对象">下一篇 &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                <!--分享-->
+                <br>
+
+                <!-- require APlayer -->
+                
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+				
+            </div>
+
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#概要"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">概要</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Collection集合"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Collection集合</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#使用方法和场景"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">使用方法和场景</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#List"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">List</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Set"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">Set</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Queue"><span class="toc-nav-number">2.1.3.</span> <span class="toc-nav-text">Queue</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一些最佳实践"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">一些最佳实践</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合的初始化"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">集合的初始化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合和数组之间的转化"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">集合和数组之间的转化</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合的遍历与删除"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">集合的遍历与删除</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合的排序"><span class="toc-nav-number">2.2.4.</span> <span class="toc-nav-text">集合的排序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#用EnumSet代替位域"><span class="toc-nav-number">2.2.5.</span> <span class="toc-nav-text">用EnumSet代替位域</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#源码分析"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">源码分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ArrayList"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">ArrayList</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#关键属性"><span class="toc-nav-number">2.3.1.1.</span> <span class="toc-nav-text">关键属性</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#通过构造方法拷贝另一个集合里的元素"><span class="toc-nav-number">2.3.1.2.</span> <span class="toc-nav-text">通过构造方法拷贝另一个集合里的元素</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#扩容"><span class="toc-nav-number">2.3.1.3.</span> <span class="toc-nav-text">扩容</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#删除集合中的元素"><span class="toc-nav-number">2.3.1.4.</span> <span class="toc-nav-text">删除集合中的元素</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#LinkedList"><span class="toc-nav-number">2.3.2.</span> <span class="toc-nav-text">LinkedList</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Vector"><span class="toc-nav-number">2.3.3.</span> <span class="toc-nav-text">Vector</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Stack"><span class="toc-nav-number">2.3.4.</span> <span class="toc-nav-text">Stack</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HashSet"><span class="toc-nav-number">2.3.5.</span> <span class="toc-nav-text">HashSet</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TreeSet"><span class="toc-nav-number">2.3.6.</span> <span class="toc-nav-text">TreeSet</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#EnumSet"><span class="toc-nav-number">2.3.7.</span> <span class="toc-nav-text">EnumSet</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#抽象类实现"><span class="toc-nav-number">2.3.7.1.</span> <span class="toc-nav-text">抽象类实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#add方法实现"><span class="toc-nav-number">2.3.7.2.</span> <span class="toc-nav-text">add方法实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#remove方法实现"><span class="toc-nav-number">2.3.7.3.</span> <span class="toc-nav-text">remove方法实现</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#查询方法实现"><span class="toc-nav-number">2.3.7.4.</span> <span class="toc-nav-text">查询方法实现</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ArrayQueue"><span class="toc-nav-number">2.3.8.</span> <span class="toc-nav-text">ArrayQueue</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#PriorityQueue"><span class="toc-nav-number">2.3.9.</span> <span class="toc-nav-text">PriorityQueue</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#集合的排序算法"><span class="toc-nav-number">2.3.10.</span> <span class="toc-nav-text">集合的排序算法</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Map集合"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Map集合</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#使用方法和场景-1"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">使用方法和场景</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#一些最佳实践-1"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">一些最佳实践</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#源码分析-1"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">源码分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#关于并发场景下的集合"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">关于并发场景下的集合</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#参考"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">参考</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">标签云</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Java" title="Java">Java</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://coolshell.cn" target="_blank">coolshell</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/kid1994">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 剑知 2021 
+                    <br>
+                    Powered by <a href="http://www.hexo.io">Hexo</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Theme by <a href="https://github.com/kinggozhang/hexo-theme-ace">ACE</a> 
+					
+					
+					<i class="fa fa-eye" id="leancounter"></i>
+					
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+
+   <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+
+
+
+<!-- Bootstrap Core JavaScript -->
+
+   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+	<script src="/js/particles.js"></script>
+	<script src="/js/particles_config.js"></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://kid1994.github.io/techlife/JAVA串点成线——集合/index.html/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://kid1994.github.io/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
