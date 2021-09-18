@@ -417,7 +417,33 @@
 </table>
 <p><code>Queue</code>接口中没有定义阻塞型的方法，即需要等待其执行完成的方法，这是因为那些方法正常是用在多线程场景下的，比如<code>java.util.concurrent.BlockingQueue</code>，在并发篇再细讲。</p>
 <p><code>AbstractQueue</code>抽象类提供了<code>Queue</code>中一些方法的实现骨架，例如上述的<code>add</code>、<code>remove</code>、<code>element</code>方法都是基于对应的<code>offer</code>、<code>poll</code>、<code>peek</code>方法实现的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public boolean add(E e) &#123;</span><br><span class="line">    if (offer(e))</span><br><span class="line">        return true;</span><br><span class="line">    else</span><br><span class="line">        throw new IllegalStateException(&quot;Queue full&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>Deque</code>表示一种“双向队列”，所谓的双向队列就是指该队列的头和尾都支持插入和取出元素，而普通队列必须在尾部插入元素，在头部取出元素。因此和<code>Queue</code>比较而言，<code>Deque</code>还多出了若干方法，并且为了进行区分，在命名上也做了一些改动：<br>| 操作方法 | 抛出异常的方法 | 返回特定值的方法 |<br>| — | — | — |<br>| 插入操作 | addFirst/addLast | offerFirst/offerLast |<br>| 删除操作 | removeFirst/removeLast | pollFirst/pollLast |<br>| 查询队列第一个元素 | getFisrt/getLast | peekFirst/peekLast |</p>
+<p><code>Deque</code>表示一种“双向队列”，所谓的双向队列就是指该队列的头和尾都支持插入和取出元素，而普通队列必须在尾部插入元素，在头部取出元素。因此和<code>Queue</code>比较而言，<code>Deque</code>还多出了若干方法，并且为了进行区分，在命名上也做了一些改动：</p>
+<table>
+<thead>
+<tr>
+<th>操作方法</th>
+<th>抛出异常的方法</th>
+<th>返回特定值的方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>插入操作</td>
+<td>addFirst、addLast</td>
+<td>offerFirst、offerLast</td>
+</tr>
+<tr>
+<td>删除操作</td>
+<td>removeFirst、removeLast</td>
+<td>pollFirst、pollLast</td>
+</tr>
+<tr>
+<td>查询队列第一个元素</td>
+<td>getFisrt、getLast</td>
+<td>peekFirst、peekLast</td>
+</tr>
+</tbody>
+</table>
 <p><code>Qeque</code>除了可以用作FIFO队列，也可以用作LIFO队列，即栈。</p>
 <p>最后<code>Queue</code>接口一共有3个具体的实现，包括双向队列：</p>
 <ol>
